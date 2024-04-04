@@ -47,7 +47,7 @@ class ProduitManager extends Manager{
     public function lastProduits(){
         $bd = $this->connexion();
         // stock the query 's requete
-        $requete = $bd->query('SELECT * FROM produits ORDER BY `date` DESC LIMIT 5');
+        $requete = $bd->query('SELECT * FROM produits ORDER BY `date_enregistrement` DESC LIMIT 5');
 
         return $requete;
     }

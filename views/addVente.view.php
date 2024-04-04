@@ -7,7 +7,7 @@
 <h1>Formulaire de vente</h1>
     
 <form id='formVente' action="index.php?page=addFormVente" method="post">
-    <label for="nom_Vente">Nom du Vente:</label>
+    <label for="nom_Vente">Nom de la Vente:</label>
     <input id='form-nom_Vente' type="string" name="nom_Vente"/>
       
     <label for="quantite">Quantite:</label>

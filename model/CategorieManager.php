@@ -22,7 +22,7 @@ class CategorieManager extends Manager{
         $bd = $this->connexion();
 
         $requeteSQL =
-            "INSERT INTO categories`(`nom_categorie`,`sous_categorie`, `date_enregistrement`, `id_categorie`, `cout_reparation`, `temps_passe`, `vendu`)
+            "INSERT INTO categories (`nom_categorie`, `sous_categorie`, `poids`)
             VALUES (:nom_categorie, :sous_categorie, :poids)";
 
         $requetePrepare = $bd->prepare($requeteSQL);
@@ -32,8 +32,10 @@ class CategorieManager extends Manager{
             ':sous_categorie' =>  htmlspecialchars($sous_categorie),
             ':poids' => htmlspecialchars($poids)
         );
+
+        $this->executDisplay($requetePrepare, $parameterArray);
         
-        $requetePrepare->execute($parameterArray);
+
     }
 
     public function deleteCategorie($id_categorie){

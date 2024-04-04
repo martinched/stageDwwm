@@ -13,40 +13,17 @@
         <h1>La Pétappli</h1>
     </header>
 
-        <nav>
-            <ul>  
-                <li class="deroulant">
-                    <h3>Enregistrement</h3>
-                    <ul class="enregistrer">
-                        <li><a href="index.php?page=produits">Produits</a></li>
-                        <li><a href="index.php?page=ventes">Ventes</a></li>
-                        <li><a href="index.php?page=categories">Catégories</a></li>
-                    </ul>
-                </li>
+    <nav>
+        <ul class="menu">
+            <li><a href="index.php?page=produits">Produits</a></li>
+            <li><a href="index.php?page=ventes">Ventes</a></li>
+            <li><a href="index.php?page=categories">Catégories</a></li>
+        </ul>
+    </nav>
 
-                <li class="deroulant">
-                    <h3>Consultation</h3>
-                    <ul class="consulter">
-                        <li><a href="index.php?page=addFormProduit">Produits</a></li>
-                        <li><a href="index.php?page=addFormVente">Ventes</a></li>
-                        <li><a href="index.php?page=addFormCategorie">Catégories</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-
-
-
-
-
-
-
-    
     <div class='content'>
         <?= $content ?>
     </div>
-
-    </section>
 
 </body>
 </html>

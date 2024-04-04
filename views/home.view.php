@@ -12,7 +12,13 @@ ob_start();
 <?php
     while($lastProduit = $requeteProduit->fetch()) {
 ?>
-    <p><?= $lastProduit['name_produit'] ?><br/><?= $lastProduit['Description'] ?></p>
+        <p>
+            <b>Nom&nbsp;:&nbsp; <?= $lastProduit['nom_produit'] ?></b><br/>
+            <b>description&nbsp;:&nbsp;</b> <?= $lastProduit['description'] ?><br/>
+            <b>Date&nbsp;d'enregistrement&nbsp;:&nbsp;</b> <?=$lastProduit['date_enregistrement'] ?><br/>
+            <b>Coût&nbsp;de&nbsp;reparation&nbsp;:&nbsp;</b> <?= $lastProduit['cout_reparation'] ?> € <br/>
+            <b>Temps&nbsp;passé&nbsp;:&nbsp;</b> <?= $lastProduit['temps_passe']?> h <br/>
+        </p>
 <?php
     }
 ?>
@@ -22,8 +28,11 @@ ob_start();
 <?php
     while($lastVente = $requeteVente->fetch()) {
 ?>
-    
-    <p><?= $lastVente['Categorie']?><br/><?= $lastVente['Prix libre']?>euros</p>
+    <p>
+        <b>N°&nbsp;<?= $lastVente['id_vente'] ?></b><br/>
+        <b>Enregistré&nbsp;le&nbsp;:&nbsp;</b> <?=$lastVente['date_vente'] ?><br/>
+        <b>Vendu&nbsp;le&nbsp;:&nbsp;</b> <?= $lastVente['date'] ?>             
+    </p>
 <?php
     }
 

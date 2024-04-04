@@ -10,7 +10,12 @@ ob_start()
     // displays each row of the following columns
     while($categorie = $requete->fetch()) {
 ?>
-    <p><b><?= $categorie['nom_categorie'] ?></b><br/> <?= $categorie['sous-categorie'] ?><br/> <?= $categorie['poids'] ?></p><br/>
+    <p>
+        <b><u><?= $categorie['nom_categorie'] ?></u></b> <br/> 
+        <b>Sous-catégorie&nbsp;:&nbsp;</b> <?= $categorie['sous_categorie'] ?><br/> 
+        <b>Poids&nbsp;:&nbsp;</b> <?= $categorie['poids'] ?> Grammes
+    </p>
+    
 <?php
     }
 

@@ -10,7 +10,7 @@
             $lastVente = new VenteManager();
             $requeteVente = $lastVente->lastVentes();
 
-            require('view/home.view.php');  
+            require('views/home.view.php');  
         }
     }
 

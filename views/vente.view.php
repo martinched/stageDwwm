@@ -5,21 +5,24 @@ $title = "Liste des ventes";
 ob_start();
 ?>
     
-    <h1><U>Liste des ventes</U></h1>
+    <h2>Liste des ventes</h2>
+    
 
 <div class='ligne'>
     <?php
     // displays each row of the following columns
-        while($vente = $requete->fetch()) {
+        while($result = $requete->fetch()) {
     ?>
         <div class='vente'>
             <p>
-                <b>"<?= $vente['nom_produit'] ?>"</b><br/>
-                <?='enregistré le&nbsp;: ' . $vente['date_enregistrement'] ?>
-                <?= 'vendu le&nbsp;: ' . $vente['date'] ?> <br/>           
-                <?= $vente['nom_produit'] ?><br/>
+                <b>N°&nbsp;<?= $result['nom_produit'] ?></b><br/>
+                <b>Enregistré&nbsp;le&nbsp;:&nbsp;</b> <?=$result['date_enregistrement'] ?><br/>
+                <b>Vendu&nbsp;le&nbsp;:&nbsp;</b> <?= $result['date_vente'] ?>  
+                
+                <!-- v.id_vente, v.quantite, v.date_vente, p.nom_produit, p.date_enregistrement, p.cout_reparation, p.temps_passe  -->
+
             </p>
-            <a href='index.php?page=deleteReview&id_avis=<?=$vente['id_vente']?>'>Supprimer</a>
+            <a href='index.php?page=deleteReview&id_avis=<?=$result['id_vente']?>'>Supprimer</a>
         </div>
     <?php
         }

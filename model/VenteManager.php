@@ -11,25 +11,25 @@ class VenteManager extends Manager{
         $bd = $this->connexion();
         // stock the query's requete
         $requete = $bd->query(
-            'SELECT v.id_vente, v.quantite, v.date, p.nom_produit, p.date_enregistrement, p.cout_reparation, p.temps_passe 
-            FROM ventes v, produits p  WHERE v.id_produit = p.id_produit');
+            'SELECT v.id_vente, v.quantite, v.date_vente, p.nom_produit, p.date_enregistrement, p.cout_reparation, p.temps_passe 
+            FROM ventes v INNER JOIN produits p  ON v.id_produit = p.id_produit');
 
         return $requete;
     }
 
 
-    public function addFormVente($quantite, $date, $id_produit, $prix_libre){
+    public function addFormVente($quantite, $date_vente, $id_produit, $prix_libre){
         $bd = $this->connexion();
 
         $requeteSQL =
-            "INSERT INTO `ventes`(`quantite`,`date`, `id_produit`, `prix_libre`)
+            "INSERT INTO `ventes`(`quantite`,`date_vente`, `id_produit`, `prix_libre`)
             VALUES (:quantite, :date, :id_produit, :prix_libre)";
 
         $requetePrepare = $bd->prepare($requeteSQL);
 
         $parameterArray = array(
             ':quantite' => htmlspecialchars($quantite),
-            ':date' => htmlspecialchars($date),
+            ':date_vente' => htmlspecialchars($date_vente),
             ':id_produit' => htmlspecialchars($id_produit),
             ':prix_libre' => htmlspecialchars($prix_libre)
         );

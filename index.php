@@ -45,12 +45,40 @@ try{
 
             break;
             case 'addFormVente':
-                $venteController = new VenteController();
-                $requete = $venteController->addFormVente();
+                if(isset($_POST['id_vente'])) {
+                    $quantite = $_POST['quantite'];
+                    $date = $_POST['date'];
+                    $id_produit = $_POST['id_produit'];
+                    $prix_libre = $_POST['prix_libre'];
+                    // $vendu = (isset($_POST['vendu'])) ? 0 : 1;        
+
+                    $venteController = new VenteController();
+                    $requete = $venteController->addFormVente(
+                    $quantite, $date, $id_produit, $prix_libre);
+                    echo "<p>Le Vente a bien été ajouté!</p>"; 
+                }else{
+                    require('views/addVente.view.php');
+                }
+
             break;
             case 'addFormCategorie':
-                $categorieController = new CategorieController();
-                $requete = $categorieController->addFormCategorie();
+                if(isset($_POST['nom_categorie'])) {
+                    $nom_categorie = $_POST['nom_categorie'];
+                    $sous_categorie = $_POST['sous_categorie'];
+                    $poids = $_POST['poids'];
+                            
+                    $categorieController = new CategorieController();
+                    $categorieController->addFormCategorie(
+                    $nom_categorie, $sous_categorie, $poids);
+
+                    // ($succes) ?  echo "<p>La catégorie a bien été ajoutée!</p>";  :
+                    
+                   
+                }else{
+                    require('views/addCategorie.view.php');
+                }
+
+                
             break;
 
 
