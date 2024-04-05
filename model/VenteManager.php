@@ -12,7 +12,7 @@ class VenteManager extends Manager{
         // stock the query's requete
         $requete = $bd->query(
             'SELECT v.id_vente, v.quantite, v.date_vente, p.nom_produit, p.date_enregistrement, p.cout_reparation, p.temps_passe 
-            FROM ventes v INNER JOIN produits p  ON v.id_produit = p.id_produit');
+            FROM ventes v INNER JOIN produits p  ON v.id_produit = p.id_produit ORDER BY `date_enregistrement` DESC');
 
         return $requete;
     }
@@ -39,7 +39,6 @@ class VenteManager extends Manager{
  
     public function lastVentes(){
         $bd = $this->connexion();
-        // stock the query 's requete
         $requete = $bd->query('SELECT * FROM ventes ORDER BY date DESC LIMIT 5');
         return $requete;
     }

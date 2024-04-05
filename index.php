@@ -21,43 +21,60 @@ try{
             break;
             case 'categories':
                 $categorieController = new CategorieController();
-                $requete = $categorieController->listcategories();
+                $requete = $categorieController->listCategories();
+                // $requete = $categorieController->listSousCategories();
             break;
 
-            case 'addFormProduit':  
-                if(isset($_POST['nom_produit'])) {
+            case 'addFormProduit': 
+                $produitController = new ProduitController();
+
+                # Si l'utilisateur a choisi une catégorie
+                if(isset($_POST['id_categorie'])) {
+                    $id_categorie = $_POST['id_categorie'];
+                    $produitController->choixSousCategories($id_categorie);
+                    require('views/addProduit.view.php');
+
+                }elseif(isset($_POST['nom_produit'])) {
                     $nom_produit = $_POST['nom_produit'];
                     $description = $_POST['description'];
                     $date_enregistrement = $_POST['date_enregistrement'];
-                    $id_categorie = $_POST['id_categorie'];
+                    $id_sous_categorie = $_POST['id_sous_categorie'];
                     $cout_reparation = $_POST['cout_reparation'];
                     $temps_passe = $_POST['temps_passe'];
-                    $vendu = (isset($_POST['vendu'])) ? 0 : 1;        
-
-                    $produitController = new ProduitController();
+                    $vendu = (isset($_POST['vendu'])) ? 0 : 1;
+                    
                     $requete = $produitController->addFormProduit(
                     $nom_produit, $description, $date_enregistrement,
-                    $id_categorie, $cout_reparation, $temps_passe, $vendu);
-                    echo "<p>Le produit a bien été ajouté!</p>"; 
-                }else{
-                    require('views/addProduit.view.php');
-                }
+                    $id_sous_categorie, $cout_reparation, $temps_passe, $vendu);
+                    $produitController->listProduits();
 
+                }else{ 
+                    $produitController->choixCategories();  
+                }
             break;
+
             case 'addFormVente':
-                if(isset($_POST['id_vente'])) {
+                $venteController = new VenteController();
+
+                if(isset($_POST['id_categorie'])) {
+                    $id_categorie = $_POST['id_categorie'];
+                    $venteController->choixSousCategories($id_categorie);
+                    require('views/addVente.view.php');
+
+                }elseif(isset($_POST['id_vente'])) {
+                    $id_sous_categorie = $_POST['id_sous_categorie'];
                     $quantite = $_POST['quantite'];
                     $date = $_POST['date'];
                     $id_produit = $_POST['id_produit'];
                     $prix_libre = $_POST['prix_libre'];
-                    // $vendu = (isset($_POST['vendu'])) ? 0 : 1;        
-
-                    $venteController = new VenteController();
+                          
+                    // $venteController = new VenteController();
                     $requete = $venteController->addFormVente(
-                    $quantite, $date, $id_produit, $prix_libre);
-                    echo "<p>Le Vente a bien été ajouté!</p>"; 
+                    $id_sous_categorie, $quantite, $date, $id_produit, $prix_libre);
+                    $venteController->listVentes();
+
                 }else{
-                    require('views/addVente.view.php');
+                    $venteController->choixCategories();  
                 }
 
             break;
@@ -76,12 +93,8 @@ try{
                    
                 }else{
                     require('views/addCategorie.view.php');
-                }
-
-                
+                }   
             break;
-
-
             default:
                 throw new Exception ("message: Cette page n'existe pas!");
             break;

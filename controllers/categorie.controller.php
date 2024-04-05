@@ -10,6 +10,12 @@ class CategorieController{
         require ('views/categorie.view.php');
     }
 
+    public function listSousCategories(){
+        $sousCategorieManager = new CategorieManager();
+        $requete = $sousCategorieManager->getSousCategories();
+        require ('views/categorie.view.php');
+    }
+
     public function addFormCategorie($nom_categorie, $sous_categorie, $poids){
         $addCategorieManager = new CategorieManager();
         $addCategorieManager->addFormCategorie($nom_categorie, $sous_categorie, $poids);

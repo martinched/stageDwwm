@@ -1,36 +1,24 @@
-<?php 
-    $title = "Formulaire d'ajout de produit";
 
-    ob_start()
-?>
 
-<h1>Formulaire d'ajout de produit</h1>
-    
-<form id='formProduit' action="index.php?page=addFormProduit" method="post">
     <label for="nom_produit">Nom du produit:</label>
-    <input require id='form-nom_produit' type="string" name="nom_produit"/>
-      
+    <input  require id='form-nom_produit' type="string" name="nom_produit"/>
+<br>
     <label for="description">Description:</label>
-    <textarea id="form-description" name="description"></textarea>
-
+    <textarea maxlength=255 require id="form-description" name="description"></textarea>
+<br>
     <label for="date_enregistrement">Date d'enregistrement:</label>
-    <input id='form-date_enregistrement_produit' type='date' name="date_enregistrement"/>
-
-    <!-- <select>
-  todo: select      
-    </select> -->
-    <label for="nom_categorie">Catégorie:</label>
-    <input id='form-id_categorie' type='string' name="id_categorie"/>
-
+    <input require id='form-date_enregistrement_produit' type='date' name="date_enregistrement"/>
+    
+<br>
     <label for="cout_reparation">Coût de réparation:</label>
-    <input id='form-cout_reparation' type='number' name="cout_reparation"/>
-
+    <input require id='form-cout_reparation' type='number' name="cout_reparation"/>
+<br>
     <label for="temps_passe">Temps passé:</label>
-    <input id='form-temps_passe' type='number' name="temps_passe"/>
-
+    <input require id='form-temps_passe' type='number' name="temps_passe"/>
+<br>
     <input type="checkbox" id="form-vendu" name="vendu" />
-    <label for="vendu">Vendu</label>
-  
+    <label require for="vendu">Vendu</label>
+<br>
     <input id='form-produitButton' type="submit" value="Envoyer le formulaire" />
 </form> 
 

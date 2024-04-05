@@ -10,6 +10,18 @@
             require ('views/vente.view.php');
         }
 
+        public function choixCategories(){
+            $choixCategorie = new CategorieManager();
+            $requete =  $choixCategorie->getCategories();
+            require ('views/addVenteCat.view.php');
+        }
+        
+        public function choixSousCategories($id_categorie){
+            $choixSousCategorie = new CategorieManager();
+            $requete =  $choixSousCategorie->getSousCategories($id_categorie);
+            require ('views/addVenteSousCat.view.php');
+        }
+
         public function addFormVente($quantite, $date, $id_produit, $prix_libre){
             $addVenteManager = new VenteManager();
             $addVenteManager->addFormVente($quantite, $date, $id_produit, $prix_libre);

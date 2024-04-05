@@ -13,9 +13,13 @@ class CategorieManager extends Manager{
         
         // stock the query 's requete
         $requete = $bd->query('SELECT * FROM categories');
-
         return $requete;
+    }
 
+    public function getSousCategories($id_categorie){
+        $bd = $this->connexion();    
+        $requete = $bd->query('SELECT * FROM sous_categories WHERE id_categorie = ' . $id_categorie);
+        return $requete;
     }
 
     public function addFormCategorie($nom_categorie, $sous_categorie, $poids){

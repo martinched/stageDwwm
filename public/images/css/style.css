@@ -1,0 +1,8 @@
+.h1{
+    color:brown
+}
+
+#formProduit{
+    display: flex;
+    flex-direction: column;
+}

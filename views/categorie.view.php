@@ -12,10 +12,10 @@ ob_start()
 ?>
     <p>
         <b><u><?= $categorie['nom_categorie'] ?></u></b> <br/> 
-        <b>Sous-catégorie&nbsp;:&nbsp;</b> <?= $categorie['sous_categorie'] ?><br/> 
+        <b>Sous-catégorie&nbsp;:&nbsp;</b> <?= $categorie['nom_sous_categorie'] ?><br/> 
         <b>Poids&nbsp;:&nbsp;</b> <?= $categorie['poids'] ?> Grammes
     </p>
-    
+    <a href='index.php?page=deleteReview&id_categorie=<?=$categorie['id_categorie']?>'>Supprimer</a>
 <?php
     }
 

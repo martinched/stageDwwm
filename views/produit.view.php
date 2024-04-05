@@ -4,9 +4,9 @@ $title = "Liste des produits";
 ob_start()
 ?>
     <h2>Voici la liste des produits</h2>
-    <button> <a href="index.php?page=addFormProduit">Ajouter un produits</a></button>
+    <button> <a href="index.php?page=addFormProduit">Ajouter un produit</a></button>
 <?php
-    // displays each row of the following columns
+    
     while($product = $requete->fetch()) {
 ?>
     <p>
@@ -16,7 +16,15 @@ ob_start()
         <b>Coût&nbsp;de&nbsp;reparation&nbsp;:&nbsp;</b> <?= $product['cout_reparation'] ?> € <br/>
         <b>Temps&nbsp;passé&nbsp;:&nbsp;</b> <?= $product['temps_passe']?> h <br/>
     </p>
-    <button> <a href='index.php?page=deleteReview&id_avis=......'>Jeter</a> </button>  
+
+
+
+     <!-- to do function ' jeter' -->
+
+
+
+
+    <button> <a href='index.php?page=deleteProduit&id_produit=<?=$product['id_produit']?>'>Jeter</a> </button>  
     <button> <a href="index.php?page=addFormVente">Vendre</a></button>
 <hr>
  <?php

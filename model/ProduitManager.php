@@ -13,20 +13,20 @@ class ProduitManager extends Manager{
         $bd = $this->connexion();
         
     // stock the query 's requete
-    $requete = $bd->query('SELECT * FROM produits');
+    $requete = $bd->query('SELECT * FROM produits ORDER BY `date_enregistrement` DESC');
 
     return $requete;
     }
 
-    public function addFormProduit($nom_produit, $description, $date_enregistrement, $id_categorie, $cout_reparation, $temps_passe, $vendu){
+    public function addFormProduit($nom_produit, $description, $date_enregistrement, $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){
         $bd = $this->connexion();
 
         $requeteSQL =
             "INSERT INTO Produits(
-                `nom_produit`,`description`, `date_enregistrement`, `id_categorie`,
+                `nom_produit`,`description`, `date_enregistrement`, `id_sous_categorie`,
                  `cout_reparation`, `temps_passe`, `vendu`)
             VALUES (
-                :nom_produit, :description, :date_enregistrement, :id_categorie, 
+                :nom_produit, :description, :date_enregistrement, :id_sous_categorie, 
                 :cout_reparation, :temps_passe, :vendu)";
 
         $requetePrepare = $bd->prepare($requeteSQL);
@@ -35,7 +35,7 @@ class ProduitManager extends Manager{
             ':nom_produit' => htmlspecialchars($nom_produit),
             ':description' =>  htmlspecialchars($description),
             ':date_enregistrement' => htmlspecialchars($date_enregistrement),
-            ':id_categorie' => htmlspecialchars($id_categorie),
+            ':id_sous_categorie' => htmlspecialchars($id_sous_categorie),
             ':cout_reparation' => htmlspecialchars($cout_reparation),
             ':temps_passe' => htmlspecialchars($temps_passe),
             ':vendu' => htmlspecialchars($vendu)
@@ -46,7 +46,6 @@ class ProduitManager extends Manager{
 
     public function lastProduits(){
         $bd = $this->connexion();
-        // stock the query 's requete
         $requete = $bd->query('SELECT * FROM produits ORDER BY `date_enregistrement` DESC LIMIT 5');
 
         return $requete;
@@ -57,12 +56,31 @@ class ProduitManager extends Manager{
        
         $deleteProduit = 'DELETE FROM produits WHERE id_produit = ?';
             try{
-                $stmt = $bd->prepare($deleteProduit);   
-                $stmt->execute([$id_produit]);
-                echo'Le produit à bien été supprimé';
+                // $stmt = $bd->prepare($deleteProduit);   
+                // $stmt->execute([$id_produit]);
+                // echo'Le produit à bien été supprimé';
+
+                // Afficher une boîte de dialogue de confirmation
+                //  echo "<script>
+                //     if (confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
+                //     // Si l'utilisateur clique sur OK, effectuer la suppression
+                //         var xhr = new XMLHttpRequest();
+                //         xhr.open('POST', 'votre_script.php', true);
+                //         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                //         xhr.onreadystatechange = function() {
+                //             if (xhr.readyState == 4 && xhr.status == 200) {
+                //                 alert(xhr.responseText); // Afficher le message de confirmation retourné par le serveur
+                //             }
+                //     };
+                //     xhr.send('id_produit=' + encodeURIComponent($id_produit));
+                //     } else {
+                //         // Si l'utilisateur clique sur Annuler, ne rien faire
+                //         console.log('Suppression annulée');
+                //     }
+                // </script>";
             }
             catch(Exception $e){
-                throw new Exception('Problème de récuperation des données'); 
+                throw new Exception('Problème de connection a la base de données'); 
             }
     }
 }
