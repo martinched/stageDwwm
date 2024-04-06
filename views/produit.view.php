@@ -7,7 +7,7 @@ ob_start()
     <button> <a href="index.php?page=addFormProduit">Ajouter un produit</a></button>
 <?php
     
-    while($product = $requete->fetch()) {
+    while($product = $reponse->fetch()) {
 ?>
     <p>
         <b>Nom&nbsp;:&nbsp; <?= $product['nom_produit'] ?></b><br/>

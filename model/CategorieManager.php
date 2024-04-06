@@ -1,45 +1,40 @@
 <?php
 
-// requires ( once for all others) the file Manager.php
 require_once("Manager.php");
 
-// defines an object and extends it an other object
 class CategorieManager extends Manager{
 
     public function getCategories(){
-        // assigns the result required by the 'connection' method 
-        // of the object ($this) 'CategorieManager!
-        $bd = $this->connexion();
-        
-        // stock the query 's requete
-        $requete = $bd->query('SELECT * FROM categories');
-        return $requete;
+        $bd = $this->connexion();  
+        $reponse = $bd->query('SELECT * FROM categories');
+        return $reponse;
     }
 
-    public function getSousCategories($id_categorie){
+    public function getSousCategories($categorie){
         $bd = $this->connexion();    
-        $requete = $bd->query('SELECT * FROM sous_categories WHERE id_categorie = ' . $id_categorie);
-        return $requete;
+        $sql = ("SELECT s.id_sous_categorie, s.nom_sous_categorie, s.id_categorie, c.nom_categorie, s.poids 
+        FROM categories c INNER JOIN sous_categories s ON s.id_categorie = c.id_categorie
+        WHERE s.id_categorie =" . $categorie['id_categorie'] .
+        " ORDER BY nom_sous_categorie");
+        $reponse = $bd->query($sql);
+        return $reponse;
     }
 
-    public function addFormCategorie($nom_categorie, $sous_categorie, $poids){
+    public function addFormCategorie($nom_categorie, $sous_categorie){
         $bd = $this->connexion();
 
         $requeteSQL =
-            "INSERT INTO categories (`nom_categorie`, `sous_categorie`, `poids`)
-            VALUES (:nom_categorie, :sous_categorie, :poids)";
+            "INSERT INTO categories (`nom_categorie`, `sous_categorie`)
+            VALUES (:nom_categorie, :sous_categorie)";
 
         $requetePrepare = $bd->prepare($requeteSQL);
 
         $parameterArray = array(
             ':nom_categorie' => htmlspecialchars($nom_categorie),
             ':sous_categorie' =>  htmlspecialchars($sous_categorie),
-            ':poids' => htmlspecialchars($poids)
         );
 
         $this->executDisplay($requetePrepare, $parameterArray);
-        
-
     }
 
     public function deleteCategorie($id_categorie){

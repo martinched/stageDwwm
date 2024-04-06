@@ -5,17 +5,16 @@ ob_start()
 ?>
 
     <h1>liste des catégories</h1>
+ <a href='index.php?page=gestionCategories'>Gérer les categories</a>
 
 <?php
     // displays each row of the following columns
-    while($categorie = $requete->fetch()) {
+    while($categories = $reponse->fetch()) {
 ?>
     <p>
-        <b><u><?= $categorie['nom_categorie'] ?></u></b> <br/> 
-        <b>Sous-catégorie&nbsp;:&nbsp;</b> <?= $categorie['nom_sous_categorie'] ?><br/> 
-        <b>Poids&nbsp;:&nbsp;</b> <?= $categorie['poids'] ?> Grammes
+        <b><u><?= $categories['nom_categorie'] ?></u></b> <br/>
     </p>
-    <a href='index.php?page=deleteReview&id_categorie=<?=$categorie['id_categorie']?>'>Supprimer</a>
+   
 <?php
     }
 

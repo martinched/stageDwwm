@@ -6,14 +6,22 @@ class CategorieController{
 
     public function listCategories(){
         $categorieManager = new CategorieManager();
-        $requete = $categorieManager->getCategories();
+        $reponse = $categorieManager->getCategories();
         require ('views/categorie.view.php');
     }
 
     public function listSousCategories(){
         $sousCategorieManager = new CategorieManager();
-        $requete = $sousCategorieManager->getSousCategories();
-        require ('views/categorie.view.php');
+        $reponse = $sousCategorieManager->getCategories();
+        $tableau = array();
+        
+        while($categorie = $reponse->fetch()){
+            // Pour chaque catégorie, obtenez ses sous-catégories
+            $sousCategories = $sousCategorieManager->getSousCategories($categorie);
+            // Assignez les sous-catégories à la catégorie correspondante dans le tableau $reponse
+            $tableau[$categorie['nom_categorie']] = $sousCategories;
+        }
+        require ('views/gestionCat.view.php');
     }
 
     public function addFormCategorie($nom_categorie, $sous_categorie, $poids){

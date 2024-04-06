@@ -13,9 +13,9 @@ class ProduitManager extends Manager{
         $bd = $this->connexion();
         
     // stock the query 's requete
-    $requete = $bd->query('SELECT * FROM produits ORDER BY `date_enregistrement` DESC');
+    $reponse = $bd->query('SELECT * FROM produits ORDER BY `date_enregistrement` DESC');
 
-    return $requete;
+    return $reponse;
     }
 
     public function addFormProduit($nom_produit, $description, $date_enregistrement, $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){

@@ -11,7 +11,7 @@ ob_start();
 <div>
     <?php
     // displays each row of the following columns
-        while($result = $requete->fetch()) {
+        while($result = $reponse->fetch()) {
     ?>
         <div class='vente'>
             <p>

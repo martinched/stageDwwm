@@ -6,19 +6,19 @@
     class ProduitController{
         public function listProduits(){
             $produitManager = new ProduitManager();
-            $requete = $produitManager->getProduit();
+            $reponse = $produitManager->getProduit();
             require ('views/produit.view.php');
         }
     
         public function choixCategories(){
             $choixCategorie = new CategorieManager();
-            $requete =  $choixCategorie->getCategories();
+            $reponse =  $choixCategorie->getCategories();
             require ('views/addProduitCat.view.php');
         }
         
         public function choixSousCategories($id_categorie){
             $choixSousCategorie = new CategorieManager();
-            $requete =  $choixSousCategorie->getSousCategories($id_categorie);
+            $reponse =  $choixSousCategorie->getSousCategories($id_categorie);
             require ('views/addProduitSousCat.view.php');
         }
 

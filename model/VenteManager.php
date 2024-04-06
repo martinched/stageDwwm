@@ -10,11 +10,11 @@ class VenteManager extends Manager{
     public function getVentes(){
         $bd = $this->connexion();
         // stock the query's requete
-        $requete = $bd->query(
+        $reponse = $bd->query(
             'SELECT v.id_vente, v.quantite, v.date_vente, p.nom_produit, p.date_enregistrement, p.cout_reparation, p.temps_passe 
             FROM ventes v INNER JOIN produits p  ON v.id_produit = p.id_produit ORDER BY `date_enregistrement` DESC');
 
-        return $requete;
+        return $reponse;
     }
 
 
@@ -33,14 +33,27 @@ class VenteManager extends Manager{
             ':id_produit' => htmlspecialchars($id_produit),
             ':prix_libre' => htmlspecialchars($prix_libre)
         );
-
         $requetePrepare->execute($parameterArray);
+
+
+ $requeteSQL =
+        "UPDATE  "; 
+        // $requeteSQL =
+        //     "SELECT id_vente FROM `ventes` order by id_vente desc limit 1 ";
+
+        // $reponse = $bd->query($requeteSQL);
+
+  
+
+            // A voir plus tar
+        //  Récupérer l'id_vente de la vente qui vient d'être créée
+        //  Mettre à jour le produit vendu avec produits.id_vente = ventes.id_vente
     }
  
     public function lastVentes(){
         $bd = $this->connexion();
-        $requete = $bd->query('SELECT * FROM ventes ORDER BY date DESC LIMIT 5');
-        return $requete;
+        $reponse = $bd->query('SELECT * FROM ventes ORDER BY date DESC LIMIT 5');
+        return $reponse;
     }
 
     public function deleteVente($id_vente){

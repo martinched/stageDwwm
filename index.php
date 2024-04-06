@@ -13,16 +13,23 @@ try{
         switch ($_GET['page']) {
             case 'produits':
                 $produitController = new ProduitController();
-                $requete = $produitController->listProduits();
+                $produitController->listProduits();
             break;
+
             case 'ventes':
                 $venteController = new VenteController();
-                $requete = $venteController->listVentes();
+                $venteController->listVentes();
             break;
+
             case 'categories':
                 $categorieController = new CategorieController();
-                $requete = $categorieController->listCategories();
-                // $requete = $categorieController->listSousCategories();
+                $categorieController->listCategories();
+                // $categorieController->listSousCategories();
+            break;
+
+            case 'gestionCategories':
+                $categorieController = new CategorieController();
+                $categorieController->listSousCategories();
             break;
 
             case 'addFormProduit': 

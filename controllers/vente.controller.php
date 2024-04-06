@@ -6,19 +6,19 @@
     class VenteController{
         public function listVentes(){
             $venteManager = new VenteManager();
-            $requete = $venteManager->getVentes();
+            $reponse = $venteManager->getVentes();
             require ('views/vente.view.php');
         }
 
         public function choixCategories(){
             $choixCategorie = new CategorieManager();
-            $requete =  $choixCategorie->getCategories();
+            $reponse =  $choixCategorie->getCategories();
             require ('views/addVenteCat.view.php');
         }
         
         public function choixSousCategories($id_categorie){
             $choixSousCategorie = new CategorieManager();
-            $requete =  $choixSousCategorie->getSousCategories($id_categorie);
+            $reponse =  $choixSousCategorie->getSousCategories($id_categorie);
             require ('views/addVenteSousCat.view.php');
         }
 

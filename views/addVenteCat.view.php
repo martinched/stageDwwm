@@ -12,7 +12,7 @@
                 <label for="id_categorie">Categorie:</label>
                 <select id="selecCat" name="id_categorie">
                 <?php 
-    while($categorie = $requete->fetch()) {
+    while($categorie = $reponse->fetch()) {
 ?>
                     <option value="<?= $categorie['id_categorie'] ?>"><?= $categorie['nom_categorie'] ?></option>
                     <?php
