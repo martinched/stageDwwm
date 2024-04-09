@@ -7,7 +7,8 @@ ob_start();
     
     <h2>Liste des ventes</h2>
     
-
+    <button> <a href='index.php?page=addFormVente'>Enregistrer une vente</a> </button>  
+  
 <div>
     <?php
     // displays each row of the following columns
@@ -15,14 +16,13 @@ ob_start();
     ?>
         <div class='vente'>
             <p>
-                <b>Nom produit&nbsp;:&nbsp;<?= $result['nom_produit'] ?></b><br/>
-                <b>Enregistré le&nbsp;:&nbsp;</b> <?=$result['date_enregistrement'] ?><br/>
-                <b>Vendu le&nbsp;:&nbsp;</b> <?= $result['date_vente'] ?>  
-                
-                <!-- v.id_vente, v.quantite, v.date_vente, p.nom_produit, p.date_enregistrement, p.cout_reparation, p.temps_passe  -->
-
+                <b><?= $result['nom_produit'] ?></b> &nbsp; <button><a href='index.php?page=deleteVente&id_vente=<?=$result['id_vente']?>'>Supprimer</a></button><br/>
+                <b>Prix libre&nbsp;:&nbsp;</b> <?=$result['prix_libre'] ?><br/>
+                <b>Quantité&nbsp;:&nbsp;</b> <?=$result['quantite'] ?><br/>
+                <b>Vendu le&nbsp;:&nbsp;</b> <?= $result['date_vente'] ?>
             </p>
-            <a href='index.php?page=deleteVente&id_vente=<?=$result['id_vente']?>'>Supprimer</a>
+            
+            
         </div>
     <?php
         }

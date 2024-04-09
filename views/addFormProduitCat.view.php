@@ -1,14 +1,14 @@
 <?php 
-    $title = "Formulaire d'ajout de vente";
+    $title = "Formulaire d'ajout de produit";
 
     ob_start()
 ?>
 
-<h1>Formulaire d'ajout de vente</h1>
+<h1>Ajouter un produit</h1>
 
 
         <div class="formCat">
-            <form id='formvente' action="index.php?page=addFormvente" method="post">
+            <form id='formProduit' action="index.php?page=addFormProduit" method="post">
                 <label for="id_categorie">Categorie:</label>
                 <select id="selecCat" name="id_categorie">
                 <?php 

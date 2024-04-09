@@ -27,7 +27,7 @@ class CategorieController{
     public function addFormCategorie($nom_categorie, $sous_categorie, $poids){
         $addCategorieManager = new CategorieManager();
         $addCategorieManager->addFormCategorie($nom_categorie, $sous_categorie, $poids);
-        require ('views/addCategorie.view.php');
+        require ('views/addFormCategorie.view.php');
     }
 
     public function deleteCategorie($id_categorie){ 

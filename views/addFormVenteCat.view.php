@@ -1,15 +1,15 @@
 <?php 
-    $title = "Formulaire d'ajout de produit";
+    $title = "Formulaire d'ajout de vente";
 
     ob_start()
 ?>
 
-<h1>Formulaire d'ajout de produit</h1>
+<h1>Ajouter une vente</h1>
 
 
         <div class="formCat">
-            <form id='formProduit' action="index.php?page=addFormProduit" method="post">
-                <label for="id_categorie">Categorie:</label>
+            <form id='formvente' action="index.php?page=addFormVente" method="post">
+                <label for="id_categorie">Categorie&nbsp;:&nbsp;</label>
                 <select id="selecCat" name="id_categorie">
                 <?php 
     while($categorie = $reponse->fetch()) {

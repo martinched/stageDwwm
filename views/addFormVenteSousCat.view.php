@@ -4,7 +4,7 @@
     ob_start()
 ?>
 
-<h1>Formulaire d'ajout de vente</h1>
+<h1>Ajouter une vente</h1>
 <div class="formSousCat">
         <form id='form' action="index.php?page=addFormVente" method="post">
             <label for="id_sous_categorie">Sous catégories:</label>

@@ -10,11 +10,11 @@ class CategorieManager extends Manager{
         return $reponse;
     }
 
-    public function getSousCategories($categorie){
+    public function getSousCategories($id_categorie){
         $bd = $this->connexion();    
         $sql = ("SELECT s.id_sous_categorie, s.nom_sous_categorie, s.id_categorie, c.nom_categorie, s.poids 
         FROM categories c INNER JOIN sous_categories s ON s.id_categorie = c.id_categorie
-        WHERE s.id_categorie =" . $categorie['id_categorie'] .
+        WHERE s.id_categorie =" . $id_categorie .
         " ORDER BY nom_sous_categorie");
         $reponse = $bd->query($sql);
         return $reponse;

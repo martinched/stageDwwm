@@ -1,32 +1,29 @@
 <?php
 
-// requires ( once for all others) the file Manager.php
 require_once("Manager.php");
 
-// defines an object and extends it an other object
 class ProduitManager extends Manager{
 
-    // link the dataBase
     public function getProduit(){ 
-        // assigns the result required by the 'connection' method 
-        // of the object ($this) 'ProduitManager!
-        $bd = $this->connexion();
-        
-    // stock the query 's requete
-    $reponse = $bd->query('SELECT * FROM produits ORDER BY `date_enregistrement` DESC');
+        $bd = $this->connexion(); 
+        $reponse = $bd->query(
+            'SELECT p.id_produit, p.id_sous_categorie, p.nom_produit, p.description,
+             p.date_enregistrement, p.cout_reparation, p.temps_passe, p.vendu, sc.id_categorie, sc.poids
+             FROM produits p INNER JOIN sous_categories sc ON p.id_sous_categorie = sc.id_sous_categorie
+             WHERE p.vendu IS NULL
+             ORDER BY date_enregistrement DESC;');
 
-    return $reponse;
+        return $reponse;
     }
 
     public function addFormProduit($nom_produit, $description, $date_enregistrement, $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){
         $bd = $this->connexion();
-
         $requeteSQL =
             "INSERT INTO Produits(
-                `nom_produit`,`description`, `date_enregistrement`, `id_sous_categorie`,
+                `nom_produit`,`description`, `id_sous_categorie`,
                  `cout_reparation`, `temps_passe`, `vendu`)
             VALUES (
-                :nom_produit, :description, :date_enregistrement, :id_sous_categorie, 
+                :nom_produit, :description, :id_sous_categorie, 
                 :cout_reparation, :temps_passe, :vendu)";
 
         $requetePrepare = $bd->prepare($requeteSQL);
@@ -34,14 +31,14 @@ class ProduitManager extends Manager{
         $parameterArray = array(
             ':nom_produit' => htmlspecialchars($nom_produit),
             ':description' =>  htmlspecialchars($description),
-            ':date_enregistrement' => htmlspecialchars($date_enregistrement),
-            ':id_sous_categorie' => htmlspecialchars($id_sous_categorie),
+            ':id_sous_categorie' => $id_sous_categorie,
             ':cout_reparation' => htmlspecialchars($cout_reparation),
             ':temps_passe' => htmlspecialchars($temps_passe),
             ':vendu' => htmlspecialchars($vendu)
         );
         
         $requetePrepare->execute($parameterArray);
+        // return 'id_produit'
     }
 
     public function lastProduits(){
