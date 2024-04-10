@@ -4,11 +4,11 @@
 
     class HomeController{
         public function home(){ 
-            $lastProduit = new ProduitManager();
-            $requeteProduit = $lastProduit->lastProduits();
+            $getProduit = new ProduitManager();
+            $requeteProduit = $getProduit->getProduits();
             
-            $lastVente = new VenteManager();
-            $requeteVente = $lastVente->lastVentes();
+            $getVente = new VenteManager();
+            $requeteVente = $getVente->getVentes();
 
             require('views/home.view.php');  
         }

@@ -6,7 +6,7 @@
     class ProduitController{
         public function listProduits(){
             $produitManager = new ProduitManager();
-            $reponse = $produitManager->getProduit();
+            $reponse = $produitManager->getProduits();
             require ('views/produit.view.php');
         }
     
@@ -22,17 +22,18 @@
             require ('views/addFormProduitSousCat.view.php');
         }
 
-        public function addFormProduit($nom_produit, $description, $date_enregistrement, $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){
+        public function addFormProduit($nom_produit, $description, $date_enregistrement,
+                                         $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){
             $addProduitManager = new ProduitManager();
-            $addProduitManager->addFormProduit($nom_produit, $description, $date_enregistrement, $id_sous_categorie, $cout_reparation, $temps_passe, $vendu);
-            // require ('views/addFormProduit.view.php');
+            $addProduitManager->addFormProduit($nom_produit, $description, $date_enregistrement, 
+                                                $id_sous_categorie, $cout_reparation, $temps_passe, $vendu);
+            return $addProduitManager->getProduits(1);
         }
 
-        public function deleteProduit($id_produit){ 
+        public function deleteProduit(){ 
             $produitManager = new ProduitManager();
-            $produitManager->deleteProduit($id_produit);
-            header ('location:index.php?page=produits');
-            exit();
-            echo 'le produit a bien été supprimé!';
+            return $produitManager->deleteProduit();
         }
+       
     }
+    

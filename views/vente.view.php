@@ -17,7 +17,7 @@ ob_start();
         <div class='vente'>
             <p>
                 <b><?= $result['nom_produit'] ?></b> &nbsp; <button><a href='index.php?page=deleteVente&id_vente=<?=$result['id_vente']?>'>Supprimer</a></button><br/>
-                <b>Prix libre&nbsp;:&nbsp;</b> <?=$result['prix_libre'] ?><br/>
+                <b>Prix libre&nbsp;:&nbsp;</b> <?=$result['prix_libre'] ?> €<br/>
                 <b>Quantité&nbsp;:&nbsp;</b> <?=$result['quantite'] ?><br/>
                 <b>Vendu le&nbsp;:&nbsp;</b> <?= $result['date_vente'] ?>
             </p>

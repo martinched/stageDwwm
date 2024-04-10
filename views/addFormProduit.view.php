@@ -11,10 +11,10 @@
     
 <br>
     <label for="cout_reparation">Coût de réparation:</label>
-    <input require id='form-cout_reparation' type='number' name="cout_reparation"/>
+    <input require id='form-cout_reparation' type='number' name="cout_reparation"/> €
 <br>
     <label for="temps_passe">Temps passé:</label>
-    <input require id='form-temps_passe' type='number' name="temps_passe"/>
+    <input require id='form-temps_passe' type='number' name="temps_passe"/> h
 <br>
     <input type="checkbox" id="form-vendu" name="vendu" />
     <label require for="vendu">Vendu</label>

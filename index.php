@@ -40,7 +40,7 @@ try{
                 if(isset($_POST['id_categorie'])) {
                     $id_categorie = $_POST['id_categorie'];
                     $produitController->choixSousCategories($id_categorie);
-                    require('views/addProduit.view.php');
+                    require('views/addFormProduit.view.php');
 
                 }elseif(isset($_POST['nom_produit'])) {
                     $nom_produit = $_POST['nom_produit'];
@@ -49,8 +49,8 @@ try{
                     $id_sous_categorie = $_POST['id_sous_categorie'];
                     $cout_reparation = $_POST['cout_reparation'];
                     $temps_passe = $_POST['temps_passe'];
-                    $vendu = (isset($_POST['vendu'])) ? 0 : 1;
-                    
+                    $vendu = (isset($_POST['vendu'])) ? 1 : 0;
+
                     $requete = $produitController->addFormProduit(
                     $nom_produit, $description, $date_enregistrement,
                     $id_sous_categorie, $cout_reparation, $temps_passe, $vendu);
@@ -82,11 +82,12 @@ try{
                     $cout_reparation = $_POST['cout_reparation'];
                     $temps_passe = $_POST['temps_passe'];
                     $vendu = 1;
-                    $id_produit = $produitController->addFormProduit($nom_produit, "",
+                   $reponse = $produitController->addFormProduit($nom_produit, "",
                                                  $date_enregistrement, $id_sous_categorie,
                                                  $cout_reparation, $temps_passe, $vendu);
-                    $requete = $venteController->addFormVente($quantite, $id_produit, $prix_libre);
-                    $venteController->listVentes();
+                    $row = $reponse->fetch();
+                    var_dump($row);
+                    $requete = $venteController->addFormVente($quantite, $row['id_produit'], $prix_libre);
                 }else{
                     echo "Erreur";
                 }

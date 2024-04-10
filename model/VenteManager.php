@@ -1,24 +1,15 @@
 <?php
 
-// requires ( once for all others) the file Manager.php
 require_once("Manager.php");
 
-// defines an object and extends it an other object
 class VenteManager extends Manager{
 
-    // link the dataBase
+
     public function getVentes(){
         $bd = $this->connexion();
-        // stock the query's requete
         $reponse = $bd->query(
-            'SELECT v.id_vente, v.quantite, v.date_vente, v.prix_libre, p.nom_produit 
-            FROM ventes v INNER JOIN produits p  ON v.id_produit = p.id_produit ORDER BY `date_enregistrement` DESC');
-        return $reponse;
-    }
-
-    public function lastVentes(){
-        $bd = $this->connexion();
-        $reponse = $bd->query('SELECT * FROM ventes ORDER BY date DESC LIMIT 5');
+            'SELECT v.id_vente, v.quantite, v.date_vente, v.prix_libre, p.nom_produit, p.id_produit, p.date_enregistrement
+            FROM ventes v INNER JOIN produits p  ON v.id_produit = p.id_produit ORDER BY `date_vente` DESC');
         return $reponse;
     }
 

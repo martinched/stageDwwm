@@ -8,30 +8,31 @@ ob_start();
     <h1><b>Que désires tu?</b></h1>
 <hr>
 
-<h3>Derniers produit ajoutés</h3>
+<h3>Derniers produits ajoutés</h3>
 <?php
-    while($lastProduit = $requeteProduit->fetch()) {
+    while($getProduit = $requeteProduit->fetch()) {
 ?>
         <p>
-            <b>Nom&nbsp;:&nbsp; <?= $lastProduit['nom_produit'] ?></b><br/>
-            <b>description&nbsp;:&nbsp;</b> <?= $lastProduit['description'] ?><br/>
-            <b>Date&nbsp;d'enregistrement&nbsp;:&nbsp;</b> <?=$lastProduit['date_enregistrement'] ?><br/>
-            <b>Coût&nbsp;de&nbsp;reparation&nbsp;:&nbsp;</b> <?= $lastProduit['cout_reparation'] ?> € <br/>
-            <b>Temps&nbsp;passé&nbsp;:&nbsp;</b> <?= $lastProduit['temps_passe']?> h <br/>
+            <b>Nom&nbsp;:&nbsp; <?= $getProduit['nom_produit'] ?></b><br/>
+            <b>description&nbsp;:&nbsp;</b> <?= $getProduit['description'] ?><br/>
+            <b>Date&nbsp;d'enregistrement&nbsp;:&nbsp;</b> <?=$getProduit['date_enregistrement'] ?><br/>
+            <b>Coût&nbsp;de&nbsp;reparation&nbsp;:&nbsp;</b> <?= $getProduit['cout_reparation'] ?> € <br/>
+            <b>Temps&nbsp;passé&nbsp;:&nbsp;</b> <?= $getProduit['temps_passe']?> h <br/>
         </p>
 <?php
     }
 ?>
 <hr>
 
-    <h3>dernieres ventes</h3>
+    <h3>Dernières ventes</h3>
 <?php
-    while($lastVente = $requeteVente->fetch()) {
+    while($getVente = $requeteVente->fetch()) {
 ?>
     <p>
-        <b>N°&nbsp;<?= $lastVente['id_vente'] ?></b><br/>
-        <b>Enregistré&nbsp;le&nbsp;:&nbsp;</b> <?=$lastVente['date_vente'] ?><br/>
-        <b>Vendu&nbsp;le&nbsp;:&nbsp;</b> <?= $lastVente['date'] ?>             
+        <b>N°&nbsp;<?= $getVente['id_vente'] ?></b><br/>
+        <b>Produit&nbsp;:&nbsp;</b> <?=$getVente['nom_produit']?><br>
+        <b>Enregistré&nbsp;le&nbsp;:&nbsp;</b> <?=$getVente['date_enregistrement']?><br/>
+        <b>Vendu&nbsp;le&nbsp;:&nbsp;</b> <?= $getVente['date_vente']?>             
     </p>
 <?php
     }
