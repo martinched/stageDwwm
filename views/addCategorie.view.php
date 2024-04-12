@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+
+
     $title = "Formulaire d'ajout de catégorie";
 
     ob_start()
