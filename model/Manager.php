@@ -24,7 +24,7 @@
 class Manager {
     protected function connexion() {
         try {
-            $bd = new PDO('mysql:host=localhost:3306;dbname=petassou;charset=utf8', 'root', '');
+            $bd = new PDO('mysql:host=localhost:3306;dbname=petassou;charset=utf8', 'petassou', 'petassou');
             return $bd;
         }
         catch(Exception $e) {

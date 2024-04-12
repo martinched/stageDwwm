@@ -49,5 +49,17 @@ function confirmerSuppression(id_produit) {
 
 }
 
-
+function verifierDuree() {
+  let durationIn = document.getElementById("form-temps_passe");
+  let resultP = document.getElementById("output");
+  
+  durationIn.addEventListener("change", function (e) {
+    resultP.textContent = "";
+    durationIn.checkValidity();
+  });
+  
+  durationIn.addEventListener("invalid", function (e) {
+      resultP.textContent = "Vous devez rentrer un nombre d'heures au format HH ou HH:MM";
+  });
+}
 
