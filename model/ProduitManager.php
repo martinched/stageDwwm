@@ -62,14 +62,10 @@ class ProduitManager extends Manager{
 	
     }
 
-    public function deleteProduit(){
+    public function deleteProduit($id){
         $bd = $this->connexion();
-        $requeteSQL = "DELETE FROM produits WHERE id_produit = :id_produit";
-        $requetePrepare = $bd->prepare($requeteSQL); 
-        $parameterArray = array(
-            ':id_produit' => htmlspecialchars($_POST['id_produit'])
-        );
-	return $requetePrepare->execute($parameterArray);
-
+        $requeteSQL = "DELETE FROM produits WHERE id_produit = ".$id;
+        $reponse = $bd->query($requeteSQL); 
+	return $reponse;
     }
 }

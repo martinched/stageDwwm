@@ -33,6 +33,11 @@ try{
                 $produitController = new ProduitController();
                 $produitController->listProduits();
 		break;
+		
+	    case 'deleteProduit':
+		$produitController = new ProduitController();
+		$produitController->deleteProduit($_POST['id_produit']);
+		break;
 
             case 'ventes':
                 $venteController = new VenteController();
@@ -41,7 +46,7 @@ try{
 
             case 'deleteVente':
                 $venteController = new VenteController();
-                $venteController->deleteVente($id_vente);
+                $venteController->deleteVente($_GET['id_vente']);
 		break;
 
             case 'categories':
@@ -71,7 +76,7 @@ try{
 		    $cout_reparation = $_POST['cout_reparation'];
 		    $temps_passe = $_POST['temps_passe'].":00";
 		    $vendu = (isset($_POST['vendu'])) ? 1 : 0;
-
+		   # TODO vider $_POST
 		    $requete = $produitController->addFormProduit(
 			$nom_produit, $description, $date_enregistrement,
 			$id_sous_categorie, $cout_reparation, $temps_passe, $vendu);

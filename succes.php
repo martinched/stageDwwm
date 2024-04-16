@@ -27,9 +27,11 @@ require('controllers/produit.controller.php');
 
 $produitController = new ProduitController();
 
-if ($produitController->deleteProduit()){
+if ($produitController->deleteProduit($_POST['id_produit'])){
     echo "Super succès!";
-}
+}else{
+    echo 'wtf';
+    }
 
 ?>
 

@@ -41,12 +41,12 @@ function confirmerSuppression(id_produit) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 alert(xhr.responseText); // Afficher le message de confirmation retourné par le serveur
+		window.location.reload();
             }
         };
         xhr.send('id_produit=' + encodeURIComponent(id_produit));
+	console.log(xhr);
     }
-    window.open("index.php?page=produits");
-
 }
 
 function verifierDuree() {
