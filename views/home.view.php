@@ -1,12 +1,8 @@
 <?php 
 $title = "homePage";
 
-//saves the following code for using it elsewhere
 ob_start();
 ?>
-
-    <h1><b>Que désires tu?</b></h1>
-<hr>
 
 <h3>Derniers produits ajoutés</h3>
 <?php
