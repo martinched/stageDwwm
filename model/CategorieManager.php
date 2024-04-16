@@ -25,6 +25,12 @@ require_once("Manager.php");
 
 class CategorieManager extends Manager{
 
+    public function getNomsCategories(){
+        $bd = $this->connexion();  
+        $reponse = $bd->query('SELECT nom_categorie FROM categories');
+        return $reponse;
+    }
+    
     public function getCategories(){
         $bd = $this->connexion();  
         $reponse = $bd->query('SELECT * FROM categories');

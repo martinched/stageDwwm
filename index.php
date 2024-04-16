@@ -148,8 +148,14 @@ try{
 		    
 		    
 		}else{
+                    $categorieController = new CategorieController();
+                    $tableau = $categorieController->tableauCategories();
+		    foreach ($tableau as $row)
+		    {
+			$categories[] = $row['nom_categorie'];
+		    }
 		    require('views/addCategorie.view.php');
-		}   
+		}
 		break;
 	    default:
 		throw new Exception ("message: Cette page n'existe pas!");

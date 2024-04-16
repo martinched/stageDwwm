@@ -26,6 +26,12 @@ require ('model/CategorieManager.php');
 
 class CategorieController{
 
+    public function tableauCategories(){
+        $categorieManager = new CategorieManager();
+        $reponse = $categorieManager->getNomsCategories();
+	return $reponse;
+    }
+
     public function listCategories(){
         $categorieManager = new CategorieManager();
         $reponse = $categorieManager->getCategories();
@@ -39,7 +45,7 @@ class CategorieController{
         
         while($categorie = $reponse->fetch()){
             // Pour chaque catégorie, obtenez ses sous-catégories
-            $sousCategories = $sousCategorieManager->getSousCategories($categorie);
+            $sousCategories = $sousCategorieManager->getSousCategories($categorie["id_categorie"]);
             // Assignez les sous-catégories à la catégorie correspondante dans le tableau $reponse
             $tableau[$categorie['nom_categorie']] = $sousCategories;
         }
