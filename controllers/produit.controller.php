@@ -27,7 +27,7 @@ require('model/ProduitManager.php');
 class ProduitController{
     public function listProduits(){
         $produitManager = new ProduitManager();
-        $reponse = $produitManager->getProduits();
+        $reponse = $produitManager->getProduits(0);
         require ('views/produit.view.php');
     }
     

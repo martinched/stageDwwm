@@ -28,7 +28,7 @@ require_once('model/VenteManager.php');
 class HomeController{
     public function home(){ 
         $getProduit = new ProduitManager();
-        $requeteProduit = $getProduit->getProduits();
+        $requeteProduit = $getProduit->getProduits(0);
         
         $getVente = new VenteManager();
         $requeteVente = $getVente->getVentes();

@@ -49,17 +49,19 @@ class VenteController{
         $resultats = $reponse->fetchAll();
         foreach($resultats as $vente){
             try{
-                if($vente['id_produit'] = $id_produit){
-                    throw new Exception ("message: Une vente existe déjà pour ce produit!");
-                }
-            }catch(Exception $e){
-                $error = $e->getMessage();
-                require('views/error.view.php');      
+		if($vente['id_produit'] == $id_produit){
+		    throw new Exception ("message: Une vente existe déjà pour ce produit!");
+		}
+	    }catch(Exception $e){
+		$error = $e->getMessage();
+		require('views/error.view.php');
+		exit();
+		
             }
-        }
+	}
         $instanciation->addVente($quantite, $id_produit, $prix_libre);
         $instanciation->VendreUnProduit($id_produit);
-        
+        $reponse = $instanciation->getVentes();
         require ('views/vente.view.php');
     }
 

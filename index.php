@@ -69,7 +69,7 @@ try{
 		    $date_enregistrement = $_POST['date_enregistrement'];
 		    $id_sous_categorie = $_POST['id_sous_categorie'];
 		    $cout_reparation = $_POST['cout_reparation'];
-		    $temps_passe = $_POST['temps_passe'];
+		    $temps_passe = $_POST['temps_passe'].":00";
 		    $vendu = (isset($_POST['vendu'])) ? 1 : 0;
 
 		    $requete = $produitController->addFormProduit(
@@ -101,14 +101,16 @@ try{
 		    $date_enregistrement = $_POST['date_enregistrement'];
 		    $prix_libre = $_POST['prix_libre'];
 		    $cout_reparation = $_POST['cout_reparation'];
-		    $temps_passe = $_POST['temps_passe'];
+		    $temps_passe = $_POST['temps_passe'].":00";
 		    $vendu = 1;
 		    $reponse = $produitController->addFormProduit($nom_produit, "",
-								  $date_enregistrement, $id_sous_categorie,
-								  $cout_reparation, $temps_passe, $vendu);
+								  $date_enregistrement,
+								  $id_sous_categorie,
+								  $cout_reparation,
+								  $temps_passe, $vendu);
 		    $row = $reponse->fetch();
-		    var_dump($row);
-		    $requete = $venteController->addFormVente($quantite, $row['id_produit'], $prix_libre);
+		    $requete = $venteController->addFormVente($quantite,
+							      $row['id_produit'], $prix_libre);
 		}else{
 		    echo "Erreur";
 		}
