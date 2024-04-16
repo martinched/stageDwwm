@@ -17,12 +17,12 @@
     </header>
 
     <nav>
-        <ul class="menu">
-            <li><a href="index.php?page=produits">Produits</a></li>
-            <li><a href="index.php?page=ventes">Ventes</a></li>
-            <li><a href="index.php?page=categories">Catégories</a></li>
-        </ul>
+	<button><a href="index.php?page=produits">Produits</a></button><br>
+	<button><a href="index.php?page=ventes">Ventes</a></button><br>
+	<button><a href="index.php?page=categories">Catégories</a></button><br>
     </nav>
+
+    <hr>
 
     <div class='content'>
         <?= $content ?>
