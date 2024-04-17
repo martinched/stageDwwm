@@ -1,3 +1,4 @@
+
 <?php
 
 
@@ -39,21 +40,41 @@ class ProduitController{
     
     public function choixSousCategories($id_categorie){
         $choixSousCategorie = new CategorieManager();
-        $reponse =  $choixSousCategorie->getSousCategories($id_categorie);
+	$reponse =  $choixSousCategorie->getSousCategories($id_categorie);
         require ('views/addFormProduitSousCat.view.php');
     }
 
-    public function addFormProduit($nom_produit, $description, $date_enregistrement,
-                                   $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){
-        $addProduitManager = new ProduitManager();
-        $addProduitManager->addFormProduit($nom_produit, $description, $date_enregistrement, 
-                                           $id_sous_categorie, $cout_reparation, $temps_passe, $vendu);
-        return $addProduitManager->getProduits(1);
+    public function formProduit($formValues) {
+	$produitController = new ProduitController();
+	# Si l'utilisateur a choisi une catégorie
+	if(isset($formValues['id_categorie'])) {
+	    $produitController->choixSousCategories($formValues['id_categorie']);
+	    require('views/addFormProduit.view.php');
+	    
+	}elseif(isset($formValues['nom_produit'])) {
+	    $vendu = isset($formValues['vendu']) ? 1 : 0;
+	    $addProduitManager = new ProduitManager();
+	    $addProduitManager->addProduit(
+		$formValues['nom_produit'],
+		$formValues['description'],
+		$formValues['date_enregistrement'],
+		$formValues['id_sous_categorie'],
+		$formValues['cout_reparation'],
+		$formValues['temps_passe'].":00",
+		$vendu);
+	    
+	    $requete = $addProduitManager->getProduits(1);
+	    $produitController->listProduits();
+
+	}else{ 
+	    $produitController->choixCategories();  
+	}
     }
 
+    
     public function deleteProduit($id_produit){ 
-        $produitManager = new ProduitManager();
-        return $produitManager->deleteProduit($id_produit);
+	$produitManager = new ProduitManager();
+	return $produitManager->deleteProduit($id_produit);
     }
     
 }

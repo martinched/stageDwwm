@@ -5,7 +5,7 @@ ob_start()
 ?>
 
     <h2>Liste des produits</h2>
-    <button> <a href="index.php?page=addFormProduit">Ajouter un produit</a></button>
+    <button> <a href="index.php?page=formProduit">Ajouter un produit</a></button>
 <?php
     
     while($product = $reponse->fetch()) {
@@ -51,7 +51,7 @@ ob_start()
     
 </form>
 
- <input type="button" value="Jeter" onclick="confirmerSuppression(<?=$product['id_produit']?>)"><br>
+ <input type="button" value="Supprimer" onclick="suppression(<?=$product['id_produit']?>, 'produit')"><br>
 
    
 

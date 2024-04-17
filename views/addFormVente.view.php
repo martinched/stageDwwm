@@ -1,14 +1,16 @@
-
+<?php
+$title = "Ajout de vente";
+?>
 
 
 <label for="nom_produit">Produit&nbsp;:&nbsp;</label>
 <input id="form-nom_produit" type='text' name="nom_produit"></input>
 <br>
 <label for="date_enregistrement">Date d'enregistrement&nbsp;:&nbsp;</label>
-<input id='form-date_enregistrement_Vente' type='date' name="date_enregistrement"></input>
+<input id='form-date_enregistrement_Vente' type='date' required name="date_enregistrement"></input>
 <br>   
 <label for="cout_reparation">Coût de réparation&nbsp;:&nbsp;</label>
-<input id='form-cout_reparation' type='number' name="cout_reparation"> € </input>
+<input id='form-cout_reparation' type='number' required name="cout_reparation"> € </input>
 <br>
 <label for="temps_passe">Temps passé&nbsp;:&nbsp;</label>
 <input id="form-temps_passe"

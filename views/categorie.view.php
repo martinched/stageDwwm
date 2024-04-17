@@ -1,10 +1,10 @@
 <?php 
-$title = "liste des catégories";
+$title = "Liste des catégories";
 
 ob_start()
 ?>
 
-    <h1>liste des catégories</h1>
+    <h1>Liste des catégories</h1>
  <a href='index.php?page=gestionCategories'>Gérer les categories</a>
 
 <?php

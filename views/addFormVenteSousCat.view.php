@@ -1,5 +1,5 @@
 <?php 
-    $title = "Formulaire d'ajout de vente";
+    $title = "Ajout de vente";
 
     ob_start()
 ?>

@@ -29,9 +29,7 @@ $produitController = new ProduitController();
 
 if ($produitController->deleteProduit($_POST['id_produit'])){
     echo "Super succès!";
-}else{
-    echo 'wtf';
-    }
+}
 
 ?>
 

@@ -7,7 +7,7 @@
 <h1>Formulaire d'ajout de produit</h1>
 
     <div class="formSousCat">
-        <form id='form' action="index.php?page=addFormProduit" method="post">
+        <form id='form' action="index.php?page=formProduit" method="POST">
             <label for="id_sous_categorie">Sous catégories:</label>
             <select id="selecSousCat" name="id_sous_categorie">
                 <?php

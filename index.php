@@ -59,34 +59,11 @@ try{
                 $categorieController->listSousCategories();
 		break;
 
-            case 'addFormProduit': 
+            case 'formProduit': 
                 $produitController = new ProduitController();
-
-                # Si l'utilisateur a choisi une catégorie
-		if(isset($_POST['id_categorie'])) {
-		    $id_categorie = $_POST['id_categorie'];
-		    $produitController->choixSousCategories($id_categorie);
-		    require('views/addFormProduit.view.php');
-
-		}elseif(isset($_POST['nom_produit'])) {
-		    $nom_produit = $_POST['nom_produit'];
-		    $description = $_POST['description'];
-		    $date_enregistrement = $_POST['date_enregistrement'];
-		    $id_sous_categorie = $_POST['id_sous_categorie'];
-		    $cout_reparation = $_POST['cout_reparation'];
-		    $temps_passe = $_POST['temps_passe'].":00";
-		    $vendu = (isset($_POST['vendu'])) ? 1 : 0;
-		   # TODO vider $_POST
-		    $requete = $produitController->addFormProduit(
-			$nom_produit, $description, $date_enregistrement,
-			$id_sous_categorie, $cout_reparation, $temps_passe, $vendu);
-		    $produitController->listProduits();
-
-		}else{ 
-		    $produitController->choixCategories();  
-		}
+		$produitController->formProduit($_POST);
 		break;
-
+                
 	    case 'addFormVente': // (si on ne part pas d'un produit existant)
 		$venteController = new VenteController();
 		// 1 choix cat
@@ -159,7 +136,7 @@ try{
 		    {
 			$categories[] = $row['nom_categorie'];
 		    }
-		    require('views/addCategorie.view.php');
+		    require('views/addFormCategorie.view.php');
 		}
 		break;
 	    default:

@@ -1,7 +1,6 @@
 <?php 
 $title = "Liste des ventes";
 
-//saves the following code for using it elsewhere
 ob_start();
 ?>
     
@@ -12,14 +11,16 @@ ob_start();
 <div>
     <?php
     // displays each row of the following columns
-        while($result = $reponse->fetch()) {
+        while($vente= $reponse->fetch()) {
     ?>
-        <div class='vente'>
+        <div>
             <p>
-                <b><?= $result['nom_produit'] ?></b> &nbsp; <button><a href='index.php?page=deleteVente&id_vente=<?=$result['id_vente']?>'>Supprimer</a></button><br/>
-                <b>Prix libre&nbsp;:&nbsp;</b> <?=$result['prix_libre'] ?> €<br/>
-                <b>Quantité&nbsp;:&nbsp;</b> <?=$result['quantite'] ?><br/>
-                <b>Vendu le&nbsp;:&nbsp;</b> <?= $result['date_vente'] ?>
+                <b><?= $vente['nom_produit']?></b> &nbsp;
+		<input type="button" value="supprimer"
+		       onclick="suppression(<?=$vente['id_vente']?>, 'vente')"><br>
+                <b>Prix libre&nbsp;:&nbsp;</b> <?=$vente['prix_libre'] ?> €<br>
+                <b>Quantité&nbsp;:&nbsp;</b> <?=$vente['quantite'] ?><br>
+                <b>Vendu le&nbsp;:&nbsp;</b> <?= $vente['date_vente'] ?>
             </p>
             
             

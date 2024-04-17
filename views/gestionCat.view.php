@@ -6,24 +6,23 @@ ob_start()
 
     <h1>Gestion des catégories</h1>
 
-    <a href='index.php?page=addFormCategorie&id_categorie=<?=$categorie['id_categorie']?>'>Nouvelle catégorie</a>
+    <a href='index.php?page=addFormCategorie'>Nouvelle catégorie</a>
 
-<?php
+    <?php
     foreach ($tableau as $nomcat => $reponsecat) {
-?>
+	$sousCats = $reponsecat->fetchAll();
+    ?>
         <p>
             <b><u><?= $nomcat ?></u></b> 
-            <a href='index.php?page=deleteCategorie&id_categorie=
-                <?=$categorie['id_categorie']?>'>Supprimer cette catégorie</a><br/>
-            <a href='index.php?page=addFormCategorie&id_categorie=
-                <?=$categorie['id_categorie']?>'>Nouvelle sous catégorie</a><br />
+            <a href='index.php?page=deleteCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>Supprimer cette catégorie</a><br/>
+            <a href='index.php?page=addFormCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>Ajouter une sous-catégorie</a><br />
 
 <?php
-        while ($souscat = $reponsecat->fetch()) {
+        foreach ($sousCats as $sousCat) {
 ?>
-            <?= $souscat['nom_sous_categorie'] ?><br>
-            <?= $souscat['poids'] ?>
-            <a href='index.php?page=deleteCategorie&id_categorie=<?=$categorie['id_categorie']?>'>Supprimer </a><br/>
+            <?= $sousCat['nom_sous_categorie'] ?><br>
+            <?= $sousCat['poids'] ?>
+            <a href='index.php?page=deleteCategorie&id_categorie=<?=$sousCat['id_sous_categorie']?>'>Supprimer </a><br/>
 <?php
         }
 ?>

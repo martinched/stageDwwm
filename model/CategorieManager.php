@@ -49,7 +49,7 @@ class CategorieManager extends Manager{
 
     public function addFormCategorie($nom_categorie, $sous_categorie){
         $bd = $this->connexion();
-
+	# La table categories ne contient pas sous_categorie
         $requeteSQL =
             "INSERT INTO categories (`nom_categorie`, `sous_categorie`)
             VALUES (:nom_categorie, :sous_categorie)";

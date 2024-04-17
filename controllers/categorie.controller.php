@@ -42,7 +42,7 @@ class CategorieController{
         $sousCategorieManager = new CategorieManager();
         $reponse = $sousCategorieManager->getCategories();
         $tableau = array();
-        
+        # Ne pas utiliser id_categorie mais directement nom_categorie
         while($categorie = $reponse->fetch()){
             // Pour chaque catégorie, obtenez ses sous-catégories
             $sousCategories = $sousCategorieManager->getSousCategories($categorie["id_categorie"]);

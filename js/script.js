@@ -32,8 +32,8 @@ function afficherChampsVente() {
 }
 
 
-function confirmerSuppression(id_produit) {
-    if (confirm("Êtes-vous sûr de vouloir supprimer ce produit?")) {
+function suppression(id, type) {
+    if (confirm("Supprimer definitivement?")) {
         // Si l'utilisateur confirme, effectuez la suppression en envoyant une requête AJAX
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'succes.php', true);
@@ -44,10 +44,13 @@ function confirmerSuppression(id_produit) {
 		window.location.reload();
             }
         };
-        xhr.send('id_produit=' + encodeURIComponent(id_produit));
-	console.log(xhr);
+        xhr.send('id=' + encodeURIComponent(id));
+	xhr.send('type=' + encodeURIComponent(type));
     }
 }
+
+
+
 
 function verifierDuree() {
   let durationIn = document.getElementById("form-temps_passe");
@@ -62,6 +65,9 @@ function verifierDuree() {
       resultP.textContent = "Vous devez rentrer un nombre d'heures au format HH ou HH:MM";
   });
 }
+
+
+
 
 /*
  * Code provenant de W3Schools

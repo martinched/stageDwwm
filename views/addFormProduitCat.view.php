@@ -8,7 +8,7 @@
 
 
         <div class="formCat">
-            <form id='formProduit' action="index.php?page=addFormProduit" method="post">
+            <form id='formProduit' action="index.php?page=formProduit" method="POST">
                 <label for="id_categorie">Categorie:</label>
                 <select id="selecCat" name="id_categorie">
                 <?php 

@@ -1,7 +1,7 @@
 <?php 
-    $title = "Formulaire d'ajout de vente";
+$title = "Ajout de vente";
 
-    ob_start()
+ob_start()
 ?>
 
 <h1>Ajouter une vente</h1>
