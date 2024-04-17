@@ -6,10 +6,6 @@
     <label for="description">Description:</label>
     <textarea maxlength=255 required id="form-description" name="description"></textarea>
 <br>
-    <label for="date_enregistrement">Date d'enregistrement:</label>
-    <input required id='form-date_enregistrement_produit' type='date' name="date_enregistrement"/>
-    
-<br>
 <label for="cout_reparation">Coût de réparation:</label>
 <input required id='form-cout_reparation' type='number' value="0" name="cout_reparation"/> €
 <br>

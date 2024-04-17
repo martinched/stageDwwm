@@ -37,14 +37,14 @@ class ProduitManager extends Manager{
         return $reponse;
     }
 
-    public function addProduit($nom_produit, $description, $date_enregistrement, $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){
+    public function addProduit($nom_produit, $description, $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){
         $bd = $this->connexion();
         $requeteSQL =
             "INSERT INTO produits(
-                `nom_produit`,`description`, `id_sous_categorie`, `date_enregistrement`,
+                `nom_produit`,`description`, `id_sous_categorie`,
                  `cout_reparation`, `temps_passe`, `vendu`)
             VALUES (
-                :nom_produit, :description, :id_sous_categorie, :date_enregistrement,
+                :nom_produit, :description, :id_sous_categorie,
                 :cout_reparation, :temps_passe, :vendu)";
 
         $requetePrepare = $bd->prepare($requeteSQL);
@@ -53,7 +53,6 @@ class ProduitManager extends Manager{
             ':nom_produit' => htmlspecialchars($nom_produit),
             ':description' =>  htmlspecialchars($description),
             ':id_sous_categorie' => $id_sous_categorie,
-	    ':date_enregistrement' => $date_enregistrement,
             ':cout_reparation' => $cout_reparation,
             ':temps_passe' => $temps_passe,
             ':vendu' => htmlspecialchars($vendu)

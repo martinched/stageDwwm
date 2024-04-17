@@ -56,7 +56,6 @@ class ProduitController{
 	    $addProduitManager->addProduit(
 		$formValues['nom_produit'],
 		$formValues['description'],
-		$formValues['date_enregistrement'],
 		$formValues['id_sous_categorie'],
 		$formValues['cout_reparation'],
 		$formValues['temps_passe'].":00",
