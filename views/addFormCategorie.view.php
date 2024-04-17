@@ -1,27 +1,26 @@
 <?php
 
-
-
-    $title = "Formulaire d'ajout de catégorie";
+    $title = "Ajout de catégorie";
 
     ob_start()
 ?>
 
-<h1>Formulaire d'ajout de catégorie</h1>
+<h1>Ajouter une catégorie</h1>
+
 <script>
  document.addEventListener( "DOMContentLoaded", function(){
      var categories = <?php echo json_encode($categories); ?>;
-     console.log (categories);
      autocomplete(document.getElementById("form-nom_categorie"), categories);
  });
 </script>
+
 <div class='formulaire'>
-    <form id='formCategorie' action="index.php?page=addFormCategorie" method="post">
-        <label for="nom_categorie">Nom&nbsp;de&nbsp;la&nbsp;categorie&nbsp;:&nbsp;</label>
+    <form id='formCategorie' action="index.php?page=addFormCategorie" method="POST">
+        <label for="nom_categorie">Nom de la categorie&nbsp;:&nbsp;</label>
 	<div class="autocomplete">
-	    <input require id="form-nom_categorie" type="text" name="nom_categorie" placeholder="Catégorie">
+	    <input require id="form-nom_categorie" value="<?=$categories[$_GET['id_categorie']]?>" type="text" name="nom_categorie">
 	</div>
-        <label for="sous_categorie">Sous-categorie:</label>
+        <label for="sous_categorie">Sous-categorie&nbsp;:&nbsp;</label>
         <input id="form-sous_categorie" type="string" name="sous_categorie"></input>
 	<br>
         <label for="poids">Poids&nbsp;:&nbsp;</label>
