@@ -45,10 +45,9 @@ class ProduitController{
     }
 
     public function formProduit($formValues) {
-	$produitController = new ProduitController();
 	# Si l'utilisateur a choisi une catégorie
 	if(isset($formValues['id_categorie'])) {
-	    $produitController->choixSousCategories($formValues['id_categorie']);
+	    $this->choixSousCategories($formValues['id_categorie']);
 	    require('views/addFormProduit.view.php');
 	    
 	}elseif(isset($formValues['nom_produit'])) {
@@ -62,12 +61,10 @@ class ProduitController{
 		$formValues['cout_reparation'],
 		$formValues['temps_passe'].":00",
 		$vendu);
-	    
-	    $requete = $addProduitManager->getProduits(1);
-	    $produitController->listProduits();
+	    $this->listProduits();
 
 	}else{ 
-	    $produitController->choixCategories();  
+	    $this->choixCategories();  
 	}
     }
 
