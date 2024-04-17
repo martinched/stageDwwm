@@ -38,8 +38,6 @@ class ProduitManager extends Manager{
     }
 
     public function addProduit($nom_produit, $description, $date_enregistrement, $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){
-
-	
         $bd = $this->connexion();
         $requeteSQL =
             "INSERT INTO produits(
