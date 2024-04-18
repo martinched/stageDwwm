@@ -64,6 +64,7 @@ class VenteController{
     public function addVente($quantite, $id_produit, $prix_libre){
 	$instanciation = new VenteManager();
 	$reponse = $instanciation->VendreUnProduit($id_produit);
+	var_dump($quantite, $id_produit, $prix_libre);
 	$reponse = $instanciation->addVente($quantite, $id_produit, $prix_libre);
 	$this->listVentes();
     }

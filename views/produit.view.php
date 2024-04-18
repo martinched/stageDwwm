@@ -29,31 +29,21 @@ ob_start()
         <input type="hidden" name="poids" value="<?=$product['poids']?>">
         <input type="hidden" name="id_categorie" value="<?=$product['id_categorie']?>">
         <br>
-           <input type="button" value="Vendre" onclick="this.hidden=true;afficherChampsVente()"><br>
+           <input type="button" value="Vendre" onclick="this.hidden=true;afficherChampsVente(<?=$product['id_produit']?>)"><br>
 
-        <div id="champQuantite" style="display:none;">
+           <div id="champQuantite<?=$product['id_produit']?>" style="display:none;">
             <label for="quantite">Quantité&nbsp;:&nbsp;</label>
-            <input type="number" id="quantite" name="quantite"><br><br>
+            <input type="number" id="quantite" name="quantite"><br>
         </div>
 
-        <div id="champPrix" style="display:none;">
-            <label for="prix_libre">Prix libre&nbsp;:&nbsp;</label>
-            <input type="number" id="prix_libre" name="prix_libre"> €<br>
-        </div>
-
-        <div id="champQuantite" style="display:none;">
-            <label for="quantite">Quantité&nbsp;:&nbsp;</label>
-            <input type="number" id="quantite" name="quantite"><br><br>
-        </div>
-
-        <div id="champPrix" style="display:none;">
+        <div id="champPrix<?=$product['id_produit']?>" style="display:none;">
             <label for="prix_libre">Prix libre&nbsp;:&nbsp;</label>
             <input type="number" id="prix_libre" name="prix_libre"> €<br>
         </div>
 
         <input type="hidden" name="id_produit" value="<?=$product['id_produit']?>">
         
-        <input id=bouton_enregistrer_vente style="display:none" type="submit" name="" value="Enregister la vente">
+        <input id="bouton_enregistrer_vente<?=$product['id_produit']?>" style="display:none" type="submit" name="" value="Enregister la vente">
 
         
     </p>

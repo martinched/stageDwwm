@@ -23,11 +23,11 @@
 
 
 
-function afficherChampsVente() {
+function afficherChampsVente(id_produit) {
 
-    var champQuantite = document.getElementById("champQuantite");
-    var champPrixLibre = document.getElementById("champPrix");
-    var enregistrerVente = document.getElementById("bouton_enregistrer_vente");
+    var champQuantite = document.getElementById("champQuantite"+id_produit);
+    var champPrixLibre = document.getElementById("champPrix"+id_produit);
+    var enregistrerVente = document.getElementById("bouton_enregistrer_vente"+id_produit);
     var updateProduit = document.getElementById("updateProduit");
     
     champQuantite.style.display = "block";
