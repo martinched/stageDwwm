@@ -45,13 +45,15 @@ class ProduitController{
     }
 
     public function formProduit($formValues) {
-	# Si l'utilisateur a choisi une catégorie
-	if(isset($formValues['id_categorie'])) {
+	# 1 Si l'utilisateur n'a pas choisi une catégorie
+	if(!isset($formValues['id_categorie']) && !isset($formValues['id_sous_categorie'])) {
+	    $this->choixCategories();
+	    # 2 S'il n'a pas rempli de nom_produit
+	} elseif (isset($formValues['id_categorie']) && !isset($formValues['id_sous_categorie'])) {
 	    $this->choixSousCategories($formValues['id_categorie']);
 	    require('views/addFormProduit.view.php');
-	    
-	}elseif(isset($formValues['nom_produit'])) {
-	    $vendu = isset($formValues['vendu']) ? 1 : 0;
+	    # On enregistre
+	} else { # le produit
 	    $addProduitManager = new ProduitManager();
 	    $addProduitManager->addProduit(
 		$formValues['nom_produit'],
@@ -59,14 +61,24 @@ class ProduitController{
 		$formValues['id_sous_categorie'],
 		$formValues['cout_reparation'],
 		$formValues['temps_passe'].":00",
-		$vendu);
-	    $this->listProduits();
-
-	}else{ 
-	    $this->choixCategories();  
+		$formValues['vendu']);
+	    if ($formValues['vendu']) { # et la vente
+		$venteController = new VenteController();
+		$reponse = $addProduitManager->getProduits($formValues['vendu']);
+		$row = $reponse->fetch();
+		if ($venteController->autoriseVente($row['id_produit'])) {
+		    $venteController->addVente($formValues['quantite'],
+					       $row['id_produit'],
+					       $formValues['prix_libre']);
+		    $venteController->listVentes();
+		}
+	    } else {
+		$this->listProduits();
+	    }
 	}
+	return true;
     }
-
+    
     
     public function deleteProduit($id_produit){ 
 	$produitManager = new ProduitManager();

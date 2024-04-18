@@ -20,15 +20,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  */
 
+
+
+
 function afficherChampsVente() {
 
     var champQuantite = document.getElementById("champQuantite");
     var champPrixLibre = document.getElementById("champPrix");
     var enregistrerVente = document.getElementById("bouton_enregistrer_vente");
+    var updateProduit = document.getElementById("updateProduit");
     
     champQuantite.style.display = "block";
     champPrixLibre.style.display = "block";
     enregistrerVente.style.display = "block";
+    updateProduit.value = 1;
 }
 
 

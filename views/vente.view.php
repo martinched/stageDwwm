@@ -6,7 +6,7 @@ ob_start();
     
     <h2>Liste des ventes</h2>
     
-    <button> <a href='index.php?page=addFormVente'>Enregistrer une vente</a> </button>  
+    <button> <a href='index.php?page=formProduit'>Enregistrer une vente</a> </button>  
   
 <div>
     <?php

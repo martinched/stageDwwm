@@ -63,57 +63,14 @@ try{
                 $produitController = new ProduitController();
 		$produitController->formProduit($_POST);
 		break;
-                
-	    case 'addFormVente': // (si on ne part pas d'un produit existant)
-		$venteController = new VenteController();
-		// 1 choix cat
-		if(!isset($_POST['id_categorie']) && !isset($_POST['id_sous_categorie'])) {
-		    $venteController->choixCategories();  
-		    // 2 Choix souscat (idem)
-		} elseif(isset($_POST['id_categorie'])) {
-		    $id_categorie = $_POST['id_categorie'];
-		    $venteController->choixSousCategories($id_categorie);
-		    require('views/addFormVente.view.php');
-		    // // 3 définir le produit
-		}elseif(isset($_POST['id_sous_categorie'])) {
-		    $produitController = new ProduitController();
-		    $id_sous_categorie = $_POST['id_sous_categorie'];
-		    $nom_produit = $_POST['nom_produit'];
-		    $quantite = $_POST['quantite'];
-		    $date_enregistrement = $_POST['date_enregistrement'];
-		    $prix_libre = $_POST['prix_libre'];
-		    $cout_reparation = $_POST['cout_reparation'];
-		    $temps_passe = $_POST['temps_passe'].":00";
-		    $vendu = 1;
-		    $reponse = $produitController->addFormProduit($nom_produit, "",
-								  $date_enregistrement,
-								  $id_sous_categorie,
-								  $cout_reparation,
-								  $temps_passe, $vendu);
-		    $row = $reponse->fetch();
-		    $requete = $venteController->addFormVente($quantite,
-							      $row['id_produit'], $prix_libre);
-		}else{
-		    echo "Erreur";
-		}
-
-		break;
-
+		
 	    case 'addVente':
-
-		if(isset($_POST['id_produit']) && isset($_POST['quantite']) && isset($_POST['prix_libre'])){
-		    $id_produit = $_POST['id_produit'];
-		    $quantite = $_POST['quantite'];
-		    $prix_libre = $_POST['prix_libre'];
-		    $venteController = new VenteController();
-		    $venteController->addVente($quantite, $id_produit, $prix_libre);
-		}else {
-		    echo "Une variable n'a pas été remplie : id_produit = "
-		       . $_POST['id_produit'] . "<br />quantite = " 
-		       . $_POST['quantite'] . "<br />prix libre = "
-		       . $_POST['prix_libre']. "<br />";
-		}
-
+		$id_produit = $_POST['id_produit'];
+		$quantite = $_POST['quantite'];
+		$prix_libre = $_POST['prix_libre'];
+		$venteController = new VenteController();
+		$venteController->addVente($quantite,
+					   $id_produit, $prix_libre);
 		break;
 
 	    case 'addFormCategorie':

@@ -29,7 +29,17 @@ ob_start()
         <input type="hidden" name="poids" value="<?=$product['poids']?>">
         <input type="hidden" name="id_categorie" value="<?=$product['id_categorie']?>">
         <br>
-        <input type="button" value="Vendre" onclick="this.hidden=true;afficherChampsVente()"><br>
+           <input type="button" value="Vendre" onclick="this.hidden=true;afficherChampsVente()"><br>
+
+        <div id="champQuantite" style="display:none;">
+            <label for="quantite">Quantité&nbsp;:&nbsp;</label>
+            <input type="number" id="quantite" name="quantite"><br><br>
+        </div>
+
+        <div id="champPrix" style="display:none;">
+            <label for="prix_libre">Prix libre&nbsp;:&nbsp;</label>
+            <input type="number" id="prix_libre" name="prix_libre"> €<br>
+        </div>
 
         <div id="champQuantite" style="display:none;">
             <label for="quantite">Quantité&nbsp;:&nbsp;</label>
