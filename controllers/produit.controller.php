@@ -51,6 +51,8 @@ class ProduitController{
 	    # 2 S'il n'a pas rempli de nom_produit
 	} elseif (isset($formValues['id_categorie']) && !isset($formValues['id_sous_categorie'])) {
 	    $this->choixSousCategories($formValues['id_categorie']);
+	    $action = $formValues['action'];
+	    var_dump ($action);
 	    require('views/addFormProduit.view.php');
 	    # On enregistre
 	} else { # le produit
