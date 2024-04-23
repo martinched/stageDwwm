@@ -7,9 +7,6 @@ body {
     align-items: center;
     text-align: center;
     background-color: #FFF570;
-}	      
-header{
-  
 }
 
 .separation{
@@ -17,20 +14,25 @@ header{
 }
 
 h1, h2 {
-    color:brown
+    color: #2Ab7DA;
 }
-
 
 nav button {
     margin-bottom: 1em;
     style: none;
+    background-color: #920E0E;
+    color:#2Ab7DA;
+    border-radius: 10px;
 }
+
 li {
     list-style: none;
 }
+
 .ajout{
     margin-bottom: 2em;
 }
+
 .multicard {
     display: flex;
     flex-wrap: wrap;
@@ -38,6 +40,7 @@ li {
     justify-content: space-around;
     align-items: center;
 }
+
 .card{
     border-color: black;
     border: solid 0.1em;
@@ -53,6 +56,7 @@ li {
 .suppr{
     margin-bottom: 1em;
 }
+
 .plus {
     background-color: green;
     color: white;
@@ -63,9 +67,11 @@ li {
     display: inline-block;
     text-align: center;
 }
+
 .poubelle {
     color: red;
 }
+
 .liensboutons a {
     text-decoration: none !important;
 }
@@ -107,21 +113,25 @@ input[type=submit] {
     left: 0;
     right: 0;
 }
+
 .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
     background-color: #fff;
     border-bottom: 1px solid #d4d4d4;
 }
+
 .autocomplete-items div:hover {
     /*when hovering an item:*/
     background-color: #e9e9e9;
 }
+
 .autocomplete-active {
     /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue;
     color: #ffffff;
 }
+
 footer {
     position: absolute;
     bottom: 5em;
