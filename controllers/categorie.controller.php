@@ -21,7 +21,7 @@
  *  */
 
 
-// require following file
+
 require ('model/CategorieManager.php');
 
 class CategorieController{

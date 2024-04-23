@@ -33,6 +33,11 @@ try{
                 $produitController = new ProduitController();
                 $produitController->listProduits();
 		break;
+
+	    case 'formProduit': 
+                $produitController = new ProduitController();
+		$produitController->formProduit($_POST);
+		break;
 		
 	    case 'deleteProduit':
 		$produitController = new ProduitController();
@@ -44,9 +49,18 @@ try{
                 $venteController->listVentes();
 		break;
 
+	    case 'addVente':
+		$id_produit = $_POST['id_produit'];
+		$quantite = $_POST['quantite'];
+		$prix_libre = $_POST['prix_libre'];
+		$venteController = new VenteController();
+		$venteController->addVente($quantite,
+					   $id_produit, $prix_libre);
+		break;
+
             case 'deleteVente':
                 $venteController = new VenteController();
-                $venteController->deleteVente($_GET['id_vente']);
+                $venteController->deleteVente($_POST['id_vente']);
 		break;
 
             case 'categories':
@@ -57,20 +71,6 @@ try{
             case 'gestionCategories':
                 $categorieController = new CategorieController();
                 $categorieController->listSousCategories();
-		break;
-
-            case 'formProduit': 
-                $produitController = new ProduitController();
-		$produitController->formProduit($_POST);
-		break;
-		
-	    case 'addVente':
-		$id_produit = $_POST['id_produit'];
-		$quantite = $_POST['quantite'];
-		$prix_libre = $_POST['prix_libre'];
-		$venteController = new VenteController();
-		$venteController->addVente($quantite,
-					   $id_produit, $prix_libre);
 		break;
 
 	    case 'addFormCategorie':

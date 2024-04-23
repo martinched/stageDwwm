@@ -66,15 +66,10 @@ class VenteManager extends Manager{
     }
     
     
-    public function deleteVente($id){
-        $bd = $this->connexion();
-	
-        $deleteVente = "DELETE FROM ventes WHERE id_vente =" . $id;
-	try{
-            $bd->query($deleteVente);  
-        }
-        catch(Exception $e){
-            throw new Exception('Probleme de récuperation des donnees'); 
-        }
+    public function deleteVente($id_vente){
+        $bd = $this->connexion();	
+        $deleteVente = "DELETE FROM ventes WHERE id_vente =" . $id_vente;
+	$reponse = $bd->query($deleteVente);  
+	return $reponse;
     }
 }

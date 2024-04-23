@@ -1,7 +1,7 @@
 <?php 
-    $title = "Formulaire d'ajout de produit";
+    $title = "Ajouter un produit";
 
-    ob_start()
+    ob_start();
 ?>
 
 <h1>Formulaire d'ajout de produit</h1>

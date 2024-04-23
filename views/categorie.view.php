@@ -4,8 +4,9 @@ $title = "Liste des catégories";
 ob_start()
 ?>
 
-    <h1>Liste des catégories</h1>
- <a href='index.php?page=gestionCategories'>Gérer les categories</a>
+<u><h2>Liste des catégories</h2></u>
+
+<a  href='index.php?page=gestionCategories'><button class="ajout">Gérer les categories</button></a>
 
 <?php
     // displays each row of the following columns

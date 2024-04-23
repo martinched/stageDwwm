@@ -26,14 +26,14 @@ require('model/VenteManager.php');
 
 class VenteController{
     public function listVentes(){
-        $instanciation = new VenteManager();
-        $reponse = $instanciation->getVentes();
+        $venteManager = new VenteManager();
+        $reponse = $venteManager->getVentes();
         require ('views/vente.view.php');
     }
 
     public function choixCategories(){
-        $instanciation = new CategorieManager();
-        $reponse =  $instanciation->getCategories();
+        $venteManager = new CategorieManager();
+        $reponse =  $venteManager->getCategories();
         require ('views/addFormVenteCat.view.php');
     }
     
@@ -44,8 +44,8 @@ class VenteController{
     }
 
     public function autoriseVente($id_produit){
-	$instanciation = new VenteManager();
-	$reponse = $instanciation->getVentes();
+	$venteManager = new VenteManager();
+	$reponse = $venteManager->getVentes();
 	$resultats = $reponse->fetchAll();
 	foreach($resultats as $vente){
 	    try{
@@ -62,19 +62,14 @@ class VenteController{
     }
 
     public function addVente($quantite, $id_produit, $prix_libre){
-	$instanciation = new VenteManager();
-	$reponse = $instanciation->VendreUnProduit($id_produit);
-	var_dump($quantite, $id_produit, $prix_libre);
-	$reponse = $instanciation->addVente($quantite, $id_produit, $prix_libre);
+	$venteManager = new VenteManager();
+	$reponse = $venteManager->VendreUnProduit($id_produit);
+	$reponse = $venteManager->addVente($quantite, $id_produit, $prix_libre);
 	$this->listVentes();
     }
 
-    public function deleteVente($id_vente){ 
-	$instanciation = new VenteManager();
-	$instanciation->deleteVente($id_vente);
-	echo 'la vente a bien été supprimée!';
-	header ('location:index.php?page=ventes');
-	exit();
-	
-    }
+    public function deleteVente($id_vente){
+	    $venteManager = new VenteManager();
+	    return $venteManager->deleteVente($id_vente);
+	}
 }

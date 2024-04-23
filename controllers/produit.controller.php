@@ -81,9 +81,10 @@ class ProduitController{
     }
     
     
-    public function deleteProduit($id_produit){ 
-	$produitManager = new ProduitManager();
+    public function deleteProduit($id_produit){
+	    $produitManager = new ProduitManager();
+	
 	return $produitManager->deleteProduit($id_produit);
+	
     }
-    
 }

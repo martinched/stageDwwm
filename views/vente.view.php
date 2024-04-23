@@ -3,27 +3,26 @@ $title = "Liste des ventes";
 
 ob_start();
 ?>
-    
-    <h2>Liste des ventes</h2>
-    
-    <button> <a href='index.php?page=formProduit'>Enregistrer une vente</a> </button>  
-  
+
+<u><h2>Liste des ventes</h2></u>
+
+<a href='index.php?page=formProduit'> <button class="ajout">Enregistrer une vente</button></a>  
+ 
 <div>
     <?php
     // displays each row of the following columns
         while($vente= $reponse->fetch()) {
     ?>
-        <div>
+        <div class="card"> 
             <p>
-                <b><?= $vente['nom_produit']?></b> &nbsp;
-		<input type="button" value="supprimer"
-		       onclick="suppression(<?=$vente['id_vente']?>, 'vente')"><br>
+		<u><b><?= $vente['nom_produit']?></b></u><br>
+		<b>Catégorie&nbsp;:&nbsp;</b> <?=$vente['categorie']?><br>
                 <b>Prix libre&nbsp;:&nbsp;</b> <?=$vente['prix_libre'] ?> €<br>
                 <b>Quantité&nbsp;:&nbsp;</b> <?=$vente['quantite'] ?><br>
-                <b>Vendu le&nbsp;:&nbsp;</b> <?= $vente['date_vente'] ?>
+                <b>Vendu le&nbsp;:&nbsp;</b><br> <?= $vente['date_vente'] ?>
             </p>
-            
-            
+	    <input class="suppr" type="button" value="supprimer"
+		   onclick="suppression(<?=$vente['id_vente']?>, 'vente')"><br>        
         </div>
     <?php
         }

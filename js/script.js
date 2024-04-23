@@ -39,18 +39,19 @@ function afficherChampsVente(id_produit) {
 
 function suppression(id, type) {
     if (confirm("Supprimer definitivement?")) {
-        // Si l'utilisateur confirme, effectuez la suppression en envoyant une requête AJAX
+  // Si l'utilisateur confirme, effectuez la suppression en envoyant une requête AJAX
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'succes.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
+ console.log (id, type);
+	    if (xhr.readyState == 4 && xhr.status == 200) {
                 alert(xhr.responseText); // Afficher le message de confirmation retourné par le serveur
 		window.location.reload();
             }
         };
-        xhr.send('id=' + encodeURIComponent(id));
-	xhr.send('type=' + encodeURIComponent(type));
+        xhr.send('id=' + encodeURIComponent(id) + '&type=' + encodeURIComponent(type));
+	console.log(xhr);
     }
 }
 

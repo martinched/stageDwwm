@@ -1,8 +1,4 @@
-
-
 <?php
-
-
 /* 
  * La Pétappli se veut l'outil de gestion de base de données de la recyclerie
  * de Vallée Francaise.
@@ -24,14 +20,20 @@
  *  */
 
 require('controllers/produit.controller.php');
+require('controllers/vente.controller.php');
 
-$produitController = new ProduitController();
-
-if ($produitController->deleteProduit($_POST['id_produit'])){
-    echo "Super succès!";
+if ($_POST['produit'] == 'type'){
+    $produitController = new ProduitController();
+    if ($produitController->deleteProduit($_POST['id'])) {
+	echo "Super succès suppression produit!";
+    }
+} elseif ($_POST['type'] == 'vente') {
+    $venteController = new VenteController();
+    if ($venteController->deleteVente($_POST['id'])) {
+	echo "Super succès suppression vente!";
+    }
+} else {
+    echo ('type inconnu');
 }
 
 ?>
-
-
-                
