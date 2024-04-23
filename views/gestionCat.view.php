@@ -12,26 +12,30 @@ ob_start()
     foreach ($tableau as $nomcat => $reponsecat) {
 	$sousCats = $reponsecat->fetchAll();
     ?>
-        <p>
-            <b><u><?= $nomcat ?></u></b> 
-            <a href='index.php?page=deleteCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>Supprimer cette catégorie</a><br/>
-            <a href='index.php?page=addFormCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>Ajouter une sous-catégorie</a><br />
-
-<?php
-        foreach ($sousCats as $sousCat) {
-?>
-            <?= $sousCat['nom_sous_categorie'] ?><br>
-            <?= $sousCat['poids'] ?>
-            <a href='index.php?page=deleteCategorie&id_categorie=<?=$sousCat['id_sous_categorie']?>'>Supprimer </a><br/>
-<?php
-        }
-?>
-        </p>
-     
-   
-<?php
+	<div class="card">
+            <p class="liensboutons">
+		<b><u><?= $nomcat ?></u></b> 
+		<a class="poubelle" href='index.php?page=deleteCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>&#x1F5D1;</a><br/>
+		<a class="plus" href='index.php?page=addFormCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>+</a><br />
+		<div class="multicard">
+		<?php
+		foreach ($sousCats as $sousCat) {
+		?>
+		    <div class="card">
+			<?= $sousCat['nom_sous_categorie'] ?>
+			<a class="poubelle" href='index.php?page=deleteCategorie&id_categorie=<?=$sousCat['id_sous_categorie']?>'>&#x1F5D1;</a>
+			<ul>
+			    <li><?= $sousCat['poids'] ?>&nbsp;g</li>
+			</ul>
+		    </div>
+		<?php
+		}
+		?>
+		</div>
+            </p>
+	</div>
+    <?php
     }
-
 $content = ob_get_clean();
 require('base.view.php');
 ?>
