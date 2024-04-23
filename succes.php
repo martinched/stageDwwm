@@ -22,7 +22,7 @@
 require('controllers/produit.controller.php');
 require('controllers/vente.controller.php');
 
-if ($_POST['produit'] == 'type'){
+if ($_POST['type'] == 'produit'){
     $produitController = new ProduitController();
     if ($produitController->deleteProduit($_POST['id'])) {
 	echo "Super succès suppression produit!";
