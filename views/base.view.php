@@ -15,7 +15,6 @@
     <header>
         <h1>La Pétappli</h1>
    
-
 	<nav>
 	    <a href="index.php?page=produits"> <button class="btn">Produits</button></a><br>
 	    <a href="index.php?page=ventes"> <button class="bnt">Ventes</button></a><br>
@@ -23,6 +22,7 @@
 	</nav>
     </header>
 
+    <div id="info" ><?=$message_info ?></div>
     <hr class="separation">
     
     <div class='content'>

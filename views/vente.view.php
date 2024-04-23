@@ -16,7 +16,6 @@ ob_start();
         <div class="card"> 
             <p>
 		<u><b><?= $vente['nom_produit']?></b></u><br>
-		<b>Catégorie&nbsp;:&nbsp;</b> <?=$vente['categorie']?><br>
                 <b>Prix libre&nbsp;:&nbsp;</b> <?=$vente['prix_libre'] ?> €<br>
                 <b>Quantité&nbsp;:&nbsp;</b> <?=$vente['quantite'] ?><br>
                 <b>Vendu le&nbsp;:&nbsp;</b><br> <?= $vente['date_vente'] ?>

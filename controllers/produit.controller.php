@@ -71,10 +71,14 @@ class ProduitController{
 		    $venteController->addVente($formValues['quantite'],
 					       $row['id_produit'],
 					       $formValues['prix_libre']);
-		    $venteController->listVentes();
+		    #TODO document_root
+		    header ('location: /~martin/index.php?page=ventes');
+		    exit();
 		}
 	    } else {
-		$this->listProduits();
+		#TODO document_root
+		header ('location: /~martin/index.php?page=produits');
+		exit();
 	    }
 	}
 	return true;
@@ -82,7 +86,7 @@ class ProduitController{
     
     
     public function deleteProduit($id_produit){
-	    $produitManager = new ProduitManager();
+	$produitManager = new ProduitManager();
 	
 	return $produitManager->deleteProduit($id_produit);
 	

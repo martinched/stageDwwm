@@ -44,14 +44,13 @@ function suppression(id, type) {
         xhr.open('POST', 'succes.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
- console.log (id, type);
 	    if (xhr.readyState == 4 && xhr.status == 200) {
-                alert(xhr.responseText); // Afficher le message de confirmation retourné par le serveur
-		window.location.reload();
+//		alert (xhr.responseText);
+		//window.location.reload();
+		window.location.href = window.location.href;
             }
         };
         xhr.send('id=' + encodeURIComponent(id) + '&type=' + encodeURIComponent(type));
-	console.log(xhr);
     }
 }
 

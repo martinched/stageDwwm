@@ -65,7 +65,6 @@ class VenteController{
 	$venteManager = new VenteManager();
 	$reponse = $venteManager->VendreUnProduit($id_produit);
 	$reponse = $venteManager->addVente($quantite, $id_produit, $prix_libre);
-	$this->listVentes();
     }
 
     public function deleteVente($id_vente){
