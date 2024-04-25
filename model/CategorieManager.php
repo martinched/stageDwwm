@@ -25,57 +25,87 @@ require_once("Manager.php");
 
 class CategorieManager extends Manager{
 
-    public function getNomsCategories(){
-        $bd = $this->connexion();  
-        $reponse = $bd->query('SELECT nom_categorie FROM categories');
-        return $reponse;
-    }
-    
     public function getCategories(){
         $bd = $this->connexion();  
         $reponse = $bd->query('SELECT * FROM categories');
         return $reponse;
     }
 
-    public function getSousCategories($id_categorie){
+    public function getSousCategories($nom_categorie){
         $bd = $this->connexion();    
-        $sql = ("SELECT s.id_sous_categorie, s.nom_sous_categorie, s.id_categorie, c.nom_categorie, s.poids 
-        FROM categories c INNER JOIN sous_categories s ON s.id_categorie = c.id_categorie
-        WHERE s.id_categorie =" . $id_categorie .
-		" ORDER BY nom_sous_categorie");
+        $sql = ("SELECT s.nom_sous_categorie, s.nom_categorie, s.poids
+        FROM sous_categories s
+        WHERE s.nom_categorie ='" . $nom_categorie .
+		"' ORDER BY nom_sous_categorie");
         $reponse = $bd->query($sql);
         return $reponse;
     }
 
-    public function addFormCategorie($nom_categorie, $sous_categorie){
+    public function addCategorie($nom_categorie) {
         $bd = $this->connexion();
-	# La table categories ne contient pas sous_categorie
-        $requeteSQL =
-            "INSERT INTO categories (`nom_categorie`, `sous_categorie`)
-            VALUES (:nom_categorie, :sous_categorie)";
-
+	$requeteSQL = "INSERT INTO categories(`nom_categorie`)
+                            VALUES(:nom_categorie)";
+	
         $requetePrepare = $bd->prepare($requeteSQL);
-
         $parameterArray = array(
-            ':nom_categorie' => htmlspecialchars($nom_categorie),
-            ':sous_categorie' =>  htmlspecialchars($sous_categorie),
-        );
-
+	    ':nom_categorie' => htmlspecialchars($nom_categorie));
+	$this->executDisplay($requetePrepare, $parameterArray);
+	echo "On a ajouté la categorie $nom_categorie";
+    }
+    
+    public function addFormCategorie($nom_categorie,
+				     $nom_sous_categorie, $poids){
+        $bd = $this->connexion();
+        $requeteSQL = "SELECT * FROM categories WHERE nom_categorie='"
+		    . $nom_categorie . "'";
+	$existe = $bd->query($requeteSQL);
+	# Si la categorie n'existe pas encore, la créer
+	
+	if (!$existe->fetch()) {
+	    $this->addCategorie($nom_categorie);
+	}
+	$requeteSQL =
+	    "INSERT INTO sous_categories(`nom_categorie`,
+             `nom_sous_categorie`, `poids`)
+             VALUES(:nom_categorie, :nom_sous_categorie, :poids)";
+        $requetePrepare = $bd->prepare($requeteSQL);
+	$parameterArray = array(
+	    ':nom_categorie' => htmlspecialchars($nom_categorie),
+	    ':nom_sous_categorie' => htmlspecialchars($nom_sous_categorie),
+	    ':poids' => $poids);
         $this->executDisplay($requetePrepare, $parameterArray);
     }
-
-    public function deleteCategorie($id_categorie){
-        $bd = $this->connexion();
+    
+    public function deleteCategorie($nom_categorie){
+	$bd = $this->connexion();
 	
-        $deleteCategorie = 'DELETE FROM categories WHERE id_categorie = ?';
-        try{
-            $stmt = $bd->prepare($deleteCategorie);   
-            $stmt->execute([$id_categorie]);
-            echo'Le Categorie à bien été supprimé';
-        }
-        catch(Exception $e){
-            throw new Exception('Problème de récuperation des données'); 
-        }
+	$requeteSQL = 'DELETE FROM categories
+                       WHERE nom_categorie = :nom_categorie';
+	try{
+	    $requetePrepare = $bd->prepare($requeteSQL);
+	    $parameterArray = array(
+		':nom_categorie' => htmlspecialchars($nom_categorie));
+	    $requetePrepare->execute($parameterArray);
+	    echo'La categorie a bien été supprimée';
+	}
+	catch(Exception $e){
+	    throw new Exception('Problème de récuperation des données');
+	}
     }
 
+    public function deleteSousCategorie($nom_sous_categorie) {
+	$bd = $this->connexion();
+	
+	$requeteSQL = 'DELETE FROM sous_categories
+                       WHERE nom_sous_categorie = :nom_sous_categorie';
+	try{
+	    $requetePrepare = $bd->prepare($requeteSQL);
+	    $parameterArray = array(':nom_sous_categorie' =>
+		htmlspecialchars($nom_sous_categorie));
+	    $requetePrepare->execute($parameterArray);
+	    echo 'La sous-categorie a bien été supprimée';
+	} catch(Exception $e){
+	    throw new Exception('Problème de récuperation des données');
+	}
+    }
 }

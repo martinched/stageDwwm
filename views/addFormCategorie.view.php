@@ -18,7 +18,7 @@
     <form id='formCategorie' action="index.php?page=addFormCategorie" method="POST">
         <label for="nom_categorie">Nom de la categorie&nbsp;:&nbsp;</label>
 	<div class="autocomplete">
-	    <input require id="form-nom_categorie" value="<?=$categories[$_GET['id_categorie']]?>" type="text" name="nom_categorie">
+	    <input require id="form-nom_categorie" value="<?=$_GET['nom_categorie']?>" type="text" name="nom_categorie">
 	</div>
         <label for="sous_categorie">Sous-categorie&nbsp;:&nbsp;</label>
         <input id="form-sous_categorie" type="string" name="sous_categorie"></input>

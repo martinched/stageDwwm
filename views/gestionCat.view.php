@@ -14,16 +14,16 @@ ob_start()
     ?>
 	<div class="card">
             <p class="liensboutons">
-		<b><u><?= $nomcat ?></u></b> 
-		<a class="poubelle" href='index.php?page=deleteCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>&#x1F5D1;</a><br/>
-		<a class="plus" href='index.php?page=addFormCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>+</a><br />
+		<b><u><?=$nomcat?></u></b> 
+		<a class="poubelle" href='index.php?page=deleteCategorie&nom_categorie=<?=$nomcat?>'>&#x1F5D1;</a><br/>
+		<a class="plus" href='index.php?page=addFormCategorie&nom_categorie=<?=$nomcat?>'>+</a><br />
 		<div class="multicard">
 		<?php
 		foreach ($sousCats as $sousCat) {
 		?>
 		    <div class="card">
 			<?= $sousCat['nom_sous_categorie'] ?>
-			<a class="poubelle" href='index.php?page=deleteCategorie&id_categorie=<?=$sousCat['id_sous_categorie']?>'>&#x1F5D1;</a>
+			<a class="poubelle" href='index.php?page=deleteSousCategorie&nom_sous_categorie=<?=$sousCat['nom_sous_categorie']?>'>&#x1F5D1;</a>
 			<ul>
 			    <li><?= $sousCat['poids'] ?>&nbsp;g</li>
 			</ul>
