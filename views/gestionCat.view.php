@@ -4,9 +4,9 @@ $title = "Gestion des catégories";
 ob_start()
 ?>
 
-    <h1>Gestion des catégories</h1>
+<u><h2>Gestion des catégories</h2></u>
 
-    <a href='index.php?page=addFormCategorie'>Nouvelle catégorie</a>
+<a href='index.php?page=addFormCategorie'><button class="btn">Nouvelle catégorie</button></a>
 
     <?php
     foreach ($tableau as $nomcat => $reponsecat) {
@@ -15,8 +15,9 @@ ob_start()
 	<div class="card">
             <p class="liensboutons">
 		<b><u><?= $nomcat ?></u></b> 
-		<a class="poubelle" href='index.php?page=deleteCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>&#x1F5D1;</a><br/>
-		<a class="plus" href='index.php?page=addFormCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>+</a><br />
+		<a class="poubelle" href='index.php?page=deleteCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>&#x1F5D1;</a><br>
+		<a  href='index.php?page=addFormCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'><button class="btn newSouCat">New sous-catégorie</button></a><br>
+		
 		<div class="multicard">
 		<?php
 		foreach ($sousCats as $sousCat) {
@@ -25,7 +26,7 @@ ob_start()
 			<?= $sousCat['nom_sous_categorie'] ?>
 			<a class="poubelle" href='index.php?page=deleteCategorie&id_categorie=<?=$sousCat['id_sous_categorie']?>'>&#x1F5D1;</a>
 			<ul>
-			    <li><?= $sousCat['poids'] ?>&nbsp;g</li>
+			    <li>(<?= $sousCat['poids'] ?>&nbsp;g)</li>
 			</ul>
 		    </div>
 		<?php

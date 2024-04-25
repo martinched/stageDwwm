@@ -4,7 +4,7 @@
     ob_start();
 ?>
 
-<h1>Formulaire d'ajout de produit</h1>
+<h2>Ajouter un produit</h2>
 
     <div class="formSousCat">
         <form id='form' action="index.php?page=formProduit" method="POST">

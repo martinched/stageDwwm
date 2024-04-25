@@ -1,18 +1,19 @@
-<input type="button" value="Vendre" onclick="this.hidden=true;afficherChampsVente()"><br>
+<input class="btn" type="button" value="Vendre" onclick="this.hidden=true;afficherChampsVente()"><br>
 
-<div id="champQuantite" style="display:none;">
+<!-- le 'undefined' vient dun id produit non-definit car on crer le produit au moment de la vente -->
+<div id="champQuantiteundefined" style="display:none;">
     <label for="quantite">Quantité&nbsp;:&nbsp;</label>
-    <input type="number" id="quantite" name="quantite"><br><br>
+    <input type="number" id="quantite" name="quantite">
 </div>
 
-<div id="champPrix" style="display:none;">
+<div id="champPrixundefined" style="display:none;">
     <label for="prix_libre">Prix libre&nbsp;:&nbsp;</label>
-    <input type="number" id="prix_libre" name="prix_libre"> €<br>
+    <input type="number" id="prix_libre" name="prix_libre"> €
 </div>
 
-<input id="updateProduit" type="hidden" name="vendu" value="0" />  
+<input  id="updateProduit" type="hidden" name="vendu" value="0" />  
 <br>
-<input id='form-produitButton' type="submit" value="Enregistrer" />
+<input class="btn" id='form-produitButton' type="submit" value="Enregistrer" />
 </form> 
 
 <?php

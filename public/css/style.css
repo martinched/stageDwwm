@@ -19,10 +19,19 @@ h1, h2 {
 
 nav button {
     margin-bottom: 1em;
+  
+}
+
+.btn, .suppr, .sell, .ajout{
     style: none;
-    background-color: #920E0E;
-    color:#2Ab7DA;
+    background-color: #CE1717;
+    color: #FFF570;
     border-radius: 10px;
+    font-size: 15px;
+}
+
+.block{
+    margin-bottom: 1em;
 }
 
 li {
@@ -49,24 +58,50 @@ li {
     padding: 1em;
 }
 
-.sell{
-    margin-top:1em;
-}
-
-.suppr{
+#formProduit, #bouton_enregistrer_vente{
+    align-items: center;
     margin-bottom: 1em;
 }
 
-.plus {
-    background-color: green;
-    color: white;
-    height: 20px;
-    width: 20px;
-    line-height: 20px;
-    border-radius: 50%;
-    display: inline-block;
-    text-align: center;
+#selectCat{
+    width:50%;
+    margin-top: 1em;
 }
+
+
+#form-cat_button{
+    width: 100%;
+    margin-top: 1em;
+    color: #FFF570;
+    background-color: green;
+}
+
+#bouton_enregistrer_vente, .quantite, .firstMargin, .newSouCat{
+    margin-top: 1em;
+   
+}
+
+.sell, .card_vendre{
+    margin: 1em;
+}
+   
+.suppr, .champ, #quantite{
+    margin-bottom: 1em;
+}
+
+#prix_libre, #quantite{
+    width:40%;
+}
+
+.cout, .temps{
+    width:30%;
+}
+
+
+
+
+
+
 
 .poubelle {
     color: red;
