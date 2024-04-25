@@ -50,10 +50,10 @@ while($product = $reponse->fetch()) {
 		</div>
 
 		<div>
-		    <input type="hidden" name="id_categorie" value="<?=$product['id_categorie']?>">
+		    <input type="hidden" name="nom_categorie" value="<?=$product['nom_categorie']?>">
 		</div>
 	    </div>
-	    
+
 	    <div class="card_vendre" >
 		<input class="sell" type="button" value="Vendre"
 		       onclick="this.hidden=true;afficherChampsVente(<?=$product['id_produit']?>)">

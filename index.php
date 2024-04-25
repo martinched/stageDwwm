@@ -73,6 +73,18 @@ try{
                 $categorieController->listSousCategories();
 		break;
 
+	    case 'deleteCategorie':
+                $categorieController = new CategorieController();
+		$categorieController->deleteCategorie(
+		    $_GET['nom_categorie']);
+		break;
+
+	    case 'deleteSousCategorie':
+                $categorieController = new CategorieController();
+		$categorieController->deleteSousCategorie(
+		    $_GET['nom_sous_categorie']);
+		break;
+
 	    case 'addFormCategorie':
 		if(isset($_POST['nom_categorie'])) {
 		    $nom_categorie = $_POST['nom_categorie'];
@@ -82,10 +94,7 @@ try{
 		    $categorieController = new CategorieController();
 		    $categorieController->addFormCategorie(
 			$nom_categorie, $sous_categorie, $poids);
-
-		    // ($succes) ?  echo "<p>La catégorie a bien été ajoutée!</p>";  :
-		    
-		    
+		    $categorieController->listSousCategories();
 		}else{
                     $categorieController = new CategorieController();
                     $tableau = $categorieController->tableauCategories();

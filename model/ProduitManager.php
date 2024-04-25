@@ -28,23 +28,23 @@ class ProduitManager extends Manager{
     public function getProduits($vendu){ 
         $bd = $this->connexion(); 
         $reponse = $bd->query(
-            'SELECT p.id_produit, p.id_sous_categorie, p.nom_produit, p.description,
-             p.date_enregistrement, p.cout_reparation, p.temps_passe, p.vendu, sc.id_categorie, sc.poids
-             FROM produits p INNER JOIN sous_categories sc ON p.id_sous_categorie = sc.id_sous_categorie
+            'SELECT p.id_produit, p.nom_sous_categorie, p.nom_produit, p.description,
+             p.date_enregistrement, p.cout_reparation, p.temps_passe, p.vendu, sc.nom_categorie, sc.poids
+             FROM produits p INNER JOIN sous_categories sc ON p.nom_sous_categorie = sc.nom_sous_categorie
              WHERE p.vendu = '.$vendu.'
              ORDER BY p.id_produit DESC');
 
         return $reponse;
     }
 
-    public function addProduit($nom_produit, $description, $id_sous_categorie, $cout_reparation, $temps_passe, $vendu){
+    public function addProduit($nom_produit, $description, $nom_sous_categorie, $cout_reparation, $temps_passe, $vendu){
         $bd = $this->connexion();
         $requeteSQL =
             "INSERT INTO produits(
-                `nom_produit`,`description`, `id_sous_categorie`,
+                `nom_produit`,`description`, `nom_sous_categorie`,
                  `cout_reparation`, `temps_passe`, `vendu`)
             VALUES (
-                :nom_produit, :description, :id_sous_categorie,
+                :nom_produit, :description, :nom_sous_categorie,
                 :cout_reparation, :temps_passe, :vendu)";
 
         $requetePrepare = $bd->prepare($requeteSQL);
@@ -52,7 +52,7 @@ class ProduitManager extends Manager{
         $parameterArray = array(
             ':nom_produit' => htmlspecialchars($nom_produit),
             ':description' =>  htmlspecialchars($description),
-            ':id_sous_categorie' => $id_sous_categorie,
+            ':nom_sous_categorie' => $nom_sous_categorie,
             ':cout_reparation' => $cout_reparation,
             ':temps_passe' => $temps_passe,
             ':vendu' => htmlspecialchars($vendu)

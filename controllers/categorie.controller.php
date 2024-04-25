@@ -28,7 +28,7 @@ class CategorieController{
 
     public function tableauCategories(){
         $categorieManager = new CategorieManager();
-        $reponse = $categorieManager->getNomsCategories();
+        $reponse = $categorieManager->getCategories();
 	return $reponse;
     }
 
@@ -42,10 +42,9 @@ class CategorieController{
         $sousCategorieManager = new CategorieManager();
         $reponse = $sousCategorieManager->getCategories();
         $tableau = array();
-        # Ne pas utiliser id_categorie mais directement nom_categorie
         while($categorie = $reponse->fetch()){
             // Pour chaque catégorie, obtenez ses sous-catégories
-            $sousCategories = $sousCategorieManager->getSousCategories($categorie["id_categorie"]);
+            $sousCategories = $sousCategorieManager->getSousCategories($categorie["nom_categorie"]);
             // Assignez les sous-catégories à la catégorie correspondante dans le tableau $reponse
             $tableau[$categorie['nom_categorie']] = $sousCategories;
         }
@@ -55,14 +54,19 @@ class CategorieController{
     public function addFormCategorie($nom_categorie, $sous_categorie, $poids){
         $addCategorieManager = new CategorieManager();
         $addCategorieManager->addFormCategorie($nom_categorie, $sous_categorie, $poids);
-        require ('views/addFormCategorie.view.php');
     }
 
-    public function deleteCategorie($id_categorie){ 
+    public function deleteCategorie($nom_categorie){ 
         $categorieManager = new CategorieManager();
-        $categorieManager->deleteCategorie($id_categorie);
-        header ('location:index.php?page=categories');
+        $categorieManager->deleteCategorie($nom_categorie);
+	header ('location:index.php?page=gestionCategories');
         exit();
-        echo 'la Catégorie à bien été supprimée!';
+    }
+
+    public function deleteSousCategorie($nom_sous_categorie){ 
+	$categorieManager = new CategorieManager();
+	$categorieManager->deleteSousCategorie($nom_sous_categorie);
+	header ('location:index.php?page=gestionCategories');
+	exit();
     }
 }

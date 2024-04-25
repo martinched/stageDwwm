@@ -30,19 +30,19 @@ class VenteController{
         $reponse = $venteManager->getVentes();
         require ('views/vente.view.php');
     }
-
+/*
     public function choixCategories(){
         $venteManager = new CategorieManager();
         $reponse =  $venteManager->getCategories();
         require ('views/addFormVenteCat.view.php');
-    }
-    
-    public function choixSousCategories($id_categorie){
+    }*/
+    /*
+    public function choixSousCategories($nom_categorie){
         $choixSousCategorie = new CategorieManager();
-        $reponse =  $choixSousCategorie->getSousCategories($id_categorie);
+        $reponse =  $choixSousCategorie->getSousCategories($nom_categorie);
         require ('views/addFormVenteSousCat.view.php');
     }
-
+     */
     public function autoriseVente($id_produit){
 	$venteManager = new VenteManager();
 	$reponse = $venteManager->getVentes();

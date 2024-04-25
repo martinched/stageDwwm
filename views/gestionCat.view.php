@@ -15,8 +15,8 @@ ob_start()
 	<div class="card">
             <p class="liensboutons">
 		<b><u><?= $nomcat ?></u></b> 
-		<a class="poubelle" href='index.php?page=deleteCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'>&#x1F5D1;</a><br>
-		<a  href='index.php?page=addFormCategorie&id_categorie=<?=$sousCats[0]['id_categorie']?>'><button class="btn newSouCat">New sous-catégorie</button></a><br>
+		<a class="poubelle" href='index.php?page=deleteCategorie&nom_categorie=<?=$sousCats[0]['id_categorie']?>'>&#x1F5D1;</a><br>
+		<a  href='index.php?page=addFormCategorie&nom_categorie=<?=$sousCats[0]['id_categorie']?>'><button class="btn newSouCat">New sous-catégorie</button></a><br>
 		
 		<div class="multicard">
 		<?php
@@ -24,7 +24,7 @@ ob_start()
 		?>
 		    <div class="card">
 			<?= $sousCat['nom_sous_categorie'] ?>
-			<a class="poubelle" href='index.php?page=deleteCategorie&id_categorie=<?=$sousCat['id_sous_categorie']?>'>&#x1F5D1;</a>
+			<a class="poubelle" href='index.php?page=deleteSousCategorie&nom_sous_categorie=<?=$sousCat['nom_sous_categorie']?>'>&#x1F5D1;</a>
 			<ul>
 			    <li>(<?= $sousCat['poids'] ?>&nbsp;g)</li>
 			</ul>
