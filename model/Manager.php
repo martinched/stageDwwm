@@ -35,7 +35,7 @@ class Manager {
     protected function executDisplay($requetePrepare, $parameterArray) {
         try {
             $requetePrepare->execute($parameterArray);
-            echo "Ajout réussi!";
+//            echo "Ajout réussi!";
         }
         catch(Exception $e) {
             $error = $e->getMessage();
