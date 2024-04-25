@@ -29,7 +29,7 @@ ob_start()
             <b>Temps passé&nbsp;:&nbsp;</b> <?=$product['temps_passe']?> h
             <input type="hidden" name="temps_passe" value="<?=$product['temps_passe']?>"> 
             <input type="hidden" name="poids" value="<?=$product['poids']?>">
-            <input type="hidden" name="id_categorie" value="<?=$product['id_categorie']?>">
+            <input type="hidden" name="nom_categorie" value="<?=$product['nom_categorie']?>">
             <br>
             <input class="sell" type="button" value="Vendre" onclick="this.hidden=true;afficherChampsVente(<?=$product['id_produit']?>)"><br>
 	    

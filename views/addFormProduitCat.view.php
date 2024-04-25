@@ -21,12 +21,12 @@
 
 <div class="formCat">
     <form id='formProduit' action="index.php?page=formProduit" method="POST">
-        <label for="id_categorie">Categorie:</label>
-        <select id="selecCat" name="id_categorie">
+        <label for="nom_categorie">Categorie:</label>
+        <select id="selecCat" name="nom_categorie">
             <?php 
     while($categorie = $reponse->fetch()) {
 	    ?>
-                <option value="<?= $categorie['id_categorie'] ?>">
+                <option value="<?= $categorie['nom_categorie'] ?>">
 		    <?= $categorie['nom_categorie'] ?></option>
             <?php
      } 

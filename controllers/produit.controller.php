@@ -38,19 +38,19 @@ class ProduitController{
         require ('views/addFormProduitCat.view.php');
     }
     
-    public function choixSousCategories($id_categorie){
+    public function choixSousCategories($nom_categorie){
         $choixSousCategorie = new CategorieManager();
-	$reponse =  $choixSousCategorie->getSousCategories($id_categorie);
+	$reponse =  $choixSousCategorie->getSousCategories($nom_categorie);
         require ('views/addFormProduitSousCat.view.php');
     }
 
     public function formProduit($formValues) {
 	# 1 Si l'utilisateur n'a pas choisi une catégorie
-	if(!isset($formValues['id_categorie']) && !isset($formValues['id_sous_categorie'])) {
+	if(!isset($formValues['nom_categorie']) && !isset($formValues['nom_sous_categorie'])) {
 	    $this->choixCategories();
 	    # 2 S'il n'a pas rempli de nom_produit
-	} elseif (isset($formValues['id_categorie']) && !isset($formValues['id_sous_categorie'])) {
-	    $this->choixSousCategories($formValues['id_categorie']);
+	} elseif (isset($formValues['nom_categorie']) && !isset($formValues['nom_sous_categorie'])) {
+	    $this->choixSousCategories($formValues['nom_categorie']);
 	    $action = $formValues['action'];
 	    require('views/addFormProduit.view.php');
 	    # On enregistre
@@ -59,7 +59,7 @@ class ProduitController{
 	    $addProduitManager->addProduit(
 		$formValues['nom_produit'],
 		$formValues['description'],
-		$formValues['id_sous_categorie'],
+		$formValues['nom_sous_categorie'],
 		$formValues['cout_reparation'],
 		$formValues['temps_passe'].":00",
 		$formValues['vendu']);
