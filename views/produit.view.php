@@ -38,7 +38,9 @@ while($product = $reponse->fetch()) {
 		</div>
 
 		<div>
-		    <b>Temps passé&nbsp;:&nbsp;</b> <?=$product['temps_passe']?>&nbsp;h
+		    <b>Temps passé&nbsp;:&nbsp;</b>
+		    <?php $date = date_create ($product['temps_passe']);
+		    echo date_format ($date, "G \h i \m"); ?>
 		</div>
 
 		<div>
