@@ -57,12 +57,14 @@ class ProduitController{
 	} else { # le produit
 	    $addProduitManager = new ProduitManager();
 	    $addProduitManager->addProduit(
+		$formValues['nom_sous_categorie'],
 		$formValues['nom_produit'],
 		$formValues['description'],
-		$formValues['nom_sous_categorie'],
+		$formValues['lieu'],
 		$formValues['cout_reparation'],
 		$formValues['temps_passe'].":00",
 		$formValues['vendu']);
+
 	    if ($formValues['vendu']) { # et la vente
 		$venteController = new VenteController();
 		$reponse = $addProduitManager->getProduits($formValues['vendu']);
