@@ -21,7 +21,10 @@
 	</nav>
     </header>
 
-    <div id="info" ><?=$message_info ?></div>
+    <div id="info" ><?php
+		    if (isset($message_info))
+			echo $message_info;
+		    ?></div>
     <hr class="separation">
     
     <div class='content'>
