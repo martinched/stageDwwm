@@ -56,6 +56,8 @@ try{
 		$venteController = new VenteController();
 		$venteController->addVente($quantite,
 					   $id_produit, $prix_libre);
+		#TODO document_root
+		header ('location: /~martin/index.php?page=ventes');
 		break;
 
             case 'deleteVente':
