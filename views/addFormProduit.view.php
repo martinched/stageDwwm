@@ -8,8 +8,15 @@
 <br>
 
 <div>
-    <label class="label" for="lieuStockage">Lieu de stockage&nbsp;:&nbsp;</label>
-    <input class="champ" type="string" name="lieuStockage" />
+    <label for="lieu">Lieu de stockage&nbsp;:&nbsp;</label>
+    <input type="hidden" name="lieu" />
+    <select class="champ" name="lieu_ddl" onchange="DropDownChanged(this);">
+	<option value="1">Temple de Gabriac</option>
+	<option value="2">La Boissonnade</option>
+	<option value="3">St Roman</option>
+	<option value="4">St Croix</option>
+	<option value="5">Other..</option>
+    </select> <input type="text" name="lieu_txt" style="display: none;" />
 </div>
 <div>
     <label class="label" for="cout_reparation">Coût de réparation&nbsp;:&nbsp;</label>
@@ -23,7 +30,7 @@
 	   type="text" required
 	   pattern="[0-9]{2}(:[0-9]{2})?"
 	   value="00:00"
-	   title="Écrire une durée au format hh ou hh:mm" onfocus="verifierDuree()">&nbsp;h
+	   title="Écrire une durée au format hh ou hh:mm" onfocus="verifierDuree()">
 </div>
 
 <p id="output"></p>

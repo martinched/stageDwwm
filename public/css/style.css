@@ -22,6 +22,11 @@ nav button {
   
 }
 
+.formulaire{
+    display: flex;
+    flex-direction: column;
+}
+
 .btn, .suppr, .sell, .ajout{
     style: none;
     background-color: #CE1717;

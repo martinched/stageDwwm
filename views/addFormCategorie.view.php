@@ -16,22 +16,28 @@
 
 <div class='formulaire'>
     <form id='formCategorie' action="index.php?page=addFormCategorie" method="POST">
-	
-        <label for="nom_categorie">Nom de la categorie&nbsp;:&nbsp;</label>
 
-	<div class="autocomplete">
-	    <input require id="form-nom_categorie" value="<?=$_GET['nom_categorie']?>" type="text" name="nom_categorie">
-	</div>
-
+        <label for="categorie">Categorie&nbsp;:&nbsp;</label>
+	<input type="hidden" name="categorie" />
+	<select class='champ' name="categorie_ddl" onchange="DropDownChanged(this);">
+	    <option value="1">Meuble</option>
+	    <option value="2">Textile</option>
+	    <option value="3">Puériculture</option>
+	    <option value="4">Vaisselle</option>
+	    <option value="5">HiFi</option>
+	    <option value="6">Other..</option>
+	</select>
+	<input class='champ' type="text" name="categorie_txt" style="display: none;"/>
+	<br>
 	<label for="sous_categorie">Sous-categorie&nbsp;:&nbsp;</label>
-        <input id="form-sous_categorie" type="string" name="sous_categorie"></input>
+        <input class='champ' id="form-sous_categorie" type="string" name="sous_categorie"></input>
 	<br>
 
-	<label for="poids">Poids&nbsp;:&nbsp;</label>
-        <input id='form-poids_categorie' type='number' name="poids"/>
+	<label for="poids">Poids (en g)&nbsp;:&nbsp;</label>
+        <input class='champ' id='form-poids_categorie' type='number' name="poids"/>
 	<br>
 
-	<input id='form-categorieButton' type="submit" value="Envoyer le formulaire" />
+	<input class='champ btn' id='form-categorieButton' type="submit" value="Envoyer le formulaire" />
     </form> 
 </div>
 
