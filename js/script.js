@@ -54,9 +54,6 @@ function suppression(id, type) {
     }
 }
 
-
-
-
 function verifierDuree() {
   let durationIn = document.getElementById("form-temps_passe");
   let resultP = document.getElementById("output");
@@ -71,114 +68,9 @@ function verifierDuree() {
   });
 }
 
-
-
-
-/*
- * Code provenant de W3Schools
- * Affichant un menu auto-complétant (pour le formulaire d'ajout de sous-catégories)
- */
-function autocomplete(input, categories) {
-    var currentFocus;
-    input.addEventListener("input", function(e) {
-	var a, b, i, val = this.value;
-	closeAllLists();
-	if (!val) { return false;}
-	currentFocus = -1;
-	a = document.createElement("DIV");
-	a.setAttribute("id", this.id + "autocomplete-list");
-	a.setAttribute("class", "autocomplete-items");
-	this.parentNode.appendChild(a);
-
-	for (i = 0; i < categories.length; i++) {
-            if (categories[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-		b = document.createElement("DIV");
-		b.innerHTML = "<strong>" + categories[i].substr(0, val.length) + "</strong>";
-		b.innerHTML += categories[i].substr(val.length);
-		b.innerHTML += "<input type='hidden' value='" + categories[i] + "'>";
-		b.addEventListener("click", function(e) {
-		    input.value = this.getElementsByTagName("input")[0].value;
-		    closeAllLists();
-		});
-		a.appendChild(b);
-            }
-	}
-    });
-    /* affiche la liste totale au départ */
-    input.addEventListener("click",  function showList () {
-	closeAllLists();
-	/*create a DIV element that will contain the items (values):*/
-	a = document.createElement("DIV");
-	a.setAttribute("id", this.id + "autocomplete-list");
-	a.setAttribute("class", "autocomplete-items");
-	/*append the DIV element as a child of the autocomplete container:*/
-	this.parentNode.appendChild(a);
-	/*for each item in the categoriesay...*/
-	for (i = 0; i < categories.length; i++) {
-	    /*create a DIV element for each matching element:*/
-	    b = document.createElement("DIV");
-	    b.innerHTML += categories[i];
-            b.innerHTML += "<input type='hidden' value='" + categories[i] + "'>";
-            b.addEventListener("click", function(e) {
-		input.value = this.getElementsByTagName("input")[0].value;
-		closeAllLists();
-            });
-	    a.appendChild(b);
-	}
-    });
-    /*execute a function presses a key on the keyboard:*/
-    input.addEventListener("keydown", function(e) {
-	var x = document.getElementById(this.id + "autocomplete-list");
-	if (x) x = x.getElementsByTagName("div");
-	if (e.keyCode == 40) {        //down
-            currentFocus++;
-            addActive(x);
-	} else if (e.keyCode == 38) { //up
-            currentFocus--;
-            addActive(x);
-	} else if (e.keyCode == 13) { //enter
-            e.preventDefault();
-            if (currentFocus > -1) {
-		if (x) x[currentFocus].click();
-            }
-	}
-    });
-    function addActive(x) {
-	/*a function to classify an item as "active":*/
-	if (!x) return false;
-	/*start by removing the "active" class on all items:*/
-	removeActive(x);
-	if (currentFocus >= x.length) currentFocus = 0;
-	if (currentFocus < 0) currentFocus = (x.length - 1);
-	/*add class "autocomplete-active":*/
-	x[currentFocus].classList.add("autocomplete-active");
-    }
-    function removeActive(x) {
-	/*a function to remove the "active" class from all autocomplete items:*/
-	for (var i = 0; i < x.length; i++) {
-	    x[i].classList.remove("autocomplete-active");
-	}
-    }
-    function closeAllLists(elmnt) {
-	/*close all autocomplete lists in the document,
-	  except the one passed as an argument:*/
-	var x = document.getElementsByClassName("autocomplete-items");
-	for (var i = 0; i < x.length; i++) {
-	    if (elmnt != x[i] && elmnt != input){
-		x[i].parentNode.removeChild(x[i]);
-	    }
-	}
-    }
-    /*execute a function when someone clicks in the document:*/
-    document.addEventListener("click", function (e) {
-	closeAllLists(e.target);
-    });
-} 
-
 function DropDownChanged(oDDL) {
-    var oTextbox = oDDL.form.elements["lieu_txt"];
+    var oTextbox = oDDL.form.elements["txt_"+oDDL.id];
     if (oTextbox) {
-	console.log('coucou');
         oTextbox.style.display = (oDDL.value == "") ? "" : "none";
         if (oDDL.value == "")
             oTextbox.focus();
@@ -186,9 +78,12 @@ function DropDownChanged(oDDL) {
 }
 
 function FormSubmit(oForm) {
-    var oHidden = oForm.elements["lieu"];
-    var oDDL = oForm.elements["lieu_ddl"];
-    var oTextbox = oForm.elements["lieu_txt"];
-    if (oHidden && oDDL && oTextbox)
-        oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
+    var oHiddens = document.querySelectorAll('[id^="menu_"]');
+    oHiddens.forEach(function (oHidden) {
+	var nom_valeur = oHidden.name;
+	var oTextbox = oForm.elements["txt_"+nom_valeur];
+	var oDDL = oForm.elements["ddl_"+nom_valeur];
+	if (oHidden && oTextbox)
+            oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
+    });
 }

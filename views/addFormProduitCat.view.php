@@ -21,21 +21,27 @@
 </script>
 
 <form onsubmit="FormSubmit(this)" id='formProduit' action="index.php?page=formProduit" method="POST">
-        <label for="nom_categorie">Categorie:</label>
-        <select id="selectCat" name="nom_categorie">
+    <div>
+	<label for="nom_categorie">Categorie:</label>
+	<input id="menu_nom_categorie" type="hidden" name="nom_categorie" />
+	<select id="nom_categorie" class="champ" name="ddl_nom_categorie" onchange="DropDownChanged(this);">
             <?php 
-    while($categorie = $reponse->fetch()) {
+	    while($categorie = $reponse->fetch()) {
 	    ?>
                 <option value="<?= $categorie['nom_categorie'] ?>">
 		    <?= $categorie['nom_categorie'] ?></option>
             <?php
-     } 
+	    } 
             ?>            
-        </select>
-	<div class="formCat">
-	    <input id='form-action' type="hidden" name="action" value="" />
-            <input id='form-cat_button' type="submit" value="Ok!" />
-	</div>
+	    <option value="">Autre...</option>
+	</select>
+	<input type="text" name="txt_nom_categorie" style="display: none;" />
+    </div>
+
+    <div class="formCat">
+	<input id='form-action' type="hidden" name="action" value="" />
+        <input id='form-cat_button' type="submit" value="Ok!" />
+    </div>
     
     <br>
 
