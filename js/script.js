@@ -174,3 +174,21 @@ function autocomplete(input, categories) {
 	closeAllLists(e.target);
     });
 } 
+
+function DropDownChanged(oDDL) {
+    var oTextbox = oDDL.form.elements["lieu_txt"];
+    if (oTextbox) {
+	console.log('coucou');
+        oTextbox.style.display = (oDDL.value == "") ? "" : "none";
+        if (oDDL.value == "")
+            oTextbox.focus();
+    }
+}
+
+function FormSubmit(oForm) {
+    var oHidden = oForm.elements["lieu"];
+    var oDDL = oForm.elements["lieu_ddl"];
+    var oTextbox = oForm.elements["lieu_txt"];
+    if (oHidden && oDDL && oTextbox)
+        oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
+}

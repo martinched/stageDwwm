@@ -15,7 +15,7 @@
 	<option value="2">La Boissonnade</option>
 	<option value="3">St Roman</option>
 	<option value="4">St Croix</option>
-	<option value="5">Other..</option>
+	<option value="">Other..</option>
     </select> <input type="text" name="lieu_txt" style="display: none;" />
 </div>
 <div>

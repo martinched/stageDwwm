@@ -20,7 +20,7 @@
  });
 </script>
 
-    <form id='formProduit' action="index.php?page=formProduit" method="POST">
+<form onsubmit="FormSubmit(this)" id='formProduit' action="index.php?page=formProduit" method="POST">
         <label for="nom_categorie">Categorie:</label>
         <select id="selectCat" name="nom_categorie">
             <?php 
