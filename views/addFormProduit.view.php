@@ -9,14 +9,19 @@
 
 <div>
     <label for="lieu">Lieu de stockage&nbsp;:&nbsp;</label>
-    <input type="hidden" name="lieu" />
-    <select class="champ" name="lieu_ddl" onchange="DropDownChanged(this);">
+    <input id="menu_lieu" type="hidden" name="lieu" />
+    <select class="champ" name="ddl" onchange="DropDownChanged(this);">
 	<option value="1">Temple de Gabriac</option>
 	<option value="2">La Boissonnade</option>
 	<option value="3">St Roman</option>
 	<option value="4">St Croix</option>
+<<<<<<< HEAD
 	<option value="">autre?</option>
     </select> <input type="text" name="lieu_txt" style="display: none;" />
+=======
+	<option value="">Autre...</option>
+    </select> <input type="text" name="txt" style="display: none;" />
+>>>>>>> a1ac091 (Option Autre... dans le <select>)
 </div>
 <div>
     <label class="label" for="cout_reparation">Coût de réparation&nbsp;:&nbsp;</label>
