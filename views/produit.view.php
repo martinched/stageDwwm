@@ -42,6 +42,10 @@ while($product = $reponse->fetch()) {
 		    <?php $date = date_create ($product['temps_passe']);
 		    echo date_format ($date, "G \h i \m"); ?>
 		</div>
+		
+		<div>
+		    
+		</div>
 
 		<div>
 		    <input type="hidden" name="temps_passe" value="<?=$product['temps_passe']?>"> 

@@ -24,6 +24,10 @@ require('controllers/vente.controller.php');
 require('controllers/categorie.controller.php');
 require('controllers/produit.controller.php');
 require('controllers/home.controller.php');
+require('controllers/lieu.controller.php');
+//require('controllers/benne.controller.php');
+
+
 
 try{
     if( isset($_GET['page']) ) {
