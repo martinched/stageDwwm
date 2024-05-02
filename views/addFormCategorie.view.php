@@ -17,9 +17,11 @@
 		name="ddl_nom_categorie" onchange="DropDownChanged(this);">
 	    <?php
 	    foreach ($categories as $categorie) {
-	    ?>
-                <option value="<?=$categorie?>"><?=$categorie?></option>
-            <?php
+		echo "<option value='$categorie'";
+		if ($categorie == $_GET["nom_categorie"]) {
+		    echo ' selected';
+		}
+		echo ">$categorie</option>";
 	    }
 	    ?>
 	    <option value="">Autre...</option>
