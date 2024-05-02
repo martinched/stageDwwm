@@ -24,7 +24,7 @@
     <div>
 	<label for="nom_categorie">Categorie:</label>
 	<input id="menu_nom_categorie" type="hidden" name="nom_categorie" />
-	<select id="nom_categorie" class="champ" name="ddl_nom_categorie" onchange="DropDownChanged(this);">
+	<select id="nom_categorie" class="champ" name="ddl_nom_categorie"> <!-- onchange="DropDownChanged(this);"-->
             <?php 
 	    while($categorie = $reponse->fetch()) {
 	    ?>
@@ -33,7 +33,7 @@
             <?php
 	    } 
             ?>            
-	    <option value="">Autre...</option>
+	  <!--  <option value="">Autre...</option>-->
 	</select>
 	<input type="text" name="txt_nom_categorie" style="display: none;" />
     </div>
