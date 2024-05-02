@@ -63,6 +63,14 @@ li {
     padding: 1em;
 }
 
+details summary {
+  cursor: pointer;
+}
+
+details summary > * {
+  display: inline;
+}
+
 #formProduit, #bouton_enregistrer_vente{
     align-items: center;
     margin-bottom: 1em;
