@@ -22,7 +22,7 @@
 
 <form onsubmit="FormSubmit(this)" id='formProduit' action="index.php?page=formProduit" method="POST">
     <div>
-	<label for="nom_categorie">Categorie:</label>
+	<label for="nom_categorie">Catégorie:</label>
 	<input id="menu_nom_categorie" type="hidden" name="nom_categorie" />
 	<select id="nom_categorie" class="champ" name="ddl_nom_categorie"> <!-- onchange="DropDownChanged(this);"-->
             <?php 
