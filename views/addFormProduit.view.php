@@ -15,17 +15,8 @@
 	<option value="2">La Boissonnade</option>
 	<option value="3">St Roman</option>
 	<option value="4">St Croix</option>
-<<<<<<< HEAD
-	<option value="">autre?</option>
-    </select> <input type="text" name="lieu_txt" style="display: none;" />
-=======
 	<option value="">Autre...</option>
-<<<<<<< HEAD
-    </select> <input type="text" name="txt" style="display: none;" />
->>>>>>> a1ac091 (Option Autre... dans le <select>)
-=======
-    </select> <input type="text" name="txt_lieu" style="display: none;" />
->>>>>>> 1319a45 (Ajout de catégories dans le menu déroulant, en choisissant Autre...)
+    </select> <input type="text" name="lieu_txt" style="display: none;" />
 </div>
 <div>
     <label class="label" for="cout_reparation">Coût de réparation&nbsp;:&nbsp;</label>
