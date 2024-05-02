@@ -32,7 +32,7 @@ function afficherChampsVente(id_produit) {
     
     champQuantite.style.display = "block";
     champPrixLibre.style.display = "block";
-    enregistrerVente.style.display = "block";
+    enregistrerVente.style.display = "inline";
     updateProduit.value = 1;
 }
 

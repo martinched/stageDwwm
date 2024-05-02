@@ -13,7 +13,7 @@
 
 <input  id="updateProduit" type="hidden" name="vendu" value="0" />  
 <br>
-<input class="btn" id='form-produitButton' type="submit" value="Enregistrer" />
+<input class="btn" id='bouton_enregistrer_venteundefined' type="submit" value="Enregistrer" />
 </form> 
 
 <?php

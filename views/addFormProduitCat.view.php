@@ -4,7 +4,7 @@
     ob_start();
 ?>
 
-<h1>Ajouter un produit</h1>
+<u><h2>Ajouter un produit</h2></u>
 
 <script>
  // Indique au formulaire si on est dans une vente ou un produit
