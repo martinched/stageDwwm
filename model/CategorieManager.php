@@ -53,7 +53,7 @@ class CategorieManager extends Manager{
 	echo "On a ajouté la categorie $nom_categorie";
     }
     
-    public function addFormCategorie($nom_categorie,
+    public function formCategorie($nom_categorie,
 				     $nom_sous_categorie, $poids){
         $bd = $this->connexion();
         $requeteSQL = "SELECT * FROM categories WHERE nom_categorie='"

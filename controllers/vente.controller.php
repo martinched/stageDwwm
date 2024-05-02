@@ -34,13 +34,13 @@ class VenteController{
     public function choixCategories(){
         $venteManager = new CategorieManager();
         $reponse =  $venteManager->getCategories();
-        require ('views/addFormVenteCat.view.php');
+        require ('views/formVenteCat.view.php');
     }*/
     /*
     public function choixSousCategories($nom_categorie){
         $choixSousCategorie = new CategorieManager();
         $reponse =  $choixSousCategorie->getSousCategories($nom_categorie);
-        require ('views/addFormVenteSousCat.view.php');
+        require ('views/formVenteSousCat.view.php');
     }
      */
     public function autoriseVente($id_produit){
