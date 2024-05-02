@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 25, 2024 at 02:46 PM
--- Server version: 11.3.2-MariaDB
--- PHP Version: 8.3.6
+-- Hôte : localhost
+-- Généré le : jeu. 02 mai 2024 à 08:21
+-- Version du serveur : 11.3.2-MariaDB
+-- Version de PHP : 8.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,58 +18,50 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `petassou`
+-- Base de données : `petassou`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bennes`
+-- Structure de la table `bennes`
 --
 
 CREATE TABLE `bennes` (
   `benne` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `bennes`
+--
+
+INSERT INTO `bennes` (`benne`) VALUES
+('');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Structure de la table `categories`
 --
 
 CREATE TABLE `categories` (
   `nom_categorie` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`nom_categorie`) VALUES
-('Vaisselle');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lieux`
+-- Structure de la table `lieux`
 --
 
 CREATE TABLE `lieux` (
   `lieu` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `lieux`
---
-
-INSERT INTO `lieux` (`lieu`) VALUES
-('La Boissonade'),
-('Temple de Gabriac');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produits`
+-- Structure de la table `produits`
 --
 
 CREATE TABLE `produits` (
@@ -88,7 +80,7 @@ CREATE TABLE `produits` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sous_categories`
+-- Structure de la table `sous_categories`
 --
 
 CREATE TABLE `sous_categories` (
@@ -97,17 +89,10 @@ CREATE TABLE `sous_categories` (
   `poids` int(11) DEFAULT NULL COMMENT 'en gramme'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `sous_categories`
---
-
-INSERT INTO `sous_categories` (`nom_sous_categorie`, `nom_categorie`, `poids`) VALUES
-('Assiette', 'Vaisselle', 200);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ventes`
+-- Structure de la table `ventes`
 --
 
 CREATE TABLE `ventes` (
@@ -119,29 +104,29 @@ CREATE TABLE `ventes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `bennes`
+-- Index pour la table `bennes`
 --
 ALTER TABLE `bennes`
   ADD PRIMARY KEY (`benne`);
 
 --
--- Indexes for table `categories`
+-- Index pour la table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`nom_categorie`);
 
 --
--- Indexes for table `lieux`
+-- Index pour la table `lieux`
 --
 ALTER TABLE `lieux`
   ADD PRIMARY KEY (`lieu`);
 
 --
--- Indexes for table `produits`
+-- Index pour la table `produits`
 --
 ALTER TABLE `produits`
   ADD PRIMARY KEY (`id_produit`),
@@ -150,41 +135,41 @@ ALTER TABLE `produits`
   ADD KEY `Lieudestockage` (`lieu`);
 
 --
--- Indexes for table `sous_categories`
+-- Index pour la table `sous_categories`
 --
 ALTER TABLE `sous_categories`
   ADD PRIMARY KEY (`nom_sous_categorie`),
   ADD KEY `nom_categorie` (`nom_categorie`);
 
 --
--- Indexes for table `ventes`
+-- Index pour la table `ventes`
 --
 ALTER TABLE `ventes`
   ADD PRIMARY KEY (`id_vente`),
   ADD KEY `id_produit` (`id_produit`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `produits`
+-- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
--- AUTO_INCREMENT for table `ventes`
+-- AUTO_INCREMENT pour la table `ventes`
 --
 ALTER TABLE `ventes`
-  MODIFY `id_vente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_vente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `produits`
+-- Contraintes pour la table `produits`
 --
 ALTER TABLE `produits`
   ADD CONSTRAINT `Benne` FOREIGN KEY (`benne`) REFERENCES `bennes` (`benne`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -192,13 +177,13 @@ ALTER TABLE `produits`
   ADD CONSTRAINT `SousCat` FOREIGN KEY (`nom_sous_categorie`) REFERENCES `sous_categories` (`nom_sous_categorie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `sous_categories`
+-- Contraintes pour la table `sous_categories`
 --
 ALTER TABLE `sous_categories`
   ADD CONSTRAINT `Categorie` FOREIGN KEY (`nom_categorie`) REFERENCES `categories` (`nom_categorie`);
 
 --
--- Constraints for table `ventes`
+-- Contraintes pour la table `ventes`
 --
 ALTER TABLE `ventes`
   ADD CONSTRAINT `ventes_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`) ON DELETE NO ACTION ON UPDATE CASCADE;
