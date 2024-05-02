@@ -74,12 +74,12 @@ class ProduitController{
 					       $row['id_produit'],
 					       $formValues['prix_libre']);
 		    #TODO document_root
-		    header ('location:index.php?page=ventes');
+		    header ('location: /~martin/index.php?page=ventes');
 		    exit();
 		}
 	    } else {
 		#TODO document_root
-		header ('location:index.php?page=produits');
+		header ('location: /~martin/index.php?page=produits');
 		exit();
 	    }
 	}

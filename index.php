@@ -85,14 +85,14 @@ try{
 		    $_GET['nom_sous_categorie']);
 		break;
 
-	    case 'addFormCategorie':
+	    case 'formCategorie':
 		if(isset($_POST['nom_categorie'])) {
 		    $nom_categorie = $_POST['nom_categorie'];
 		    $sous_categorie = $_POST['sous_categorie'];
 		    $poids = $_POST['poids'];
 		    
 		    $categorieController = new CategorieController();
-		    $categorieController->addFormCategorie(
+		    $categorieController->formCategorie(
 			$nom_categorie, $sous_categorie, $poids);
 		    $categorieController->listSousCategories();
 		}else{
@@ -102,7 +102,7 @@ try{
 		    {
 			$categories[] = $row['nom_categorie'];
 		    }
-		    require('views/addFormCategorie.view.php');
+		    require('views/formCategorie.view.php');
 		}
 		break;
 	    default:
