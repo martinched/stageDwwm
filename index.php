@@ -69,11 +69,6 @@ try{
                 $venteController->deleteVente($_POST['id_vente']);
 		break;
 
-            case 'categories':
-                $categorieController = new CategorieController();
-                $categorieController->listCategories();
-		break;
-
             case 'gestionCategories':
                 $categorieController = new CategorieController();
                 $categorieController->listSousCategories();
