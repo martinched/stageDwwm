@@ -5,11 +5,11 @@
     ob_start()
 ?>
 
-<u><h2>Ajouter une catégorie</h2></u>
+<h2>Ajouter une catégorie</h2>
 
 <div class='formulaire'>
     <form onsubmit="FormSubmit(this)" id='formCategorie'
-	  action="index.php?page=addFormCategorie"
+	  action="index.php?page=formCategorie"
 	  method="POST">
         <label for="categorie">Categorie&nbsp;:&nbsp;</label>
 	<input id="menu_nom_categorie" type="hidden" name="nom_categorie" />

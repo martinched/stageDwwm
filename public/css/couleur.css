@@ -1,0 +1,37 @@
+html{
+    background: #EBD27F url('../images/pageglare.png') no-repeat fixed;
+
+}
+
+body {
+    background-color:#8D3535; 
+    
+}
+
+h1, h2 {
+    color:#81BACC;
+}
+
+.btn, .suppr, .sell, .ajout{
+    background-color: #FFF570;
+    color: #3F4A55;
+}
+
+.card{
+    color: #81BACC;
+    
+}
+
+#formProduit label, #formCategorie label, #form label{
+    color:#81BACC;
+}
+/*
+.card{
+    background-color:#E9CF7C;
+    color: #8D3535;
+}
+.card .suppr, .sell{
+    background-color: #8D3535;
+    color:#E9CF7C;
+}
+*/

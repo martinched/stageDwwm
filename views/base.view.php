@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title> <?= $title ?> </title>
         <link rel="stylesheet" href="./public/css/style.css" />
+	<link rel="stylesheet" href="./public/css/couleur.css" />
         <script src="js/script.js" defer></script>
 	<style>
 	 input:invalid:not(:focus) { background: orange; }
@@ -12,7 +13,7 @@
 
 <body>
     <header>
-        <h1>La Pétappli</h1>
+        <h1>LA PÉTAPPLI</h1>
    
 	<nav>
 	    <a href="index.php?page=produits"> <button class="btn">Produits</button></a><br>

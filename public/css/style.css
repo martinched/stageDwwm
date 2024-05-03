@@ -1,5 +1,13 @@
+html{
+    margin: 0;
+}
+
+
 body {
-    margin:  1em;
+    box-shadow: 0 0 11px 6px rgba(0, 0, 0, 0.4);
+    border-radius:5px;
+    border: 2px solid #CFA93F;
+    margin:  1em auto;
     font: 16px Arial;
     display: flex;
     flex-direction: column;
@@ -7,6 +15,8 @@ body {
     align-items: center;
     text-align: center;
     background-color: #F4E6B8;
+    width: 50em; 
+    padding-bottom: 3em
 }
 
 .separation{
@@ -77,8 +87,7 @@ li {
 #form-cat_button{
     width: 100%;
     margin-top: 1em;
-    color: #FFF570;
-    background-color: green;
+    
 }
 
 #bouton_enregistrer_vente, .quantite, .firstMargin, .newSouCat{
@@ -181,3 +190,9 @@ footer {
     display: flex;
     flex-direction: column;
 }
+
+@media screen and (max-width: 850px) {
+  body {
+      width: auto;
+      margin: 1em;
+  }

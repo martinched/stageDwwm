@@ -4,9 +4,9 @@ $title = "Gestion des catégories";
 ob_start()
 ?>
 
-<u><h2>Gestion des catégories</h2></u>
+<h2>Gestion des catégories</h2>
 
-<a href='index.php?page=addFormCategorie'><button class="btn">Nouvelle catégorie</button></a>
+<a href='index.php?page=formCategorie'><button class="btn">Nouvelle catégorie</button></a>
 
     <?php
     foreach ($tableau as $nomcat => $reponsecat) {
@@ -16,7 +16,7 @@ ob_start()
             <p class="liensboutons">
 		<b><u><?= $nomcat ?></u></b> 
 		<a class="poubelle" href='index.php?page=deleteCategorie&nom_categorie=<?=$nomcat?>'>&#x1F5D1;</a><br>
-		<a  href='index.php?page=addFormCategorie&nom_categorie=<?=$nomcat?>'><button class="btn newSouCat">Nouvelle sous-catégorie</button></a><br>
+		<a  href='index.php?page=formCategorie&nom_categorie=<?=$nomcat?>'><button class="btn newSouCat">Nouvelle sous-catégorie</button></a><br>
 		
 		<div class="multicard">
 		<?php

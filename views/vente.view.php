@@ -4,11 +4,11 @@ $title = "Liste des ventes";
 ob_start();
 ?>
 
-<u><h2>Liste des ventes</h2></u>
+<h2>Liste des ventes</h2>
 
 <a href='index.php?page=formProduit'> <button class="ajout">Enregistrer une vente</button></a>  
- 
-<div>
+
+<div class="multicard">
     <?php
     // displays each row of the following columns
         while($vente= $reponse->fetch()) {

@@ -1,0 +1,10 @@
+#8D3535 Dusty red
+#5F91A6 Greyblue
+#E9CF7C Sand
+#81BACC Greyblue
+#FFFF00 Yellow
+#00FF00 Fluro green
+#3F4A55 Antracite
+
+#EBD27F url('../images/pageglare.png') no-repeat fixed;
+  margin: 0 auto;
