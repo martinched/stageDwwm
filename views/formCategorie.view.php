@@ -29,11 +29,11 @@
 	<input class='champ' type="text" name="txt_nom_categorie" style="display: none;"/>
 	<br>
 	<label for="sous_categorie">Sous-categorie&nbsp;:&nbsp;</label>
-        <input class='champ' id="form-sous_categorie" type="string" name="sous_categorie"></input>
+        <input class='champ' id="form-sous_categorie" type="string" required name="sous_categorie"></input>
 	<br>
 
 	<label for="poids">Poids (en g)&nbsp;:&nbsp;</label>
-        <input class='champ' id='form-poids_categorie' type='number' name="poids"/>
+        <input class='champ' id='form-poids_categorie' type='number' required name="poids"/>
 	<br>
 
 	<input class='champ btn' id='form-categorieButton' type="submit" value="Envoyer le formulaire" />
