@@ -4,7 +4,7 @@
     ob_start();
 ?>
 
-<u><h2>Ajouter un produit</h2></u>
+<h2>Ajouter un produit</h2>
 
     <div class="formSousCat">
         <form onsubmit="FormSubmit(this)" id='form' action="index.php?page=formProduit" method="POST">

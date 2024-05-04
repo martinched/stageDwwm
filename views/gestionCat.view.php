@@ -4,11 +4,11 @@ $title = "Gestion des catégories";
 ob_start()
 ?>
 
-<u><h2>Gestion des catégories</h2></u>
+<h2>Gestion des catégories</h2>
 
-<a href='index.php?page=addFormCategorie'><button class="btn">Nouvelle catégorie</button></a>
+<a href='index.php?page=formCategorie'><button class="btn">Nouvelle catégorie</button></a>
+
 <div class="multicard">
-
     <?php
     foreach ($tableau as $nomcat => $reponsecat) {
 	$sousCats = $reponsecat->fetchAll();
@@ -32,9 +32,8 @@ ob_start()
 		    }
 		    ?>
 		</ul>
-		<a  href='index.php?page=addFormCategorie&nom_categorie=<?=$nomcat?>'><button class="btn newSouCat">Nouvelle sous-catégorie</button></a><br>
+		<a  href='index.php?page=formCategorie&nom_categorie=<?=$nomcat?>'><button class="btn newSouCat">Nouvelle sous-catégorie</button></a><br>
 	    </details>
-            </p>
 	</div>
     <?php
     }

@@ -37,9 +37,9 @@
 
 <?php
 if ($action == "produit") {
-    require ("views/addFormProduitFin.view.php");
+    require ("views/formProduitFin.view.php");
 } elseif ($action == "vente") {
-    require ("views/addFormProduitVente.view.php");
+    require ("views/formProduitVente.view.php");
 } else {
-    echo "Merde";
+    echo "zuteu!";
 }

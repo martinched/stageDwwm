@@ -4,7 +4,7 @@
     ob_start();
 ?>
 
-<u><h2>Ajouter un produit</h2></u>
+<h2>Ajouter un produit</h2>
 
 <script>
  // Indique au formulaire si on est dans une vente ou un produit
@@ -40,7 +40,7 @@
 
     <div class="formCat">
 	<input id='form-action' type="hidden" name="action" value="" />
-        <input id='form-cat_button' type="submit" value="Ok!" />
+        <input class="btn" id='form-cat_button' type="submit" value="Ok!" />
     </div>
     
     <br>

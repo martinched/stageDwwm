@@ -4,11 +4,11 @@ $title = "Liste des produits";
 ob_start()
 ?>
 
-<u><h2>Liste des produits</h2></u>
+<h2>Liste des produits</h2>
 
 <a href="index.php?page=formProduit"> <button class="ajout"> Ajouter un produit</button></a>
-
-<?php
+<div class="multicard">
+<?php 
 while($product = $reponse->fetch()) {
 ?>	
     <div class="card">
@@ -18,7 +18,7 @@ while($product = $reponse->fetch()) {
 		    <u><b><?= $product['nom_produit'] ?></b></u>
 		    <input type="hidden" name="nom_produit" value="<?=$product['nom_produit']?>">
 		</div>
-
+		
 		<div>
 		    <?= $product['description'] ?>
 		    <input type="hidden" name="description" value="<?=$product['description']?>">
@@ -83,16 +83,18 @@ while($product = $reponse->fetch()) {
 			   style="display:none" type="submit" name="" value="Enregister la vente">
 		    </div>
 		</div>
-	    </div>  
+		    </div>  
 	</form>
 	
 	<input class="suppr" type="button" value="Supprimer"
 	       onclick="suppression(<?=$product['id_produit']?>, 'produit')"> 
     </div>
-    
+
 <?php
 }
-
+?>
+</div>
+<?php
 $content = ob_get_clean();
 
 require('base.view.php');
