@@ -74,6 +74,8 @@ function DropDownChanged(oDDL) {
         oTextbox.style.display = (oDDL.value == "") ? "" : "none";
         if (oDDL.value == "")
             oTextbox.focus();
+	else if (oDDL.value == "%NEW%")
+	    window.location.href = "index.php?page=gestionCategories";
     }
 }
 

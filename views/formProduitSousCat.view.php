@@ -11,7 +11,7 @@
             <label for="nom_sous_categorie">Sous catégories:</label>
 	    <input id="menu_nom_sous_categorie" type="hidden" name="nom_sous_categorie" />
             <select id="nom_sous_categorie" class="champ"
-		    name="ddl_nom_sous_categorie"> <!-- onclick="DropDownChanged(this);" -->
+		    name="ddl_nom_sous_categorie" onchange="DropDownChanged(this);">
                 <?php
                     while($sousCategorie = $reponse->fetch()) {
                 ?>
@@ -21,7 +21,7 @@
                 <?php
                 }
                 ?>
-		<!-- 	<option value="">Autre...</option> -->
+ 		<option value="%NEW%">Autre...</option>
             </select>
 	    <input type="text" name="txt_nom_sous_categorie" style="display: none;" />
 
