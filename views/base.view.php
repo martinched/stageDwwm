@@ -16,9 +16,9 @@
         <h1>LA PÉTAPPLI</h1>
    
 	<nav>
-	    <a href="index.php?page=produits"> <button class="btn">Produits</button></a><br>
-	    <a href="index.php?page=ventes"> <button class="btn">Ventes</button></a><br>
-	    <a href="index.php?page=gestionCategories"> <button class="btn">Catégories</button></a><br>
+	    <a href="index.php?page=produits#titreProduits"> <button class="btn">Produits</button></a><br>
+	    <a href="index.php?page=ventes#titreVentes"> <button class="btn">Ventes</button></a><br>
+	    <a href="index.php?page=gestionCategories#titreCategories"> <button class="btn">Catégories</button></a><br>
 	</nav>
     </header>
 
