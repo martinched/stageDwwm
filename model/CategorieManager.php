@@ -105,7 +105,7 @@ class CategorieManager extends Manager{
 	    $requetePrepare->execute($parameterArray);
 	    echo 'La sous-categorie a bien été supprimée';
 	} catch(Exception $e){
-	    throw new Exception('Problème de récuperation des données');
+	    throw new Exception('Impossible de supprimer cette sous-catégorie car elle contient encore des produit (veuillez contacter les developpeurs');
 	}
     }
 }

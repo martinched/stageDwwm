@@ -73,6 +73,10 @@ li {
     padding: 1em;
 }
 
+.sousCats{
+    margin: 0.5em;
+}
+
 details summary {
   cursor: pointer;
 }
@@ -180,4 +184,16 @@ footer {
   body {
       width: auto;
       margin: 1em;
+      font-size: 23px;
   }
+  .btn, .suppr, .sell, .ajout{
+      font-size: 23px;
+      
+  }
+  nav .btn{
+      margin: 1em;
+  }
+  h1, h2{
+      font-size: 30px
+  }
+}

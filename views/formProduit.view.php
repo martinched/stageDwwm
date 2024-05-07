@@ -4,8 +4,14 @@
     <input class="champ"  required id='form-nom_produit' type="string" name="nom_produit"/>
 </div>
 
+<div>
 <textarea class="champ" maxlength=255 id="form-description" name="description" placeholder="Description"></textarea>
-<br>
+</div>
+
+<div>
+    <label class="label" for="photo">Ajouter une photo&nbsp;:</label>
+    <input type="file" id="photo" name="photo"><br><br>
+</div>
 
 <div>
     <label for="lieu">Lieu de stockage&nbsp;:&nbsp;</label>

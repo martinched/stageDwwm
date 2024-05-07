@@ -4,7 +4,7 @@ $title = "Gestion des catégories";
 ob_start()
 ?>
 
-<h2>Gestion des catégories</h2>
+<h2 id="titreCategories">Gestion des catégories</h2>
 
 <a href='index.php?page=formCategorie'><button class="btn">Nouvelle catégorie</button></a>
 
@@ -23,7 +23,7 @@ ob_start()
 		    <?php
 		    foreach ($sousCats as $sousCat) {
 		    ?>
-			<li>
+			<li class="sousCats">
 			    <?= $sousCat['nom_sous_categorie'] ?>
 			    (<?= $sousCat['poids'] ?>&nbsp;g)
 			    <a class="poubelle" href='index.php?page=deleteSousCategorie&nom_sous_categorie=<?=$sousCat['nom_sous_categorie']?>'>&#x1F5D1;</a>
