@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 07 mai 2024 à 14:03
+-- Généré le : mar. 07 mai 2024 à 14:56
 -- Version du serveur : 11.3.2-MariaDB
--- Version de PHP : 8.3.6
+-- Version de PHP : 8.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,6 +31,23 @@ CREATE TABLE `bennes` (
   `benne` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `bennes`
+--
+
+INSERT INTO `bennes` (`benne`) VALUES
+(''),
+('bois'),
+('chimique'),
+('DEEE'),
+('gravat'),
+('grosElec'),
+('maison'),
+('metal'),
+('sportLoisir'),
+('thermique'),
+('toutVenant');
+
 -- --------------------------------------------------------
 
 --
@@ -40,6 +57,62 @@ CREATE TABLE `bennes` (
 CREATE TABLE `categories` (
   `nom_categorie` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `categories`
+--
+
+INSERT INTO `categories` (`nom_categorie`) VALUES
+('Électroportatif');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `dechets`
+--
+
+CREATE TABLE `dechets` (
+  `dechet` varchar(255) NOT NULL,
+  `benne` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `dechets`
+--
+
+INSERT INTO `dechets` (`dechet`, `benne`) VALUES
+('boisSeul', 'bois'),
+('ecran', 'DEEE'),
+('equipement electrique', 'DEEE'),
+('equipement electronique', 'DEEE'),
+('ordi portable', 'DEEE'),
+('TV', 'DEEE'),
+('ardoise', 'gravat'),
+('beton', 'gravat'),
+('carrelage', 'gravat'),
+('deblais', 'gravat'),
+('parpaing', 'gravat'),
+('pierre', 'gravat'),
+('electro-menager\r\n', 'grosElec'),
+('bricolage(+80cm)', 'maison'),
+('jouet (+80cm)', 'maison'),
+('literie', 'maison'),
+('mobilier', 'maison'),
+('metal(tout type)', 'metal'),
+('ballon', 'sportLoisir'),
+('peche', 'sportLoisir'),
+('raquettes', 'sportLoisir'),
+('rollers', 'sportLoisir'),
+('ski', 'sportLoisir'),
+('trotinette', 'sportLoisir'),
+('velo', 'sportLoisir'),
+('thermique', 'thermique'),
+('isolant', 'toutVenant'),
+('moquette', 'toutVenant'),
+('plastiques', 'toutVenant'),
+('plâtre', 'toutVenant'),
+('PVC', 'toutVenant'),
+('verre', 'toutVenant');
 
 -- --------------------------------------------------------
 
@@ -122,6 +195,13 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`nom_categorie`);
 
 --
+-- Index pour la table `dechets`
+--
+ALTER TABLE `dechets`
+  ADD PRIMARY KEY (`dechet`),
+  ADD KEY `benne` (`benne`);
+
+--
 -- Index pour la table `lieux`
 --
 ALTER TABLE `lieux`
@@ -184,12 +264,18 @@ ALTER TABLE `ventes`
 --
 
 --
+-- Contraintes pour la table `dechets`
+--
+ALTER TABLE `dechets`
+  ADD CONSTRAINT `dechets_ibfk_1` FOREIGN KEY (`benne`) REFERENCES `bennes` (`benne`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Contraintes pour la table `produits`
 --
 ALTER TABLE `produits`
-  ADD CONSTRAINT `Benne` FOREIGN KEY (`benne`) REFERENCES `bennes` (`benne`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Lieudestockage` FOREIGN KEY (`lieu`) REFERENCES `lieux` (`lieu`),
-  ADD CONSTRAINT `SousCat` FOREIGN KEY (`nom_sous_categorie`) REFERENCES `sous_categories` (`nom_sous_categorie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `SousCat` FOREIGN KEY (`nom_sous_categorie`) REFERENCES `sous_categories` (`nom_sous_categorie`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `bennes` FOREIGN KEY (`benne`) REFERENCES `bennes` (`benne`);
 
 --
 -- Contraintes pour la table `produits_vendus`
