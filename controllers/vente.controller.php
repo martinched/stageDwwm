@@ -25,50 +25,50 @@ require('model/VenteManager.php');
 
 
 class VenteController{
-    public function listVentes(){
+    public function getVentes(){
         $venteManager = new VenteManager();
         $reponse = $venteManager->getVentes();
-        require ('views/vente.view.php');
-    }
-/*
-    public function choixCategories(){
-        $venteManager = new CategorieManager();
-        $reponse =  $venteManager->getCategories();
-        require ('views/formVenteCat.view.php');
-    }*/
-    /*
-    public function choixSousCategories($nom_categorie){
-        $choixSousCategorie = new CategorieManager();
-        $reponse =  $choixSousCategorie->getSousCategories($nom_categorie);
-        require ('views/formVenteSousCat.view.php');
-    }
-     */
-    public function autoriseVente($id_produit){
-	$venteManager = new VenteManager();
-	$reponse = $venteManager->getVentes();
-	$resultats = $reponse->fetchAll();
-	foreach($resultats as $vente){
-	    try{
-		if($vente['id_produit'] == $id_produit){
-		    throw new Exception ("message: Une vente existe déjà pour ce produit!");
-		}
-	    }catch(Exception $e){
-		$error = $e->getMessage();
-		require('views/error.view.php');
-		exit();
-	    }
-	}
-	return true;
+	return $reponse;
     }
 
-    public function addVente($quantite, $id_produit, $prix_libre){
+    public function addVente($prix_libre){
 	$venteManager = new VenteManager();
-	$reponse = $venteManager->VendreUnProduit($id_produit);
-	$reponse = $venteManager->addVente($quantite, $id_produit, $prix_libre);
+	return $venteManager->addVente($prix_libre);
     }
 
     public function deleteVente($id_vente){
-	    $venteManager = new VenteManager();
-	    return $venteManager->deleteVente($id_vente);
+	$venteManager = new VenteManager();
+	return $venteManager->deleteVente($id_vente);
+    }
+
+    ##
+    ## Fonctions pour produits_vendus
+    ##
+
+    public function addProduitVendu($id_produit, $id_vente){
+	$venteManager = new VenteManager();
+	$venteManager->addProduitVendu ($id_produit, $id_vente);
+    }
+    
+    public function listProduitsVendus(){
+	# Initialisations
+	$tableau = array();
+	$produitManager = new ProduitManager();
+	$venteManager = new VenteManager();
+	# On récupère les ventes
+	$reponseVentes = $venteManager->getVentes();
+	$ventes = $reponseVentes->fetchAll ();
+	# Pour chaque vente
+	foreach ($ventes as $col => $val) {
+	    # On récupère les produits vendus associés
+	    $reponsePV = $venteManager->getProduitsVendus($val["id_vente"]);
+	    # Pour chaque produit vendu associé
+	    while ($produitVendu = $reponsePV->fetch ()) {
+		# On récupère les détails du produit
+		$reponseP = $produitManager->getProduit($produitVendu["id_produit"]);
+		$tableau[$val["id_vente"]][] = $reponseP->fetch ();
+	    }
 	}
+	require ('views/produitsVendus.view.php');
+    }
 }

@@ -25,27 +25,38 @@ require_once("Manager.php");
 
 class ProduitManager extends Manager{
 
-    public function getProduits($vendu){ 
+    public function getProduit ($id_produit){ 
         $bd = $this->connexion(); 
         $reponse = $bd->query(
             'SELECT p.id_produit, p.nom_sous_categorie, p.nom_produit, p.description,
-             p.date_enregistrement, p.cout_reparation, p.temps_passe, p.vendu, p.lieu, p.benne, sc.nom_categorie, sc.poids
+             p.date_enregistrement, p.cout_reparation, p.temps_passe, p.lieu,
+             p.benne, sc.nom_categorie, sc.poids
              FROM produits p INNER JOIN sous_categories sc ON p.nom_sous_categorie = sc.nom_sous_categorie
-             WHERE p.vendu = '.$vendu.'
-             ORDER BY p.id_produit DESC');
-
+             WHERE p.id_produit = '.$id_produit);
         return $reponse;
     }
-
-    public function addProduit($nom_sous_categorie, $nom_produit, $description, $lieu, $cout_reparation, $temps_passe, $vendu){
+    
+    public function getProduits(){ 
+        $bd = $this->connexion();
+        $reponse = $bd->query(
+            'SELECT p.id_produit, p.nom_sous_categorie, p.nom_produit, p.description,
+             p.date_enregistrement, p.cout_reparation, p.temps_passe, p.lieu,
+             p.benne, sc.nom_categorie, sc.poids
+             FROM produits p INNER JOIN sous_categories sc ON p.nom_sous_categorie = sc.nom_sous_categorie
+             LEFT JOIN produits_vendus pv ON p.id_produit = pv.id_produit WHERE pv.id_produit IS NULL
+             ORDER BY p.id_produit DESC');
+        return $reponse;
+    }
+    
+    public function addProduit($nom_sous_categorie, $nom_produit, $description, $lieu, $cout_reparation, $temps_passe){
         $bd = $this->connexion();
         $requeteSQL =
             "INSERT INTO produits(
                 `nom_produit`,`description`, `nom_sous_categorie`,
-                 `cout_reparation`, `temps_passe`, `vendu`, `lieu`, `benne`)
+                 `cout_reparation`, `temps_passe`, `lieu`, `benne`)
             VALUES (
                 :nom_produit, :description, :nom_sous_categorie,
-                :cout_reparation, :temps_passe, :vendu, :lieu, :benne)";
+                :cout_reparation, :temps_passe, :lieu, :benne)";
 
         $requetePrepare = $bd->prepare($requeteSQL);
 
@@ -55,7 +66,6 @@ class ProduitManager extends Manager{
             ':nom_sous_categorie' =>  htmlspecialchars($nom_sous_categorie),
             ':cout_reparation' => $cout_reparation,
             ':temps_passe' => $temps_passe,
-            ':vendu' => htmlspecialchars($vendu),
 	    ':lieu' => htmlspecialchars($lieu),
 	    ':benne' => "" //htmlspecialchars($benne)
         );

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 02 mai 2024 à 08:21
+-- Généré le : mar. 07 mai 2024 à 14:03
 -- Version du serveur : 11.3.2-MariaDB
--- Version de PHP : 8.3.4
+-- Version de PHP : 8.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,13 +30,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `bennes` (
   `benne` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `bennes`
---
-
-INSERT INTO `bennes` (`benne`) VALUES
-('');
 
 -- --------------------------------------------------------
 
@@ -71,10 +64,21 @@ CREATE TABLE `produits` (
   `date_enregistrement` datetime NOT NULL DEFAULT current_timestamp(),
   `cout_reparation` float DEFAULT 0,
   `temps_passe` time DEFAULT NULL,
-  `vendu` tinyint(4) NOT NULL DEFAULT 0,
   `nom_sous_categorie` varchar(50) NOT NULL,
   `lieu` varchar(50) NOT NULL,
   `benne` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produits_vendus`
+--
+
+CREATE TABLE `produits_vendus` (
+  `id` int(11) NOT NULL,
+  `id_produit` int(11) NOT NULL,
+  `id_vente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -97,10 +101,8 @@ CREATE TABLE `sous_categories` (
 
 CREATE TABLE `ventes` (
   `id_vente` int(11) NOT NULL,
-  `quantite` int(11) NOT NULL DEFAULT 1,
   `date_vente` datetime NOT NULL DEFAULT current_timestamp(),
-  `prix_libre` float DEFAULT NULL,
-  `id_produit` int(11) NOT NULL
+  `prix_libre` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -135,6 +137,14 @@ ALTER TABLE `produits`
   ADD KEY `Lieudestockage` (`lieu`);
 
 --
+-- Index pour la table `produits_vendus`
+--
+ALTER TABLE `produits_vendus`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `pkproduits_vendus` (`id_produit`,`id_vente`),
+  ADD KEY `fkventes` (`id_vente`);
+
+--
 -- Index pour la table `sous_categories`
 --
 ALTER TABLE `sous_categories`
@@ -145,8 +155,7 @@ ALTER TABLE `sous_categories`
 -- Index pour la table `ventes`
 --
 ALTER TABLE `ventes`
-  ADD PRIMARY KEY (`id_vente`),
-  ADD KEY `id_produit` (`id_produit`);
+  ADD PRIMARY KEY (`id_vente`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -156,13 +165,19 @@ ALTER TABLE `ventes`
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+
+--
+-- AUTO_INCREMENT pour la table `produits_vendus`
+--
+ALTER TABLE `produits_vendus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `ventes`
 --
 ALTER TABLE `ventes`
-  MODIFY `id_vente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_vente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- Contraintes pour les tables déchargées
@@ -177,16 +192,17 @@ ALTER TABLE `produits`
   ADD CONSTRAINT `SousCat` FOREIGN KEY (`nom_sous_categorie`) REFERENCES `sous_categories` (`nom_sous_categorie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Contraintes pour la table `produits_vendus`
+--
+ALTER TABLE `produits_vendus`
+  ADD CONSTRAINT `fkproduits` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fkventes` FOREIGN KEY (`id_vente`) REFERENCES `ventes` (`id_vente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Contraintes pour la table `sous_categories`
 --
 ALTER TABLE `sous_categories`
   ADD CONSTRAINT `Categorie` FOREIGN KEY (`nom_categorie`) REFERENCES `categories` (`nom_categorie`);
-
---
--- Contraintes pour la table `ventes`
---
-ALTER TABLE `ventes`
-  ADD CONSTRAINT `ventes_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

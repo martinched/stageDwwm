@@ -31,7 +31,7 @@ class ProduitController{
         $reponse = $produitManager->getProduits(0);
         require ('views/produit.view.php');
     }
-    
+
     public function choixCategories(){
         $choixCategorie = new CategorieManager();
         $reponse =  $choixCategorie->getCategories();
@@ -44,6 +44,11 @@ class ProduitController{
         require ('views/formProduitSousCat.view.php');
     }
 
+    public function choixLieux () {
+	$choixLieux = new LieuManager();
+	return $choixLieux->getLieux ();
+    }
+
     public function formProduit($formValues) {
 	# 1 Si l'utilisateur n'a pas choisi une catégorie
 	if(!isset($formValues['nom_categorie']) && !isset($formValues['nom_sous_categorie'])) {
@@ -51,6 +56,9 @@ class ProduitController{
 	    # 2 S'il n'a pas rempli de nom_produit
 	} elseif (isset($formValues['nom_categorie']) && !isset($formValues['nom_sous_categorie'])) {
 	    $this->choixSousCategories($formValues['nom_categorie']);
+	    # TODO
+	    # Tentative de choix des lieux
+	    $reponse = $this->choixLieux();
 	    $action = $formValues['action'];
 	    require('views/formProduit.view.php');
 	    # On enregistre
@@ -62,23 +70,20 @@ class ProduitController{
 		$formValues['description'],
 		$formValues['lieu'],
 		$formValues['cout_reparation'],
-		$formValues['temps_passe'].":00",
-		$formValues['vendu']);
+		$formValues['temps_passe'].":00");
 
 	    if ($formValues['vendu']) { # et la vente
 		$venteController = new VenteController();
 		$reponse = $addProduitManager->getProduits($formValues['vendu']);
-		$row = $reponse->fetch();
-		if ($venteController->autoriseVente($row['id_produit'])) {
-		    $venteController->addVente($formValues['quantite'],
-					       $row['id_produit'],
-					       $formValues['prix_libre']);
-		    #TODO document_root
-		    header ('location:index.php?page=ventes');
-		    exit();
-		}
+		$dernierProduit = $reponse->fetch();
+		$venteController->addVente($formValues['prix_libre']);
+		$reponse = $venteController->getVentes();
+		$derniereVente = $reponse->fetch ();
+		$venteController->addProduitVendu($dernierProduit['id_produit'],
+						  $derniereVente['id_vente']);
+		header ('location:index.php?page=ventes');
+		exit();
 	    } else {
-		#TODO document_root
 		header ('location:index.php?page=produits');
 		exit();
 	    }

@@ -1,11 +1,6 @@
 <input class="btn" type="button" value="Vendre" onclick="this.hidden=true;afficherChampsVente()"><br>
 
 <!-- le 'undefined' vient dun id produit non-definit car on crer le produit au moment de la vente -->
-<div id="champQuantiteundefined" style="display:none;">
-    <label for="quantite">Quantité&nbsp;:&nbsp;</label>
-    <input type="number" id="quantite" name="quantite">
-</div>
-
 <div id="champPrixundefined" style="display:none;">
     <label for="prix_libre">Prix libre&nbsp;:&nbsp;</label>
     <input type="number" id="prix_libre" name="prix_libre"> €

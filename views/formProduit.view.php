@@ -11,10 +11,11 @@
     <label for="lieu">Lieu de stockage&nbsp;:&nbsp;</label>
     <input id="menu_lieu" type="hidden" name="lieu" />
     <select id="lieu" class="champ" name="ddl_lieu" onchange="DropDownChanged(this);">
-	<option value="1">Temple de Gabriac</option>
-	<option value="2">La Boissonnade</option>
-	<option value="3">St Roman</option>
-	<option value="4">St Croix</option>
+	<?php
+	while ($lieu = $reponse->fetch ()) {
+            echo "<option value='".$lieu["lieu"]."'>".$lieu["lieu"]."</option>";
+	}
+	?>
 	<option value="">Autre...</option>
     </select> <input type="text" name="lieu_txt" style="display: none;" />
 </div>

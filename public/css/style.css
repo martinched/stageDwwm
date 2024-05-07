@@ -98,7 +98,7 @@ details summary > * {
     
 }
 
-#bouton_enregistrer_vente, .quantite, .firstMargin, .newSouCat{
+#bouton_enregistrer_vente, .firstMargin, .newSouCat{
     margin-top: 1em;
    
 }
@@ -107,23 +107,17 @@ details summary > * {
     margin: 1em;
 }
    
-.suppr, .champ, #quantite{
+.suppr, .champ{
     margin-bottom: 1em;
 }
 
-#prix_libre, #quantite{
+#prix_libre{
     width:40%;
 }
 
 .cout, .temps{
     width:30%;
 }
-
-
-
-
-
-
 
 .poubelle {
     color: red;
@@ -141,24 +135,7 @@ details summary > * {
     display: inline-block;
     width: 500px;
 }
-/*
-input {
-    border: 1px solid transparent;
-    background-color: #f1f1f1;
-    padding: 10px;
-    font-size: 16px;
-    float: left;
-}
-input[type=text] {
-    background-color: #f1f1f1;
-    width: 70%;
-}
-input[type=submit] {
-    margin-left: 1em;
-    background-color: DodgerBlue;
-    color: #fff;
-}
-*/
+
 .autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;

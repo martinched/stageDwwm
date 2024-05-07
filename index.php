@@ -50,16 +50,16 @@ try{
 
             case 'ventes':
                 $venteController = new VenteController();
-                $venteController->listVentes();
+		//$venteController->listVentes();
+		$venteController->listProduitsVendus();
 		break;
 
 	    case 'addVente':
 		$id_produit = $_POST['id_produit'];
-		$quantite = $_POST['quantite'];
 		$prix_libre = $_POST['prix_libre'];
 		$venteController = new VenteController();
-		$venteController->addVente($quantite,
-					   $id_produit, $prix_libre);
+		$id_vente = $venteController->addVente($prix_libre);
+		$venteController->addProduitVendu ($id_produit, $id_vente);
 		header ('location:index.php?page=ventes');
 		break;
 

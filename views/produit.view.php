@@ -64,13 +64,6 @@ while($product = $reponse->fetch()) {
 		<input class="sell" type="button" value="Vendre"
 		       onclick="this.hidden=true;afficherChampsVente(<?=$product['id_produit']?>)">
 
-		<div class="card_vendre-champsCacher">
-		    <div class="quantite" id="champQuantite<?=$product['id_produit']?>"
-			 style="display:none;">
-			<label for="quantite">Quantité&nbsp;:&nbsp;</label>
-			<input class="champ" type="number" id="quantite" name="quantite"><br>
-		    </div>
-		    
 		    <div id="champPrix<?=$product['id_produit']?>" style="display:none;">
 			<label for="prix_libre">Prix libre (€)&nbsp;:&nbsp;</label>
 			<input class="champ" type="number" id="prix_libre" name="prix_libre">
@@ -82,8 +75,7 @@ while($product = $reponse->fetch()) {
 			   id="bouton_enregistrer_vente<?=$product['id_produit']?>"
 			   style="display:none" type="submit" name="" value="Enregister la vente">
 		    </div>
-		</div>
-		    </div>  
+	    </div>  
 	</form>
 	
 	<input class="suppr" type="button" value="Supprimer"
