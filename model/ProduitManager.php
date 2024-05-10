@@ -39,7 +39,7 @@ class ProduitManager extends Manager{
     public function getProduits(){ 
         $bd = $this->connexion();
         $reponse = $bd->query(
-            'SELECT p.id_produit, p.nom_sous_categorie, p.nom_produit, p.description,
+            'SELECT p.id_produit, p.nom_sous_categorie, p.nom_produit, p.photo, p.description,
              p.date_enregistrement, p.cout_reparation, p.temps_passe, p.lieu,
              p.benne, sc.nom_categorie, sc.poids
              FROM produits p INNER JOIN sous_categories sc ON p.nom_sous_categorie = sc.nom_sous_categorie
@@ -48,15 +48,15 @@ class ProduitManager extends Manager{
         return $reponse;
     }
     
-    public function addProduit($nom_sous_categorie, $nom_produit, $description, $lieu, $cout_reparation, $temps_passe){
+    public function addProduit($nom_sous_categorie, $nom_produit, $description, $lieu, $cout_reparation, $temps_passe, $photo){
         $bd = $this->connexion();
         $requeteSQL =
             "INSERT INTO produits(
                 `nom_produit`,`description`, `nom_sous_categorie`,
-                 `cout_reparation`, `temps_passe`, `lieu`, `benne`)
+                 `cout_reparation`, `temps_passe`, `lieu`, `benne`, `photo`)
             VALUES (
                 :nom_produit, :description, :nom_sous_categorie,
-                :cout_reparation, :temps_passe, :lieu, :benne)";
+                :cout_reparation, :temps_passe, :lieu, :benne, :photo)";
 
         $requetePrepare = $bd->prepare($requeteSQL);
 
@@ -67,7 +67,8 @@ class ProduitManager extends Manager{
             ':cout_reparation' => $cout_reparation,
             ':temps_passe' => $temps_passe,
 	    ':lieu' => htmlspecialchars($lieu),
-	    ':benne' => "" //htmlspecialchars($benne)
+	    ':benne' => "", 
+	    ':photo' => $photo
         );
 	$requetePrepare->execute($parameterArray);
 	

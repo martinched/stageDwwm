@@ -19,7 +19,7 @@
 	    foreach ($categories as $categorie) {
 		echo "<option value='$categorie'";
 		if ($categorie == $_GET["nom_categorie"]) {
-		    echo ' selected';
+		    echo 'selected';
 		}
 		echo ">$categorie</option>";
 	    }

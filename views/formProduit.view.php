@@ -10,7 +10,7 @@
 
 <div>
     <label class="label" for="photo">Ajouter une photo&nbsp;:</label>
-    <input type="file" id="photo" name="photo"><br><br>
+    <input type="file" accept="image/*" id="photo"  onChange="FileUpload(this)" name="photo"><br><br>
 </div>
 
 <div>

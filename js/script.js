@@ -89,96 +89,26 @@ function FormSubmit(oForm) {
 }
 
 
-function createThrobber(img) {
-  //représentent respectivement la largeur et la hauteur de la barre de progression.
-  const throbberWidth = 64;
-  const throbberHeight = 6;
-  const throbber = document.createElement("canvas");
-    
-  //Ajoute une classe CSS à l'élément canvas.
-  throbber.classList.add("upload-progress");
-  throbber.setAttribute("width", throbberWidth);
-  throbber.setAttribute("height", throbberHeight);
 
-  //ajoute l'élément canvas en tant qu'enfant de img. il sera inséré juste après l'image dans le HTML.
-    img.parentNode.appendChild(throbber);
+function FileUpload(input) {
+    var files = input.files;
+    const maxSizeInBytes = 3 * 1024 * 1024;
     
-  //Le contexte 2D est utilisé pour dessiner et manipuler les graphiques à l'intérieur de l'élément canvas.
-    throbber.ctx = throbber.getContext("2d");
-    
-  // Cette fonction dessine un rectangle à l'intérieur de l'élément canvas, dont la largeur est proportionnelle au pourcentage fourni en argument. Si le pourcentage est de 100, la couleur de remplissage est changée en vert.
-  throbber.ctx.fillStyle = "orange";
-  throbber.update = (percent) => {
-    throbber.ctx.fillRect(
-      0,
-      0,
-      (throbberWidth * percent) / 100,
-      throbberHeight,
-    );
-    if (percent === 100) {
-      throbber.ctx.fillStyle = "green";
+    if (files[0] && files[0].size > maxSizeInBytes) {
+        alert('Veuillez sélectionner un fichier de moins de 3Mo.');
+    } else {
+	const xhr = new XMLHttpRequest();
+	var formData = new FormData();
+	formData.append("photo", files[0]);
+	
+	xhr.open("POST", "upload.php");
+	xhr.overrideMimeType("text/plain; charset=x-user-defined-binary");
+	
+	xhr.onreadystatechange = function() {
+	    if (xhr.readyState == 4 && xhr.status == 200) {
+		alert (xhr.responseText);
+	    }
+	};
+	xhr.send(formData);   
     }
-  };
-    throbber.update(0);
-
-    //renvoie l'élément canvas, qui contient désormais tout le nécessaire pour être utilisé comme une barre de progression dans le code principal.
-  return throbber;
 }
-
-
-function FileUpload(img, file) {
-    //instentiation de l'objet permetant de lire le fichier fourni.
-    const reader = new FileReader();
-    
-    //création de la barre de chargement.
-    this.ctrl = createThrobber(img);
-    
-    //instentiation de l'objet effectuant la requete de telechargement.
-  const xhr = new XMLHttpRequest();
-  this.xhr = xhr;
-
-    //On stock une référence à 'this' dans la 'self' pour les fonctions de rappel.
-    const self = this;
-    
-    //un écouteur d'évenement est ajouté a l'évenement de progression du telechargement; pour déclencher la fonction de rappel qui met a jour le pourcentage téléchargé.
-  this.xhr.upload.addEventListener(
-    "progress",
-    (e) => {
-      if (e.lengthComputable) {
-        const percentage = Math.round((e.loaded * 100) / e.total);
-        self.ctrl.update(percentage);
-      }
-    },
-    false,
-  );
-
-    //De meme pour le chargement de la requête XMLHttpRequest. la barre de progression est mise a 100% et l'element est enlevé de la page.
-  xhr.upload.addEventListener(
-    "load",
-    (e) => {
-      self.ctrl.update(100);
-      const canvas = self.ctrl.ctx.canvas;
-      canvas.parentNode.removeChild(canvas);
-    },
-    false,
-  );
-
-  //La méthode open() est utilisée pour initialiser une nouvelle requête. Elle spécifie le type de requête et l'URL du service de téléchargement.
-  xhr.open(
-    "POST",
-    "http://demos.hacks.mozilla.org/paul/demos/resources/webservices/devnull.php",
-  );
-
-    //La méthode overrideMimeType() remplace le type de contenu MIME de la réponse (ici en binaire).
-    xhr.overrideMimeType("text/plain; charset=x-user-defined-binary");
-    
-    //Une fonction de rappel est définie pour être exécutée lorsque le contenu du fichier est lu avec succès. Le contenu du fichier est ensuite envoyé via la requête XMLHttpRequest (méthode send()).
-  reader.onload = (evt) => {
-    xhr.send(evt.target.result);
-  };
-  reader.readAsBinaryString(file);
-}
-
-
-
-

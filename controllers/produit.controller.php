@@ -70,7 +70,8 @@ class ProduitController{
 		$formValues['description'],
 		$formValues['lieu'],
 		$formValues['cout_reparation'],
-		$formValues['temps_passe'].":00");
+		$formValues['temps_passe'].":00",
+		$formValues['photo']);
 
 	    if ($formValues['vendu']) { # et la vente
 		$venteController = new VenteController();

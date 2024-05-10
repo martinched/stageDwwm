@@ -15,15 +15,23 @@ while($product = $reponse->fetch()) {
 	<form method="POST" action="index.php?page=addVente" >
 	    <div class="card_info">
 		<div>
-		    <u><b><?= $product['nom_produit'] ?></b></u>
+		    <b><?= $product['nom_produit'] ?></b>
 		    <input type="hidden" name="nom_produit" value="<?=$product['nom_produit']?>">
 		</div>
 		
+		<?php
+		if ( isset($product['photo'])) {
+		?>
+		    <div>
+			<img src="upload/<?=$product['photo']?>" alt="photo du produit"/>
+		    </div>
+		<?php } ?>
+
 		<div>
 		    <?= $product['description'] ?>
 		    <input type="hidden" name="description" value="<?=$product['description']?>">
 		</div>
-
+		
 		<div>
 		    <b>Date d'enregistrement&nbsp;:&nbsp;</b><br> <?=$product['date_enregistrement']?>
 		</div>

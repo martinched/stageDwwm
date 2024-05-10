@@ -73,6 +73,10 @@ li {
     padding: 1em;
 }
 
+.card img{
+    width: 5em;
+}
+
 .sousCats{
     margin: 0.5em;
 }
