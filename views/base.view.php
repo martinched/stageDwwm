@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0">
         <title> <?= $title ?> </title>
         <link rel="stylesheet" href="./public/css/style.css" />
 	<link rel="stylesheet" href="./public/css/couleur.css" />

@@ -83,10 +83,10 @@ class ProduitController{
 		$venteController->addProduitVendu($dernierProduit['id_produit'],
 						  $derniereVente['id_vente']);
 		header ('location:index.php?page=ventes');
-		exit();
+	//	exit();
 	    } else {
 		header ('location:index.php?page=produits');
-		exit();
+	//	exit();
 	    }
 	}
 	return true;
