@@ -111,8 +111,7 @@ try{
 	}
 
     }else{
-	$homeController = new HomeController();
-	$requete = $homeController->home();
+	header ('location:index.php?page=produits');
     } 
 
 }catch(Exception $e){
