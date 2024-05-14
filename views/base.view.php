@@ -14,8 +14,12 @@
 
 <body>
     <header>
-        <h1>LA PÉTAPPLI</h1>
-   
+	<h1>LA PÉTAPPLI
+	    <a class="parametres" href="tableau.view.php">
+		    <img src="./public/images/parametres.svg" alt="parametres">
+		</a>
+	</h1>
+	  	
 	<nav>
 	    <a href="index.php?page=produits#titreProduits"> <button class="btn">Produits</button></a><br>
 	    <a href="index.php?page=ventes#titreVentes"> <button class="btn">Ventes</button></a><br>

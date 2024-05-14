@@ -4,7 +4,7 @@ $title = "Liste des produits";
 ob_start()
 ?>
 
-<h2>Liste des produits</h2>
+<h2 id="titreProduits">Liste des produits</h2>
 
 <a href="index.php?page=formProduit"> <button class="ajout"> Ajouter un produit</button></a>
 <div class="multicard">
@@ -79,9 +79,9 @@ while($product = $reponse->fetch()) {
 		    
 		    <input type="hidden" name="id_produit" value="<?=$product['id_produit']?>">
 		    <div>  
-		    <input class="btn"
-			   id="bouton_enregistrer_vente<?=$product['id_produit']?>"
-			   style="display:none" type="submit" name="" value="Enregister la vente">
+			<input class="btn"
+			       id="bouton_enregistrer_vente<?=$product['id_produit']?>"
+			       style="display:none" type="submit" name="" value="Enregister la vente">
 		    </div>
 	    </div>  
 	</form>

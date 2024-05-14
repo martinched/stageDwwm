@@ -95,7 +95,6 @@ class CategorieManager extends Manager{
 
     public function deleteSousCategorie($nom_sous_categorie) {
 	$bd = $this->connexion();
-	
 	$requeteSQL = 'DELETE FROM sous_categories
                        WHERE nom_sous_categorie = :nom_sous_categorie';
 	try{

@@ -4,14 +4,13 @@ $title = "Liste des ventes";
 ob_start();
 ?>
 
-<h2>Liste des ventes</h2>
+<h2 id="titreVentes">Liste des ventes</h2>
 
 <a href='index.php?page=formProduit'> <button class="ajout">Enregistrer une vente</button></a>  
 
 <?php
-// displays each row of the following columns
-foreach ($ventes as $vente)
-{
+
+foreach ($ventes as $vente) {
 ?>
     <div class="card multicard">
 	<div>
