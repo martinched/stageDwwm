@@ -1,8 +1,12 @@
 
 <?php
 require("model/ProduitManager.php");
+require ('controllers/categorie.controller.php');
+require ('controllers/lieu.controller.php');
+require ('controllers/benne.controller.php');
+
 $produitManager = new ProduitManager();
-$reponse = $produitManager->getProduits();
+$reponse = $produitManager->getProduitsByFiltres($_GET["nom_categorie"]);
 $tableau = array();
 
 while ($ligne = $reponse->fetch ()) {
@@ -35,7 +39,78 @@ $chainejson = json_encode($tableau);
 	    <h2>Vue globale des produits</h2>
 	    <a class="boutonTableauVente" href="./vueGlobaleVente.php">Tableau des ventes ? =></a>
 	</header>
-	<container>
+	<section>
+	    <div class="tri">
+		<div class="filtre">
+		    <form action="" methode="GET">
+			<select id="nom_categorie" class="champ" name="nom_categorie">
+			    <option value="">Catégorie</option>
+			    <?php
+			    $filtreCat = new CategorieController();
+			    $reponse = $filtreCat->tableauCategories();
+			    while($categorie = $reponse->fetch()) {
+			    ?>
+				<option value="<?= $categorie['nom_categorie'] ?>">
+				    <?= $categorie['nom_categorie'] ?></option>
+			    <?php
+			    } 
+			    ?>     
+			</select>
+
+			<select id="nom_sous_categorie" class="champ" name="nom_sous_categorie">
+			    <option value="">Sous-catégorie</option>
+			    <?php
+			    $filtreSousCat = new CategorieController();
+			    $tableauSC = $filtreSousCat->listSousCategories();
+			    foreach($tableauSC as $categories) {
+				//			    var_dump ( $categories);
+				foreach($categories as $sousCategorie) {
+			    ?>
+			    <option value="<?= $sousCategorie["nom_sous_categorie"] ?>">
+				<?= $sousCategorie['nom_sous_categorie'] ?></option>			    
+			<?php
+			    }
+			}
+			?>
+			</select>
+
+			<select id="lieu" class="champ" name="lieu">
+			    <option value="">Lieu</option>
+			    <?php
+			    $filtreLieu = new LieuController();
+			    $reponseL = $filtreLieu->listLieux();
+			    while($lieu = $reponseL->fetch()) {
+			    ?>
+				<option value="<?= $lieu["lieu"] ?>">
+				    <?= $lieu["lieu"] ?></option>			    
+			    <?php
+			    }
+			    ?>
+			</select>
+
+			<select id="benne" class="champ" name="benne">
+			    <option value="">Benne</option>
+			    <?php
+			    $filtreBenne = new BenneController();
+			    $reponseB = $filtreBenne->listBennes();
+			    while($benne = $reponseB->fetch()) {
+			    ?>
+				<option value="<?= $benne["benne"] ?>">
+				    <?= $benne["benne"] ?></option>			    
+			    <?php
+			    }
+			    ?>
+			</select>
+			<span>Entre</span>
+			<input type="date" name="dateE_debut" />
+			<span>et</span>
+			<input type="date" name="dateE_fin" />
+			<input type="submit" value="Filtrer"/>
+		    </form>
+		</div>
+		
+	    </div>
+
 	    <table>
 		<thead>
 		    <tr>
@@ -55,4 +130,6 @@ $chainejson = json_encode($tableau);
 		<tbody>
 		</tbody>
 	    </table>
-	</container>
+	</section>
+    </body>
+</html>

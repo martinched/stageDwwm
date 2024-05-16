@@ -68,4 +68,6 @@ class VenteManager extends Manager{
 	$reponse = $bd->query($deleteVente);  
 	return $reponse;
     }
-}
+
+  }
+

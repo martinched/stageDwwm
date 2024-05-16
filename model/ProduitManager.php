@@ -80,4 +80,34 @@ class ProduitManager extends Manager{
         $reponse = $bd->query($requeteSQL); 
 	return $reponse;
     }
+
+    public function getProduitsByFiltres($nom_categorie){
+	$requeteSQL = "SELECT p.id_produit, p.nom_sous_categorie,
+             p.nom_produit, p.description, p.date_enregistrement,
+             p.cout_reparation, p.temps_passe, p.lieu, p.benne,
+             sc.nom_categorie, sc.poids FROM produits p
+             INNER JOIN sous_categories sc
+             ON p.nom_sous_categorie = sc.nom_sous_categorie " ;
+
+	if (isset($nom_categorie) && $nom_categorie != "") {
+	    $requeteSQL .= " WHERE `nom_categorie` = '$nom_categorie'";
+	}
+	if (isset($nom_sous_categorie) && $nom_sous_categorie != "") {
+	    $requeteSQL .= " WHERE `nom_sous_categorie` = '$nom_sous_categorie'";
+	}
+	if (isset($lieu) && $lieu != "") {
+	    $requeteSQL .= " WHERE `lieu` = '$lieu'";
+	}
+	if (isset($benne) && $benne != "") {
+	    $requeteSQL .= " WHERE `benne` = '$benne'";
+	}
+	if (isset($date_fin) && isset($date_debut)
+	    && $date_fin != "" && $date_debut != "" ) {
+	    $requeteSQL .= " WHERE `date_enregistrement` BETWEEN '$date_debut'
+	    AND '$date_fin'";
+	}
+	
+	$bd = $this->connexion();
+        return $bd->query($requeteSQL);
+    }
 }

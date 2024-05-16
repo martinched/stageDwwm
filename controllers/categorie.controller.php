@@ -48,7 +48,7 @@ class CategorieController{
             // Assignez les sous-catégories à la catégorie correspondante dans le tableau $reponse
             $tableau[$categorie['nom_categorie']] = $sousCategories;
         }
-        require ('views/gestionCat.view.php');
+	return $tableau;
     }
 
     public function formCategorie($nom_categorie, $sous_categorie, $poids){
@@ -69,4 +69,6 @@ class CategorieController{
 	header ('location:index.php?page=gestionCategories');
 	exit();
     }
+
 }
+

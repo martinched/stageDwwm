@@ -69,7 +69,8 @@ try{
 
             case 'gestionCategories':
                 $categorieController = new CategorieController();
-                $categorieController->listSousCategories();
+                $tableau = $categorieController->listSousCategories();
+		require ('views/gestionCat.view.php');
 		break;
 
 	    case 'deleteCategorie':

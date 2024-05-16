@@ -21,26 +21,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  */
 
+
 require_once("Manager.php");
 
-class LieuManager extends Manager{
+class BenneManager extends Manager{
 
-    public function getLieux(){ 
-        $bd = $this->connexion(); 
-        $reponse = $bd->query('SELECT * FROM `lieux`');
-	return $reponse;
-    }
-
-    public function addLieu($lieu){
+    public function getBennes(){
 	$bd = $this->connexion(); 
-        $reponse = $bd->query("INSERT INTO lieux(`lieu`) VALUES ('$lieu')");
+        $reponse = $bd->query('SELECT * FROM `bennes` WHERE 1');
 	return $reponse;
-    }
+	}
 
-    public function deleteLieu($lieu){
-        $bd = $this->connexion();
-        $requeteSQL = "DELETE FROM lieux WHERE lieu = ".$lieu;
-        $reponse = $bd->query($requeteSQL); 
-	return $reponse;
+    
     }
-}
