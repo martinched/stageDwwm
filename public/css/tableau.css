@@ -1,0 +1,38 @@
+html{
+    background-color: lightblue;
+}
+
+body{
+    background-color: lightyellow;
+    box-shadow: 0 0 11px 6px rgba(0, 0, 0, 0.4);
+    border-radius:5px;
+    border: 2px solid #CFA93F;
+    margin:  1em auto;
+    font: 16px Arial;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80em; 
+    padding-bottom: 3em
+}
+
+table{
+    background-color: lightgrey;
+}
+
+thead{
+    ;
+}
+
+tr{
+    background-color: white;
+     padding: 5px;
+}
+
+th{
+    background-color: grey;
+    color: white;
+    padding: 5px;
+}

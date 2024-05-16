@@ -15,9 +15,9 @@
 <body>
     <header>
 	<h1>LA PÉTAPPLI
-	    <a class="parametres" href="tableau.view.php">
-		    <img src="./public/images/parametres.svg" alt="parametres">
-		</a>
+	    <a class="parametres" href="vueGlobaleProduit.php">
+		<img src="./public/images/parametres.svg" alt="parametres">
+	    </a>
 	</h1>
 	  	
 	<nav>
