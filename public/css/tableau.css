@@ -3,7 +3,7 @@ html{
 }
 
 body{
-    background-color: lightyellow;
+    background-color: #FFEB69;
     box-shadow: 0 0 11px 6px rgba(0, 0, 0, 0.4);
     border-radius:5px;
     border: 2px solid #CFA93F;
@@ -35,4 +35,17 @@ th{
     background-color: grey;
     color: white;
     padding: 5px;
+}
+
+.boutonTableauProduits{
+    float: left;
+    padding-bottom: 1em;
+}
+
+.boutonTableauVente{
+    float: right;
+    padding-bottom: 1em;
+}
+.filtre{
+    margin-bottom: 1em;
 }

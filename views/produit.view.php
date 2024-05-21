@@ -23,7 +23,7 @@ while($product = $reponse->fetch()) {
 		if ( isset($product['photo'])) {
 		?>
 		    <div>
-			<img src="upload/<?=$product['photo']?>" alt="photo du produit"/>
+			<img src="upload/<?=$product['photo']?>"/>
 		    </div>
 		<?php } ?>
 
