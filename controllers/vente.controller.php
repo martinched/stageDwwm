@@ -41,10 +41,6 @@ class VenteController{
 	return $venteManager->deleteVente($id_vente);
     }
 
-    ##
-    ## Fonctions pour produits_vendus
-    ##
-
     public function addProduitVendu($id_produit, $id_vente){
 	$venteManager = new VenteManager();
 	$venteManager->addProduitVendu ($id_produit, $id_vente);

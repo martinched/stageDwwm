@@ -43,9 +43,8 @@ function suppression(id, type) {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
 	    if (xhr.readyState == 4 && xhr.status == 200) {
-//		alert (xhr.responseText);
-		//window.location.reload();
-		window.location.href = window.location.href;
+
+		window.location.reload();
             }
         };
         xhr.send('id=' + encodeURIComponent(id) + '&type=' + encodeURIComponent(type));
