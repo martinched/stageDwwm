@@ -1,6 +1,5 @@
 <?php
 
-
 /* 
  * La Pétappli se veut l'outil de gestion de base de données de la recyclerie
  * de Vallée Francaise.

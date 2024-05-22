@@ -94,7 +94,8 @@ try{
 		    $categorieController = new CategorieController();
 		    $categorieController->formCategorie(
 			$nom_categorie, $sous_categorie, $poids);
-		    $categorieController->listSousCategories();
+		    $tableau = $categorieController->listSousCategories();
+		    require ('views/gestionCat.view.php');
 		}else{
                     $categorieController = new CategorieController();
                     $tableau = $categorieController->tableauCategories();
